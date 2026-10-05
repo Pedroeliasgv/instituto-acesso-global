@@ -1,0 +1,149 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Institutional blue scale */
+  --color-abyss: var(--abyss);
+  --color-navy: var(--navy);
+  --color-royal: var(--royal);
+  --color-azure: var(--azure);
+  --color-mist: var(--mist);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-muted: var(--on-dark-muted);
+  --color-line-dark: var(--line-dark);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --abyss: oklch(0.16 0.045 262);
+  --navy: oklch(0.24 0.08 262);
+  --royal: oklch(0.45 0.18 260);
+  --azure: oklch(0.68 0.13 245);
+  --mist: oklch(0.94 0.02 245);
+  --ink: oklch(0.18 0.02 260);
+  --paper: oklch(0.985 0.004 250);
+  --on-dark: oklch(0.98 0.005 250);
+  --on-dark-muted: oklch(0.78 0.03 250);
+  --line-dark: oklch(1 0 0 / 12%);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--royal);
+  --primary-foreground: var(--on-dark);
+  --secondary: var(--mist);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.955 0.008 250);
+  --muted-foreground: oklch(0.48 0.025 258);
+  --accent: var(--mist);
+  --accent-foreground: var(--navy);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.9 0.012 255);
+  --input: oklch(0.9 0.012 255);
+  --ring: var(--royal);
+
+  --overlay-hero: linear-gradient(90deg, oklch(0.16 0.045 262 / 0.95) 0%, oklch(0.16 0.045 262 / 0.7) 45%, oklch(0.24 0.08 262 / 0.25) 100%);
+  --overlay-bottom: linear-gradient(0deg, oklch(0.16 0.045 262 / 0.95) 0%, transparent 60%);
+  --shadow-card: 0 30px 60px -30px oklch(0.24 0.08 262 / 0.35);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--royal); color: var(--on-dark); }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+@utility headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+@utility link-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s var(--ease-out);
+  }
+  &:hover::after { transform: scaleX(1); transform-origin: left; }
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+  &.is-visible { opacity: 1; transform: none; }
+}
+
+@utility grain {
+  background-image: radial-gradient(oklch(1 0 0 / 5%) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
