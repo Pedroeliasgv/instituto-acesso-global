@@ -1,8 +1,6 @@
-import type { LucideIcon } from "lucide-react";
 import {
-  ArrowUpRight,
-  Play,
   Share2,
+  Play,
   Users,
 } from "lucide-react";
 import {
@@ -18,12 +16,7 @@ import {
   pillars,
 } from "@/data/site";
 import { Logo } from "./Header";
-import { Courses } from "./Courses";
-import {
-  Cta,
-  Eyebrow,
-  ParallaxImage,
-} from "./ui";
+import { Cta, Eyebrow, ParallaxImage } from "./ui";
 
 export function Hero() {
   return (
@@ -51,11 +44,11 @@ export function Hero() {
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 pt-40 md:px-8 md:pb-24">
         <div className="max-w-5xl">
-          <Eyebrow className="animate-in fade-in slide-in-from-bottom-4 text-azure duration-1000">
+          <Eyebrow className="text-azure">
             Instituto Acesso Global
           </Eyebrow>
 
-          <h1 className="headline mt-7 animate-in fade-in slide-in-from-bottom-8 text-[3.4rem] duration-1000 sm:text-7xl lg:text-[7rem]">
+          <h1 className="headline mt-7 text-[3.4rem] sm:text-7xl lg:text-[7rem]">
             Você pode
             <br />
             <span className="font-serif font-normal normal-case italic text-azure">
@@ -63,16 +56,14 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="mt-8 max-w-2xl animate-in fade-in text-lg leading-relaxed text-on-dark-muted duration-1000 md:text-xl">
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-on-dark-muted md:text-xl">
             Conhecimento, ensino e desenvolvimento para quem deseja aprofundar
             sua caminhada, desenvolver maturidade e viver com mais clareza e
             propósito.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Cta href="#cursos">
-              Conhecer os cursos
-            </Cta>
+            <Cta href="#cursos">Conhecer os cursos</Cta>
 
             <Cta href="#sobre" variant="ghost">
               Conhecer o instituto
@@ -117,11 +108,7 @@ export function Intro() {
             algo que pode ser vivido.
           </p>
 
-          <Cta
-            href="#sobre"
-            variant="outline"
-            className="mt-10"
-          >
+          <Cta href="#sobre" variant="outline" className="mt-10">
             Conheça nossa visão
           </Cta>
         </div>
@@ -265,11 +252,7 @@ export function Evanio() {
             caminhada.
           </p>
 
-          <Cta
-            href="#cursos"
-            variant="outline"
-            className="mt-10"
-          >
+          <Cta href="#cursos" variant="outline" className="mt-10">
             Conhecer os cursos
           </Cta>
         </div>
@@ -319,49 +302,6 @@ export function Methodology() {
   );
 }
 
-export function Testimonials() {
-  if (!testimonials.length) return null;
-
-  return (
-    <section className="bg-background py-24 md:py-36">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <Eyebrow className="reveal">
-          Experiências
-        </Eyebrow>
-
-        <h2 className="reveal headline mt-7 max-w-4xl text-5xl md:text-7xl">
-          O que pessoas estão
-          <br />
-          dizendo.
-        </h2>
-
-        <div className="mt-16 grid gap-8 md:grid-cols-2">
-          {testimonials.map((testimonial) => (
-            <figure
-              key={testimonial.name}
-              className="reveal border border-border p-8 md:p-10"
-            >
-              <blockquote className="font-serif text-2xl italic leading-snug md:text-3xl">
-                “{testimonial.quote}”
-              </blockquote>
-
-              <figcaption className="mt-10 border-t border-border pt-5">
-                <p className="font-bold">
-                  {testimonial.name}
-                </p>
-
-                <p className="mt-1 text-xs font-bold uppercase tracking-[0.15em] text-royal">
-                  {testimonial.course}
-                </p>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function Faq() {
   return (
     <section
@@ -370,9 +310,7 @@ export function Faq() {
     >
       <div className="mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-12 md:px-8">
         <div className="reveal md:col-span-4">
-          <Eyebrow>
-            Perguntas frequentes
-          </Eyebrow>
+          <Eyebrow>Perguntas frequentes</Eyebrow>
 
           <h2 className="headline mt-7 text-5xl md:text-6xl">
             Antes de
@@ -445,10 +383,7 @@ export function FinalCta() {
           que pode fazer sentido para o seu momento.
         </p>
 
-        <Cta
-          href="#cursos"
-          className="mt-10"
-        >
+        <Cta href="#cursos" className="mt-10">
           Conhecer os cursos
         </Cta>
       </div>
@@ -469,9 +404,7 @@ export function Footer() {
           </p>
 
           <div className="mt-8 flex gap-3">
-            {(
-              [Share2, Play, Users] as LucideIcon[]
-            ).map((Icon, index) => (
+            {[Share2, Play, Users].map((Icon, index) => (
               <a
                 key={index}
                 href="#"
