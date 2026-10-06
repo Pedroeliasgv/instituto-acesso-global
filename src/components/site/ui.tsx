@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <p className={cn("eyebrow flex items-center gap-3 text-[#5b5fe0]", className)}>
+    <p className={cn("eyebrow flex items-center gap-3 text-[#6f6b65]", className)}>
       <span className="h-px w-8 bg-current" />
       {children}
     </p>
@@ -34,7 +34,7 @@ export function Cta({ href, children, variant = "solid", className, target, rel 
       target={target}
       rel={rel}
       className={cn(
-        "group inline-flex items-center justify-center gap-3 px-7 py-4 text-[0.72rem] font-bold uppercase tracking-[0.2em] transition-all duration-300",
+        "group inline-flex items-center justify-center gap-3 px-7 py-4 text-[0.72rem] font-bold uppercase tracking-[0.2em] transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current",
         styles,
         className,
       )}
@@ -69,7 +69,7 @@ export function ParallaxImage({
     const update = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-      const el = wrap.current;
+        const el = wrap.current;
         const img = image.current;
         if (!el || !img) return;
         if (reducedMotion.matches) {
@@ -77,7 +77,7 @@ export function ParallaxImage({
           return;
         }
 
-      const rect = el.getBoundingClientRect();
+        const rect = el.getBoundingClientRect();
         const progress = Math.min(
           1,
           Math.max(-1, (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight),

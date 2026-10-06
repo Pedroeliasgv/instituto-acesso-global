@@ -29,10 +29,10 @@ export function Courses() {
                 <div className={`course-image relative overflow-hidden md:col-span-7 ${reversed ? "md:col-start-6 md:row-start-1" : "md:col-start-1"}`}>
                   <img
                     src={course.image}
-                    alt={index === 0 ? "Evanio Vale em retrato editorial" : "Imagem do Seminário de Libertação"}
+                    alt={index === 0 ? "Capa do Curso de Dons Espirituais" : "Capa do Seminário de Libertação"}
                     loading="lazy"
-                    className={`course-photo h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.04] ${
-                      index === 0 ? "aspect-[4/3] md:aspect-[1.12/1]" : "aspect-[4/3] object-[50%_24%] md:aspect-[1.5/1]"
+                    className={`course-photo h-full w-full bg-[#111] object-contain transition-transform duration-1000 ease-out group-hover:scale-[1.04] ${
+                      index === 0 ? "aspect-square md:aspect-[1.12/1]" : "aspect-square md:aspect-[1.5/1]"
                     }`}
                   />
                   <div className="course-image-overlay absolute inset-0 bg-black/0 transition-colors duration-700 group-hover:bg-black/15" />
@@ -47,17 +47,8 @@ export function Courses() {
                 <div className={`reveal md:col-span-5 md:row-start-1 ${reversed ? "md:col-start-1" : "md:col-start-8"}`}>
                   <Eyebrow className="text-[#6f6b65]">Curso {String(index + 1).padStart(2, "0")}</Eyebrow>
                   <h3 className="course-title headline mt-6 text-[clamp(2.7rem,5.8vw,6rem)] leading-[0.84] text-[#080808] transition-transform duration-500 group-hover:-translate-y-1">
-                    {index === 0 ? (
-                      <>
-                        Dons
-                        <span className="block">Espirituais</span>
-                      </>
-                    ) : (
-                      <>
-                        Seminário
-                        <span className="block">de Libertação</span>
-                      </>
-                    )}
+                    {course.title.split(" ")[0]}
+                    <span className="block">{course.title.split(" ").slice(1).join(" ")}</span>
                   </h3>
                   <p className="mt-6 max-w-md text-base leading-relaxed text-[#494641] md:text-lg">
                     {course.description}
@@ -68,7 +59,7 @@ export function Courses() {
                     rel="noopener noreferrer"
                     className="mt-8 inline-flex items-center gap-4 border-b border-[#080808]/35 pb-3 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[#080808] transition-colors hover:border-[#6f6b65] hover:text-[#6f6b65] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#6f6b65]"
                   >
-                    {index === 0 ? "Conhecer curso" : "Conhecer seminário"}
+                    {course.label}
                     <ArrowUpRight
                       size={16}
                       className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"

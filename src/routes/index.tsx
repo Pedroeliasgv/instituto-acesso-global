@@ -17,7 +17,7 @@ import {
 import { useRevealAll } from "@/hooks/use-reveal";
 
 const title = "Instituto Acesso Global | Ensino, Formação e Desenvolvimento";
-const description = "Conheça as formações do Instituto Acesso Global, incluindo o Curso de Dons Espirituais e o Seminário de Libertação.";
+const description = "Instituto Acesso Global — ensino, formação e desenvolvimento para pessoas que desejam crescer em conhecimento, maturidade e propósito.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,12 +29,19 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Instituto Acesso Global" },
       { property: "og:locale", content: "pt_BR" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: "https://instituto-acesso-global.vercel.app/" },
+      { property: "og:image", content: "https://instituto-acesso-global.vercel.app/portrait.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1600" },
+      { property: "og:image:height", content: "2400" },
+      { property: "og:image:alt", content: "Evanio Vale, pessoa associada ao Instituto Acesso Global" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { name: "twitter:image", content: "https://instituto-acesso-global.vercel.app/portrait.jpg" },
+      { name: "twitter:image:alt", content: "Evanio Vale, pessoa associada ao Instituto Acesso Global" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://instituto-acesso-global.vercel.app/" }],
   }),
   component: Index,
 });

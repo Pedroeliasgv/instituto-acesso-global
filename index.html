@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" as="image" href="/portrait.jpg" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,25 +12,25 @@
       href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap"
     />
     <meta name="theme-color" content="#080808" />
-    <meta name="description" content="Conheça as formações do Instituto Acesso Global, incluindo o Curso de Dons Espirituais e o Seminário de Libertação." />
+    <meta name="description" content="Instituto Acesso Global — ensino, formação e desenvolvimento para pessoas que desejam crescer em conhecimento, maturidade e propósito." />
+    <link rel="canonical" href="https://instituto-acesso-global.vercel.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="Instituto Acesso Global" />
     <meta property="og:title" content="Instituto Acesso Global | Ensino, Formação e Desenvolvimento" />
-    <meta property="og:description" content="Conheça as formações do Instituto Acesso Global, incluindo o Curso de Dons Espirituais e o Seminário de Libertação." />
-    <meta property="og:url" content="/" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:description" content="Instituto Acesso Global — ensino, formação e desenvolvimento para pessoas que desejam crescer em conhecimento, maturidade e propósito." />
+    <meta property="og:url" content="https://instituto-acesso-global.vercel.app/" />
+    <meta property="og:image" content="https://instituto-acesso-global.vercel.app/portrait.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1600" />
+    <meta property="og:image:height" content="2400" />
+    <meta property="og:image:alt" content="Evanio Vale, pessoa associada ao Instituto Acesso Global" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Instituto Acesso Global | Ensino, Formação e Desenvolvimento" />
-    <meta name="twitter:description" content="Conheça as formações do Instituto Acesso Global, incluindo o Curso de Dons Espirituais e o Seminário de Libertação." />
+    <meta name="twitter:description" content="Instituto Acesso Global — ensino, formação e desenvolvimento para pessoas que desejam crescer em conhecimento, maturidade e propósito." />
+    <meta name="twitter:image" content="https://instituto-acesso-global.vercel.app/portrait.jpg" />
+    <meta name="twitter:image:alt" content="Evanio Vale, pessoa associada ao Instituto Acesso Global" />
     <title>Instituto Acesso Global | Ensino, Formação e Desenvolvimento</title>
-    <script>
-      const canonicalUrl = new URL(window.location.pathname, window.location.origin).href;
-      const canonicalLink = document.createElement("link");
-      canonicalLink.rel = "canonical";
-      canonicalLink.href = canonicalUrl;
-      document.head.append(canonicalLink);
-      document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonicalUrl);
-    </script>
   </head>
   <body>
     <div id="root"></div>

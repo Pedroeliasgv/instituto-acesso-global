@@ -24,8 +24,8 @@ function ScrollProgress() {
     const onScroll = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      const next = total > 0 ? window.scrollY / total : 0;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        const next = total > 0 ? window.scrollY / total : 0;
         progressRef.current?.style.setProperty("transform", `scaleX(${next})`);
       });
     };
@@ -39,7 +39,10 @@ function ScrollProgress() {
   }, []);
 
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-px bg-white/10">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-px bg-white/10"
+    >
       <div
         ref={progressRef}
         className="h-full origin-left bg-[#bcb8b1]"
@@ -53,7 +56,8 @@ function BrandIntro() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const timeout = window.setTimeout(() => setVisible(false), 700);
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 700;
+    const timeout = window.setTimeout(() => setVisible(false), delay);
     return () => window.clearTimeout(timeout);
   }, []);
 

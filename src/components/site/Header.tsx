@@ -1,5 +1,5 @@
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { navLinks } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -28,9 +28,22 @@ export function Logo({ className }: { className?: string }) {
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [menuMounted, setMenuMounted] = useState(false);
   const [active, setActive] = useState("#inicio");
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
   const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
+  const closeTimeoutRef = useRef<number | undefined>(undefined);
+
+  const openMenu = useCallback(() => {
+    window.clearTimeout(closeTimeoutRef.current);
+    setMenuMounted(true);
+    setOpen(true);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setOpen(false);
+    closeTimeoutRef.current = window.setTimeout(() => setMenuMounted(false), 350);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -70,7 +83,7 @@ export function Header() {
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpen(false);
+        closeMenu();
         return;
       }
 
@@ -96,9 +109,9 @@ export function Header() {
       document.body.style.overflow = previousOverflow;
       trigger?.focus();
     };
-  }, [open]);
+  }, [closeMenu, open]);
 
-  const closeMenu = () => setOpen(false);
+  useEffect(() => () => window.clearTimeout(closeTimeoutRef.current), []);
 
   return (
     <header
@@ -133,7 +146,7 @@ export function Header() {
             href="#cursos"
             className="hidden items-center gap-2 bg-[#f4f1eb] px-4 py-3 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-[#080808] transition-colors hover:bg-white sm:flex"
           >
-            Conhecer os cursos
+            Começar agora
             <ArrowUpRight size={14} aria-hidden="true" />
           </a>
 
@@ -141,7 +154,7 @@ export function Header() {
             ref={menuTriggerRef}
             type="button"
             className="grid h-11 w-11 place-items-center text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:hidden"
-            onClick={() => setOpen((value) => !value)}
+            onClick={open ? closeMenu : openMenu}
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
             aria-controls="mobile-navigation"
@@ -151,10 +164,15 @@ export function Header() {
         </div>
       </div>
 
-      {open && (
+      {menuMounted && (
         <div
           id="mobile-navigation"
-          className="fixed inset-0 z-[90] flex min-h-svh flex-col overflow-y-auto bg-[#080808] px-5 pb-8 pt-6 text-white sm:px-8"
+          aria-hidden={!open}
+          inert={!open}
+          className={cn(
+            "mobile-navigation fixed inset-0 z-[90] flex min-h-svh flex-col overflow-y-auto bg-[#080808] px-5 pb-8 pt-6 text-white sm:px-8",
+            open && "is-open",
+          )}
         >
           <div className="flex items-center justify-between">
             <Logo />
@@ -188,7 +206,7 @@ export function Header() {
             onClick={closeMenu}
             className="inline-flex items-center justify-between border-t border-white/20 py-5 text-xs font-bold uppercase tracking-[0.18em]"
           >
-            Conhecer os cursos
+            Começar agora
             <ArrowUpRight size={16} aria-hidden="true" />
           </a>
         </div>

@@ -6,22 +6,22 @@ import { Cta, Eyebrow, ParallaxImage } from "./ui";
 
 const marqueeWords = [
   "Ensino",
-  "Discernimento",
-  "Prática",
+  "Formação",
+  "Desenvolvimento",
   "Propósito",
-  "Crescimento",
-  "Acesso Global",
+  "Maturidade",
+  "Conhecimento",
 ];
 
 export function Hero() {
   return (
     <section id="inicio" className="relative flex min-h-[100svh] items-end overflow-hidden bg-[#080808] text-white">
       <ParallaxImage
-        src={images.classroom}
+        src={images.portrait}
         alt=""
         eager
         strength={22}
-        className="absolute inset-0 h-full"
+        className="hero-image absolute inset-0 h-full"
       />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.88)_0%,rgba(8,8,8,0.45)_60%,rgba(8,8,8,0.2)_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(8,8,8,0.85)_0%,transparent_70%)]" />
@@ -41,9 +41,14 @@ export function Hero() {
         </h1>
 
         <div className="mt-8 flex flex-col gap-8 border-t border-white/25 pt-6 sm:flex-row sm:items-end sm:justify-between">
-          <Cta href="#instituto" className="bg-[#f4f1eb] text-[#080808] hover:bg-white">
-            Explorar o Instituto
-          </Cta>
+          <div className="flex flex-wrap gap-3">
+            <Cta href="#cursos" className="bg-[#f4f1eb] text-[#080808] hover:bg-white">
+              Conhecer os cursos
+            </Cta>
+            <Cta href="#instituto" variant="ghost" className="border-white/50 text-white hover:bg-white/10">
+              Conhecer o instituto
+            </Cta>
+          </div>
 
           <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-white/75 sm:grid-cols-4">
             {["Ensino", "Discernimento", "Prática", "Propósito"].map((item) => (
@@ -123,22 +128,22 @@ export function About() {
     <section id="instituto" className="bg-[#f4f1eb] py-24 md:py-36">
       <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-14">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
-          <div className="reveal lg:col-span-6">
+          <div className="reveal min-w-0 lg:col-span-6">
             <Eyebrow className="text-[#6f6b65]">01 / O Instituto</Eyebrow>
-            <h2 className="headline mt-8 text-[clamp(3.2rem,7.7vw,7.5rem)] leading-[0.86] text-[#080808]">
+            <h2 className="headline mt-8 text-[clamp(2.8rem,7.7vw,7.5rem)] leading-[0.86] text-[#080808]">
               Mais do que
               <span className="outline-text-dark block">conteúdo.</span>
               <span className="block">Uma jornada.</span>
             </h2>
           </div>
-          <p className="reveal max-w-xl text-lg leading-relaxed text-[#494641] lg:col-span-5 lg:col-start-8 lg:pb-2 lg:text-xl">
-            O Instituto Acesso Global reúne cursos e conteúdos de formação em uma jornada de ensino, discernimento, prática e propósito.
+          <p className="reveal min-w-0 max-w-xl text-lg leading-relaxed text-[#494641] lg:col-span-5 lg:col-start-8 lg:pb-2 lg:text-xl">
+            O Instituto Acesso Global é um espaço de ensino e desenvolvimento para pessoas que desejam crescer em conhecimento, maturidade e propósito. Mais do que conteúdo, uma jornada.
           </p>
         </div>
 
         <div className="mt-14 overflow-hidden md:mt-20">
           <ParallaxImage
-            src={images.classroom}
+            src={images.event}
             alt="Pessoas reunidas em um auditório"
             strength={24}
             className="reveal aspect-[4/3] md:aspect-[2.2/1]"
@@ -185,16 +190,16 @@ export function Methodology() {
           {pillars.map((pillar, index) => (
             <li
               key={pillar.n}
-              className="reveal pillar-row group relative grid min-h-40 grid-cols-[4rem_1fr] items-center gap-4 py-8 md:min-h-48 md:grid-cols-[8rem_1fr_20rem] md:gap-8 md:py-10"
+              className="reveal pillar-row group relative grid min-h-40 grid-cols-[4rem_minmax(0,1fr)] items-center gap-4 py-8 md:min-h-48 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-8 md:py-10 xl:grid-cols-[8rem_minmax(0,1fr)_20rem]"
               style={{ transitionDelay: `${index * 90}ms` }}
             >
               <span className="pillar-number font-display text-5xl font-bold leading-none text-white/20 md:text-8xl">
                 {pillar.n}
               </span>
-              <h3 className="font-display text-3xl font-bold uppercase tracking-[-0.05em] sm:text-5xl md:text-7xl">
+              <h3 className="min-w-0 font-display text-[clamp(1.45rem,7.5vw,2rem)] font-bold uppercase tracking-[-0.06em] sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
                 {pillar.title}
               </h3>
-              <p className="col-start-2 mt-1 max-w-sm text-sm leading-relaxed text-white/55 md:col-start-3 md:mt-0 md:text-base">
+              <p className="col-start-2 mt-1 min-w-0 max-w-sm text-sm leading-relaxed text-white/55 md:mt-0 md:text-base xl:col-start-3">
                 {pillar.text}
               </p>
             </li>
@@ -280,7 +285,7 @@ export function Evanio() {
       <div className="mx-auto grid max-w-[1600px] items-center gap-10 px-5 sm:px-8 md:grid-cols-12 lg:gap-16 lg:px-14">
         <div className="reveal md:col-span-6">
           <ParallaxImage
-            src={images.classroom}
+            src={images.portrait}
             alt="Evanio Vale"
             strength={20}
             className="aspect-[4/5] w-full md:aspect-[4/4.5]"
@@ -321,7 +326,7 @@ export function FinalCta() {
         </h2>
         <div className="reveal mt-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <p className="max-w-md text-base leading-relaxed text-white/70">
-            Conheça os conteúdos disponíveis no Instituto Acesso Global.
+            Seu próximo passo começa aqui.
           </p>
           <Cta href="#cursos" className="bg-[#f4f1eb] text-[#080808] hover:bg-white">
             Conhecer os cursos

@@ -1,13 +1,12 @@
 import classroom from "@/assets/classroom.jpg";
 import event from "@/assets/event.jpg";
 import hero from "@/assets/hero.jpg";
-import portrait from "@/assets/portrait.jpg";
 
 export const images = {
   classroom,
   event,
   hero,
-  portrait,
+  portrait: "/portrait.jpg",
 };
 
 export const navLinks = [
@@ -32,7 +31,7 @@ export const courses: Course[] = [
     id: "curso-dons-espirituais",
     title: "Dons Espirituais",
     description: "Conteúdo dedicado ao estudo dos dons espirituais.",
-    image: portrait,
+    image: "/portrait.jpg",
     href: "https://hotmart.com/pt-br/marketplace/produtos/hagsxd-curso-de-dons-espirituais-btgoa/S85674996V?preview=true",
     label: "Conhecer o curso",
   },

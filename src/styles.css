@@ -164,8 +164,12 @@
 }
 
 .hero-title {
-  font-size: clamp(4rem, 17vw, 14rem);
+  font-size: clamp(3.5rem, min(13svh, 15vw), 13rem);
   line-height: 0.76;
+}
+
+.hero-image > img {
+  object-position: 50% 32%;
 }
 
 .hero-word {
@@ -272,8 +276,10 @@
   color: rgb(244 241 235 / 50%);
 }
 
-.course-list:hover .course-feature:not(:hover) {
-  opacity: 0.58;
+@media (hover: hover) and (pointer: fine) {
+  .course-list:hover .course-feature:not(:hover) {
+    opacity: 0.58;
+  }
 }
 
 .cinematic-section {
@@ -370,6 +376,19 @@
 
 .mobile-menu-link {
   animation: mobile-menu-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mobile-navigation {
+  opacity: 0;
+  transform: translateY(-0.5rem);
+  pointer-events: none;
+  transition: opacity 300ms ease, transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-navigation.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 @keyframes marquee-left {
