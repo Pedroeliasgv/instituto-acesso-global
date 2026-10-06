@@ -1,26 +1,10 @@
-import { ArrowUpRight } from "lucide-react";
-import {
-  useEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+﻿import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-export function Eyebrow({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <p
-      className={cn(
-        "eyebrow flex items-center gap-3 text-royal",
-        className,
-      )}
-    >
+    <p className={cn("eyebrow flex items-center gap-3 text-[#5b5fe0]", className)}>
       <span className="h-px w-8 bg-current" />
       {children}
     </p>
@@ -32,90 +16,60 @@ type CtaProps = {
   children: ReactNode;
   variant?: "solid" | "ghost" | "outline" | "light";
   className?: string;
+  cursorLabel?: string;
+  target?: string;
+  rel?: string;
 };
 
-export function Cta({
-  href,
-  children,
-  variant = "solid",
-  className,
-}: CtaProps) {
+export function Cta({ href, children, variant = "solid", className, cursorLabel, target, rel }: CtaProps) {
   const styles = {
-    solid:
-      "bg-royal text-on-dark hover:bg-navy",
-    light:
-      "bg-on-dark text-navy hover:bg-mist",
-    ghost:
-      "border border-on-dark/40 text-on-dark hover:border-on-dark hover:bg-on-dark/10",
-    outline:
-      "border border-navy/25 text-navy hover:border-royal hover:text-royal",
+    solid: "bg-[#5b5fe0] text-white hover:bg-[#4a50d8]",
+    light: "bg-white text-[#080808] hover:bg-[#eef0ff]",
+    ghost: "border border-white/40 text-white hover:bg-white/5",
+    outline: "border border-[#111827] text-[#111827] hover:border-[#5b5fe0] hover:text-[#5b5fe0]",
   }[variant];
 
   return (
     <a
       href={href}
+      target={target}
+      rel={rel}
+      data-cursor={cursorLabel ?? "EXPLORAR"}
       className={cn(
-        "group inline-flex items-center justify-center gap-3 px-7 py-4 text-[0.7rem] font-bold uppercase tracking-[0.2em] transition-all duration-300",
+        "group inline-flex items-center justify-center gap-3 px-7 py-4 text-[0.72rem] font-bold uppercase tracking-[0.2em] transition-all duration-300",
         styles,
         className,
       )}
     >
       {children}
-
-      <ArrowUpRight
-        size={16}
-        className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-      />
+      <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
     </a>
   );
 }
 
-export function Counter({
-  to,
-  suffix = "",
-}: {
-  to: number;
-  suffix?: string;
-}) {
+export function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [val, setVal] = useState(0);
 
   useEffect(() => {
     const el = ref.current;
-
     if (!el) return;
 
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) return;
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return;
+      io.disconnect();
 
-        io.disconnect();
+      const start = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / 1400, 1);
+        setVal(Math.round(to * (1 - Math.pow(1 - progress, 3))));
+        if (progress < 1) requestAnimationFrame(tick);
+      };
 
-        const start = performance.now();
-
-        const tick = (time: number) => {
-          const progress = Math.min(
-            (time - start) / 1400,
-            1,
-          );
-
-          const eased =
-            1 - Math.pow(1 - progress, 3);
-
-          setVal(Math.round(to * eased));
-
-          if (progress < 1) {
-            requestAnimationFrame(tick);
-          }
-        };
-
-        requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 },
-    );
+      requestAnimationFrame(tick);
+    });
 
     io.observe(el);
-
     return () => io.disconnect();
   }, [to]);
 
@@ -146,45 +100,25 @@ export function ParallaxImage({
   useEffect(() => {
     const onScroll = () => {
       const el = wrap.current;
-
       if (!el) return;
-
       const rect = el.getBoundingClientRect();
-
-      const progress =
-        (rect.top +
-          rect.height / 2 -
-          window.innerHeight / 2) /
-        window.innerHeight;
-
+      const progress = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
       setY(-progress * strength);
     };
 
     onScroll();
-
-    window.addEventListener("scroll", onScroll, {
-      passive: true,
-    });
-
-    return () =>
-      window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [strength]);
 
   return (
-    <div
-      ref={wrap}
-      className={cn("overflow-hidden", className)}
-    >
+    <div ref={wrap} className={cn("overflow-hidden", className)}>
       <img
         src={src}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
         className="h-[115%] w-full object-cover will-change-transform"
-        style={{
-          transform: `translate3d(0, ${
-            y - strength / 2
-          }px, 0)`,
-        }}
+        style={{ transform: `translate3d(0, ${y - strength / 2}px, 0) scale(1.04)` }}
       />
     </div>
   );
