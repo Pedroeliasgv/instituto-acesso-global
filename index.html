@@ -10,7 +10,26 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap"
     />
-    <title>Instituto Evanio Vale — Formação</title>
+    <meta name="theme-color" content="#080808" />
+    <meta name="description" content="Conheça as formações do Instituto Acesso Global, incluindo o Curso de Dons Espirituais e o Seminário de Libertação." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Instituto Acesso Global" />
+    <meta property="og:title" content="Instituto Acesso Global | Ensino, Formação e Desenvolvimento" />
+    <meta property="og:description" content="Conheça as formações do Instituto Acesso Global, incluindo o Curso de Dons Espirituais e o Seminário de Libertação." />
+    <meta property="og:url" content="/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Instituto Acesso Global | Ensino, Formação e Desenvolvimento" />
+    <meta name="twitter:description" content="Conheça as formações do Instituto Acesso Global, incluindo o Curso de Dons Espirituais e o Seminário de Libertação." />
+    <title>Instituto Acesso Global | Ensino, Formação e Desenvolvimento</title>
+    <script>
+      const canonicalUrl = new URL(window.location.pathname, window.location.origin).href;
+      const canonicalLink = document.createElement("link");
+      canonicalLink.rel = "canonical";
+      canonicalLink.href = canonicalUrl;
+      document.head.append(canonicalLink);
+      document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonicalUrl);
+    </script>
   </head>
   <body>
     <div id="root"></div>

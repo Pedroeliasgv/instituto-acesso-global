@@ -17,5 +17,5 @@ export function useRevealAll() {
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  });
+  }, []);
 }

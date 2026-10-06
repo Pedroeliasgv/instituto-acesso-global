@@ -1,5 +1,5 @@
 ﻿import { ArrowUpRight } from "lucide-react";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
@@ -22,10 +22,10 @@ type CtaProps = {
 
 export function Cta({ href, children, variant = "solid", className, target, rel }: CtaProps) {
   const styles = {
-    solid: "bg-[#5b5fe0] text-white hover:bg-[#4a50d8]",
-    light: "bg-white text-[#080808] hover:bg-[#eef0ff]",
-    ghost: "border border-white/40 text-white hover:bg-white/5",
-    outline: "border border-[#111827] text-[#111827] hover:border-[#5b5fe0] hover:text-[#5b5fe0]",
+    solid: "bg-[#080808] text-white hover:bg-[#34312d]",
+    light: "bg-[#f4f1eb] text-[#080808] hover:bg-white",
+    ghost: "border border-white/40 text-white hover:bg-white/10",
+    outline: "border border-[#080808]/40 text-[#080808] hover:border-[#6f6b65] hover:text-[#6f6b65]",
   }[variant];
 
   return (
@@ -38,44 +38,11 @@ export function Cta({ href, children, variant = "solid", className, target, rel 
         styles,
         className,
       )}
+      aria-label={typeof children === "string" ? children : undefined}
     >
       {children}
-      <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
     </a>
-  );
-}
-
-export function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [val, setVal] = useState(0);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const io = new IntersectionObserver(([entry]) => {
-      if (!entry?.isIntersecting) return;
-      io.disconnect();
-
-      const start = performance.now();
-      const tick = (now: number) => {
-        const progress = Math.min((now - start) / 1400, 1);
-        setVal(Math.round(to * (1 - Math.pow(1 - progress, 3))));
-        if (progress < 1) requestAnimationFrame(tick);
-      };
-
-      requestAnimationFrame(tick);
-    });
-
-    io.observe(el);
-    return () => io.disconnect();
-  }, [to]);
-
-  return (
-    <span ref={ref}>
-      {String(val).padStart(2, "0")}
-      {suffix}
-    </span>
   );
 }
 
@@ -93,30 +60,54 @@ export function ParallaxImage({
   eager?: boolean;
 }) {
   const wrap = useRef<HTMLDivElement>(null);
-  const [y, setY] = useState(0);
+  const image = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    const onScroll = () => {
+    let frame = 0;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const update = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
       const el = wrap.current;
-      if (!el) return;
+        const img = image.current;
+        if (!el || !img) return;
+        if (reducedMotion.matches) {
+          img.style.transform = "translate3d(0, 0, 0) scale(1)";
+          return;
+        }
+
       const rect = el.getBoundingClientRect();
-      const progress = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
-      setY(-progress * strength);
+        const progress = Math.min(
+          1,
+          Math.max(-1, (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight),
+        );
+        img.style.transform = `translate3d(0, ${-progress * strength - strength / 2}px, 0) scale(1.04)`;
+      });
     };
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    reducedMotion.addEventListener("change", update);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      reducedMotion.removeEventListener("change", update);
+    };
   }, [strength]);
 
   return (
-    <div ref={wrap} className={cn("overflow-hidden", className)}>
+    <div ref={wrap} className={cn("parallax-image overflow-hidden", className)}>
       <img
+        ref={image}
         src={src}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
+        fetchPriority={eager ? "high" : "auto"}
         className="h-[115%] w-full object-cover will-change-transform"
-        style={{ transform: `translate3d(0, ${y - strength / 2}px, 0) scale(1.04)` }}
+        style={{ transform: "translate3d(0, 0, 0) scale(1.04)" }}
       />
     </div>
   );

@@ -2,42 +2,67 @@ import {
   About,
   Courses,
   Evanio,
-  Experiences,
   Faq,
-  Featured,
   FinalCta,
   Footer,
   Header,
   Hero,
   Intro,
-  Journey,
+  Marquee,
+  Manifesto,
   Methodology,
-  Testimonials,
+  CinematicImage,
 } from "@/components";
 import { useRevealAll } from "@/hooks/use-reveal";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function ScrollProgress() {
-  const [progress, setProgress] = useState(0);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let frame = 0;
     const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
       const total = document.documentElement.scrollHeight - window.innerHeight;
       const next = total > 0 ? window.scrollY / total : 0;
-      setProgress(next);
+        progressRef.current?.style.setProperty("transform", `scaleX(${next})`);
+      });
     };
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-[2px] bg-white/10">
+    <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-px bg-white/10">
       <div
-        className="h-full origin-left bg-[radial-gradient(circle_at_left,_#a9b7ff,_#6c7cff_25%,_#2a2d63_100%)] shadow-[0_0_20px_rgba(122,167,255,0.9)] transition-transform duration-200"
-        style={{ transform: `scaleX(${progress})` }}
+        ref={progressRef}
+        className="h-full origin-left bg-[#bcb8b1]"
+        style={{ transform: "scaleX(0)" }}
       />
+    </div>
+  );
+}
+
+function BrandIntro() {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setVisible(false), 700);
+    return () => window.clearTimeout(timeout);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <div aria-hidden="true" className="brand-intro">
+      <span className="brand-intro-mark">AG</span>
+      <span className="brand-intro-name">Instituto Acesso Global</span>
     </div>
   );
 }
@@ -47,20 +72,21 @@ function App() {
 
   return (
     <>
+      <BrandIntro />
       <ScrollProgress />
       <Header />
 
       <main>
         <Hero />
         <Intro />
+        <Marquee tone="light" />
         <About />
+        <Manifesto />
+        <Marquee tone="dark" reverse />
         <Methodology />
-        <Featured />
-        <Courses />
+        <CinematicImage />
         <Evanio />
-        <Experiences />
-        <Journey />
-        <Testimonials />
+        <Courses />
         <FinalCta />
         <Faq />
       </main>

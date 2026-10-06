@@ -6,10 +6,9 @@ export {
   About,
   Evanio,
   Methodology,
-  Featured,
-  Experiences,
-  Journey,
-  Testimonials,
+  Manifesto,
+  Marquee,
+  CinematicImage,
   Faq,
   FinalCta,
   Footer,
@@ -20,6 +19,5 @@ export { Courses } from "./site/Courses";
 export {
   Cta,
   Eyebrow,
-  Counter,
   ParallaxImage,
 } from "./site/ui";

@@ -1,11 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Courses } from "@/components/site/Courses";
 import { Header } from "@/components/site/Header";
-import { About, Evanio, Experiences, Faq, FinalCta, Featured, Footer, Hero, Intro, Journey, Methodology, Testimonials } from "@/components/site/Sections";
+import {
+  About,
+  CinematicImage,
+  Evanio,
+  Faq,
+  FinalCta,
+  Footer,
+  Hero,
+  Intro,
+  Marquee,
+  Manifesto,
+  Methodology,
+} from "@/components/site/Sections";
 import { useRevealAll } from "@/hooks/use-reveal";
 
-const title = "Profeta Evanio Vale — Instituto de Formação";
-const description = "Cursos, formações, eventos e conteúdos do Profeta Evanio Vale. Uma jornada de formação para quem foi chamado a crescer.";
+const title = "Instituto Acesso Global | Ensino, Formação e Desenvolvimento";
+const description = "Conheça as formações do Instituto Acesso Global, incluindo o Curso de Dons Espirituais e o Seminário de Libertação.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -15,8 +27,14 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:site_name", content: "Instituto Acesso Global" },
+      { property: "og:locale", content: "pt_BR" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });
@@ -29,14 +47,14 @@ function Index() {
       <main>
         <Hero />
         <Intro />
+        <Marquee tone="light" />
         <About />
-        <Evanio />
+        <Manifesto />
+        <Marquee tone="dark" reverse />
         <Methodology />
+        <CinematicImage />
+        <Evanio />
         <Courses />
-        <Featured />
-        <Journey />
-        <Experiences />
-        <Testimonials />
         <FinalCta />
         <Faq />
       </main>
