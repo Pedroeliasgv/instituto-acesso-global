@@ -1,6 +1,10 @@
 import type { LucideIcon } from "lucide-react";
-import { Share2, Play, Users } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import {
+  ArrowUpRight,
+  Play,
+  Share2,
+  Users,
+} from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -8,16 +12,18 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  experiences,
   faqs,
   images,
-  journey,
   navLinks,
   pillars,
-  testimonials,
 } from "@/data/site";
 import { Logo } from "./Header";
-import { Counter, Cta, Eyebrow, ParallaxImage } from "./ui";
+import { Courses } from "./Courses";
+import {
+  Cta,
+  Eyebrow,
+  ParallaxImage,
+} from "./ui";
 
 export function Hero() {
   return (
@@ -29,62 +35,58 @@ export function Hero() {
         src={images.hero}
         alt="Instituto Acesso Global"
         eager
-        strength={60}
+        strength={55}
         className="absolute inset-0 h-full"
       />
 
       <div
         className="absolute inset-0"
-        style={{ background: "var(--overlay-hero)" }}
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(5,4,10,.15) 0%, rgba(5,4,10,.42) 45%, rgba(5,4,10,.96) 100%)",
+        }}
       />
 
-      <div
-        className="absolute inset-0"
-        style={{ background: "var(--overlay-bottom)" }}
-      />
+      <div className="absolute inset-0 bg-royal/10 mix-blend-screen" />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 pt-40 md:px-8 md:pb-24">
-        <p className="eyebrow animate-in fade-in slide-in-from-bottom-4 text-azure duration-1000">
-          Instituto Acesso Global
-        </p>
+        <div className="max-w-5xl">
+          <Eyebrow className="animate-in fade-in slide-in-from-bottom-4 text-azure duration-1000">
+            Instituto Acesso Global
+          </Eyebrow>
 
-        <h1 className="headline mt-6 max-w-4xl animate-in fade-in slide-in-from-bottom-8 text-[2.6rem] duration-1000 sm:text-6xl lg:text-[5.5rem]">
-          Conhecimento que gera
-          <span className="font-serif font-normal normal-case italic text-azure">
-            {" "}
-            transformação.
-          </span>
-        </h1>
+          <h1 className="headline mt-7 animate-in fade-in slide-in-from-bottom-8 text-[3.4rem] duration-1000 sm:text-7xl lg:text-[7rem]">
+            Você pode
+            <br />
+            <span className="font-serif font-normal normal-case italic text-azure">
+              crescer.
+            </span>
+          </h1>
 
-        <p className="mt-8 max-w-xl animate-in fade-in text-lg leading-relaxed text-on-dark-muted duration-1000">
-          Cursos, formação e experiências para quem deseja crescer em
-          conhecimento, propósito, liderança e prática.
-        </p>
+          <p className="mt-8 max-w-2xl animate-in fade-in text-lg leading-relaxed text-on-dark-muted duration-1000 md:text-xl">
+            Conhecimento, ensino e desenvolvimento para quem deseja aprofundar
+            sua caminhada, desenvolver maturidade e viver com mais clareza e
+            propósito.
+          </p>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <Cta href="#cursos">Conhecer os cursos</Cta>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <Cta href="#cursos">
+              Conhecer os cursos
+            </Cta>
 
-          <Cta href="#sobre" variant="ghost">
-            Conhecer o instituto
-          </Cta>
+            <Cta href="#sobre" variant="ghost">
+              Conhecer o instituto
+            </Cta>
+          </div>
         </div>
 
-        <div className="mt-20 hidden grid-cols-3 border-t border-line-dark pt-8 md:grid">
-          {[
-            ["Cursos disponíveis", 2],
-            ["Pilares de ensino", 4],
-            ["Áreas de atuação", 4],
-          ].map(([label, n]) => (
-            <div key={label as string}>
-              <p className="font-display text-4xl font-bold">
-                <Counter to={n as number} />
-              </p>
-
-              <p className="eyebrow mt-2 text-on-dark-muted">
-                {label}
-              </p>
-            </div>
-          ))}
+        <div className="mt-20 border-t border-line-dark pt-6">
+          <div className="flex flex-col gap-4 text-[0.62rem] font-bold uppercase tracking-[0.2em] text-on-dark-muted sm:flex-row sm:items-center sm:justify-between">
+            <span>Ensino</span>
+            <span>Desenvolvimento</span>
+            <span>Propósito</span>
+            <span>Prática</span>
+          </div>
         </div>
       </div>
     </section>
@@ -93,65 +95,52 @@ export function Hero() {
 
 export function Intro() {
   return (
-    <section className="py-24 md:py-36">
-      <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-12 md:px-8">
-        <div className="reveal md:col-span-6">
-          <Eyebrow>Sobre o instituto</Eyebrow>
+    <section className="bg-background py-24 md:py-40">
+      <div className="mx-auto grid max-w-7xl gap-16 px-5 md:grid-cols-12 md:px-8">
+        <div className="reveal md:col-span-7">
+          <Eyebrow>Uma nova jornada começa aqui</Eyebrow>
 
-          <h2 className="headline mt-6 text-4xl md:text-6xl">
-            Conhecimento que vai além da
-            <span className="font-serif font-normal italic text-royal">
-              {" "}
-              sala de aula.
-            </span>
+          <h2 className="headline mt-7 text-5xl md:text-7xl">
+            Você não precisa
+            <br />
+            parar onde está.
           </h2>
 
-          <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-            O Instituto Acesso Global existe para tornar conhecimento,
-            formação e desenvolvimento mais acessíveis a pessoas que desejam
-            crescer de forma consistente.
+          <p className="mt-9 max-w-2xl text-xl leading-relaxed text-muted-foreground">
+            O Instituto Acesso Global nasceu para criar caminhos de aprendizado
+            que conectem conhecimento, desenvolvimento e propósito.
           </p>
 
-          <p className="mt-4 leading-relaxed text-muted-foreground">
-            Por meio de cursos, conteúdos, eventos e experiências, o instituto
-            conecta ensino e prática para transformar conhecimento em
-            desenvolvimento real.
+          <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">
+            Aqui, o objetivo não é simplesmente acumular informação. É
+            compreender, amadurecer e transformar aquilo que você aprende em
+            algo que pode ser vivido.
           </p>
 
-          <ul className="mt-12 grid grid-cols-2 gap-px border bg-border">
-            {["Ensino", "Desenvolvimento", "Maturidade", "Propósito"].map(
-              (w, i) => (
-                <li
-                  key={w}
-                  className="flex items-baseline gap-3 bg-background p-5"
-                >
-                  <span className="font-serif text-lg italic text-royal">
-                    0{i + 1}
-                  </span>
-
-                  <span className="font-display text-sm font-bold uppercase tracking-[0.15em]">
-                    {w}
-                  </span>
-                </li>
-              ),
-            )}
-          </ul>
+          <Cta
+            href="#sobre"
+            variant="outline"
+            className="mt-10"
+          >
+            Conheça nossa visão
+          </Cta>
         </div>
 
         <div className="reveal relative md:col-span-5 md:col-start-8">
           <ParallaxImage
             src={images.classroom}
-            alt="Alunos em sala de aula"
+            alt="Ambiente de aprendizado"
             className="aspect-[4/5] w-full"
+            strength={35}
           />
 
-          <div className="absolute -bottom-6 -left-6 hidden bg-navy p-6 text-on-dark md:block">
+          <div className="absolute -bottom-8 -left-8 hidden max-w-xs bg-navy p-7 text-on-dark md:block">
             <p className="eyebrow text-azure">
-              Instituto Acesso Global
+              Acesso Global
             </p>
 
-            <p className="mt-2 max-w-[14rem] font-serif text-xl italic">
-              Conhecimento que transforma pessoas.
+            <p className="mt-4 font-serif text-2xl italic leading-snug">
+              Conhecimento precisa produzir transformação.
             </p>
           </div>
         </div>
@@ -161,54 +150,65 @@ export function Intro() {
 }
 
 export function About() {
-  const items = [
-    [
-      "Por que existimos",
-      "Para ampliar o acesso ao conhecimento e criar caminhos de desenvolvimento que gerem transformação real.",
-    ],
-    [
-      "Quem queremos alcançar",
-      "Pessoas que desejam crescer em conhecimento, propósito, liderança e desenvolvimento pessoal e ministerial.",
-    ],
-    [
-      "Nossa visão",
-      "Construir uma comunidade de aprendizado que una profundidade, prática e transformação.",
-    ],
-    [
-      "Nossa filosofia",
-      "Profundidade em vez de superficialidade. Clareza em vez de excesso. Conhecimento que pode ser aplicado à vida real.",
-    ],
-  ];
-
   return (
     <section
       id="sobre"
-      className="relative overflow-hidden bg-abyss py-24 text-on-dark md:py-36"
+      className="relative overflow-hidden bg-abyss py-24 text-on-dark md:py-40"
     >
       <div className="grain absolute inset-0" />
 
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
-        <div className="reveal max-w-4xl">
+        <div className="reveal max-w-5xl">
           <Eyebrow className="text-azure">
-            Instituto Acesso Global
+            O Instituto
           </Eyebrow>
 
-          <h2 className="headline mt-6 text-4xl md:text-7xl">
-            Uma instituição. Uma visão. Um
-            <span className="font-serif font-normal italic text-azure">
-              {" "}
-              propósito.
+          <h2 className="headline mt-7 text-5xl md:text-8xl">
+            Mais do que
+            <br />
+            conteúdo.
+            <br />
+            <span className="font-serif font-normal normal-case italic text-azure">
+              Uma jornada.
             </span>
           </h2>
+
+          <p className="mt-10 max-w-2xl text-lg leading-relaxed text-on-dark-muted md:text-xl">
+            O Instituto Acesso Global busca oferecer conteúdos e experiências
+            que ajudem pessoas a desenvolver conhecimento, maturidade,
+            discernimento e propósito.
+          </p>
         </div>
 
         <div className="mt-20 grid gap-px bg-line-dark md:grid-cols-2">
-          {items.map(([t, d]) => (
-            <div key={t} className="reveal bg-abyss p-8 md:p-12">
-              <p className="eyebrow text-azure">{t}</p>
+          {[
+            [
+              "Nossa visão",
+              "Criar caminhos de aprendizado que sejam profundos, acessíveis e aplicáveis.",
+            ],
+            [
+              "Nossa missão",
+              "Conectar pessoas ao conhecimento necessário para crescer e desenvolver seu potencial.",
+            ],
+            [
+              "Nossa abordagem",
+              "Ensino com clareza, profundidade e responsabilidade.",
+            ],
+            [
+              "Nosso propósito",
+              "Transformar conhecimento em prática, maturidade e direção.",
+            ],
+          ].map(([title, text]) => (
+            <div
+              key={title}
+              className="reveal bg-abyss p-8 md:p-12"
+            >
+              <p className="eyebrow text-azure">
+                {title}
+              </p>
 
-              <p className="mt-5 text-xl leading-relaxed text-on-dark-muted md:text-2xl">
-                {d}
+              <p className="mt-5 max-w-lg text-xl leading-relaxed text-on-dark-muted md:text-2xl">
+                {text}
               </p>
             </div>
           ))}
@@ -220,61 +220,57 @@ export function About() {
 
 export function Evanio() {
   return (
-    <section id="evanio" className="bg-background py-24 md:py-36">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:grid-cols-12 md:px-8">
+    <section
+      id="evanio"
+      className="bg-background py-24 md:py-40"
+    >
+      <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 md:grid-cols-12 md:px-8">
         <div className="reveal relative md:col-span-6">
           <ParallaxImage
             src={images.portrait}
             alt="Evanio Vale"
             className="aspect-[4/5] w-full"
-            strength={50}
+            strength={35}
           />
 
-          <p className="headline pointer-events-none absolute -bottom-8 right-0 hidden text-[7rem] text-royal/15 lg:block">
-            EV
-          </p>
+          <div className="absolute bottom-6 left-6 bg-royal px-5 py-4 text-white">
+            <p className="text-[0.58rem] font-bold uppercase tracking-[0.2em]">
+              Evanio Vale
+            </p>
+          </div>
         </div>
 
         <div className="reveal md:col-span-5 md:col-start-8">
-          <Eyebrow>Conheça Evanio Vale</Eyebrow>
+          <Eyebrow>Quem está por trás</Eyebrow>
 
-          <h2 className="headline mt-6 text-6xl md:text-8xl">
+          <h2 className="headline mt-7 text-6xl md:text-8xl">
             Evanio
             <br />
-            <span className="text-royal">Vale</span>
+            <span className="text-royal">Vale.</span>
           </h2>
 
-          <p className="mt-8 font-serif text-2xl italic leading-snug">
-            “Conhecimento, maturidade e propósito precisam caminhar juntos.”
+          <p className="mt-8 font-serif text-2xl italic leading-snug md:text-3xl">
+            Ensino, conhecimento e desenvolvimento caminham juntos.
           </p>
 
-          <dl className="mt-10 divide-y border-y">
-            {[
-              [
-                "Trajetória",
-                "Uma caminhada dedicada ao ensino, desenvolvimento e formação de pessoas.",
-              ],
-              [
-                "Atuação",
-                "Professor, mentor e comunicador, com experiência em diferentes contextos de ensino.",
-              ],
-              [
-                "Contribuição",
-                "Participação na construção de conteúdos e experiências oferecidos pelo Instituto Acesso Global.",
-              ],
-            ].map(([k, v]) => (
-              <div key={k} className="grid grid-cols-3 gap-4 py-4">
-                <dt className="eyebrow text-royal">{k}</dt>
+          <p className="mt-8 leading-relaxed text-muted-foreground">
+            Evanio Vale está associado à construção dos conteúdos e experiências
+            apresentados pelo Instituto Acesso Global, contribuindo com ensino,
+            comunicação e desenvolvimento de pessoas.
+          </p>
 
-                <dd className="col-span-2 text-sm text-muted-foreground">
-                  {v}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <p className="mt-5 leading-relaxed text-muted-foreground">
+            O propósito é compartilhar conhecimento de forma clara e profunda,
+            criando espaço para que cada pessoa possa desenvolver sua própria
+            caminhada.
+          </p>
 
-          <Cta href="#sobre" variant="outline" className="mt-10">
-            Conheça o instituto
+          <Cta
+            href="#cursos"
+            variant="outline"
+            className="mt-10"
+          >
+            Conhecer os cursos
           </Cta>
         </div>
       </div>
@@ -284,33 +280,36 @@ export function Evanio() {
 
 export function Methodology() {
   return (
-    <section className="border-t bg-background py-24 md:py-32">
+    <section className="border-t bg-muted py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="reveal max-w-3xl">
-          <Eyebrow>O que ensinamos</Eyebrow>
+        <div className="reveal max-w-4xl">
+          <Eyebrow>Como pensamos</Eyebrow>
 
-          <h2 className="headline mt-6 text-4xl md:text-6xl">
-            Formação que vai além do conteúdo.
+          <h2 className="headline mt-7 text-5xl md:text-7xl">
+            O conhecimento
+            <br />
+            precisa ir além
+            <br />
+            da teoria.
           </h2>
         </div>
 
         <div className="mt-16 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
-          {pillars.map((p, i) => (
+          {pillars.map((pillar) => (
             <div
-              key={p.n}
-              className="reveal group bg-background p-8 transition-colors duration-500 hover:bg-navy hover:text-on-dark"
-              style={{ transitionDelay: `${i * 80}ms` }}
+              key={pillar.n}
+              className="reveal group bg-background p-8 transition-colors duration-500 hover:bg-navy hover:text-on-dark md:p-10"
             >
-              <p className="headline text-7xl text-royal/25 transition-colors group-hover:text-azure md:text-8xl">
-                {p.n}
+              <p className="headline text-7xl text-royal/20 transition-colors group-hover:text-azure md:text-8xl">
+                {pillar.n}
               </p>
 
               <h3 className="mt-10 font-display text-xl font-bold uppercase tracking-wide">
-                {p.title}
+                {pillar.title}
               </h3>
 
-              <p className="mt-3 text-muted-foreground transition-colors group-hover:text-on-dark-muted">
-                {p.text}
+              <p className="mt-4 leading-relaxed text-muted-foreground transition-colors group-hover:text-on-dark-muted">
+                {pillar.text}
               </p>
             </div>
           ))}
@@ -320,197 +319,42 @@ export function Methodology() {
   );
 }
 
-export function Featured() {
-  return (
-    <section id="formacoes" className="relative overflow-hidden bg-navy text-on-dark">
-      <div className="grid md:grid-cols-12">
-        <ParallaxImage
-          src={images.event}
-          alt="Formação em auditório"
-          className="aspect-[4/3] md:col-span-7 md:aspect-auto md:min-h-[720px]"
-        />
-
-        <div className="reveal flex flex-col justify-center p-8 md:col-span-5 md:p-16">
-          <p className="eyebrow text-azure">
-            Formação em destaque
-          </p>
-
-          <h2 className="headline mt-6 text-4xl md:text-6xl">
-            Fundamentos da Formação Cristã
-          </h2>
-
-          <p className="mt-6 leading-relaxed text-on-dark-muted">
-            A trilha principal do Instituto para quem deseja entender melhor
-            o chamado, fortalecer a base espiritual e caminhar com maior
-            clareza, prontidão e propósito.
-          </p>
-
-          <dl className="mt-10 grid grid-cols-3 border-y border-line-dark py-6">
-            {[
-              ["Módulos", "08"],
-              ["Aulas", "32"],
-              ["Duração", "12 sem."],
-            ].map(([k, v]) => (
-              <div key={k}>
-                <dd className="font-display text-3xl font-bold">{v}</dd>
-                <dt className="eyebrow mt-1 text-on-dark-muted">{k}</dt>
-              </div>
-            ))}
-          </dl>
-
-          <Cta
-            href="#cursos"
-            variant="light"
-            className="mt-10 self-start"
-          >
-            Conhecer a formação
-          </Cta>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function Journey() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const el = ref.current;
-
-      if (!el) return;
-
-      const r = el.getBoundingClientRect();
-      const p = (window.innerHeight * 0.6 - r.top) / r.height;
-
-      setProgress(Math.max(0, Math.min(1, p)));
-    };
-
-    onScroll();
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+export function Testimonials() {
+  if (!testimonials.length) return null;
 
   return (
     <section className="bg-background py-24 md:py-36">
-      <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-12 md:px-8">
-        <div className="reveal md:sticky md:top-32 md:col-span-5 md:self-start">
-          <Eyebrow>Como funciona a formação</Eyebrow>
-
-          <h2 className="headline mt-6 text-4xl md:text-6xl">
-            Sua formação não termina em uma{" "}
-            <span className="font-serif font-normal normal-case italic text-royal">
-              aula.
-            </span>
-          </h2>
-
-          <p className="mt-6 text-muted-foreground">
-            Uma jornada em quatro etapas, pensada para gerar crescimento
-            contínuo.
-          </p>
-        </div>
-
-        <div ref={ref} className="relative md:col-span-6 md:col-start-7">
-          <div className="absolute left-[1.15rem] top-0 h-full w-px bg-border" />
-
-          <div
-            className="absolute left-[1.15rem] top-0 w-px bg-royal transition-[height] duration-200"
-            style={{ height: `${progress * 100}%` }}
-          />
-
-          {journey.map((s, i) => {
-            const on = progress >= i / journey.length;
-
-            return (
-              <div
-                key={s.n}
-                className="relative pb-16 pl-16 last:pb-0"
-              >
-                <span
-                  className={`absolute left-0 top-0 grid h-9 w-9 place-items-center border text-xs font-bold transition-all duration-500 ${
-                    on
-                      ? "border-royal bg-royal text-on-dark"
-                      : "bg-background text-muted-foreground"
-                  }`}
-                >
-                  {s.n}
-                </span>
-
-                <h3
-                  className={`font-display text-3xl font-bold uppercase transition-colors duration-500 md:text-4xl ${
-                    on
-                      ? "text-foreground"
-                      : "text-muted-foreground/50"
-                  }`}
-                >
-                  {s.title}
-                </h3>
-
-                <p className="mt-3 max-w-md text-muted-foreground">
-                  {s.text}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function Experiences() {
-  return (
-    <section id="eventos" className="bg-muted py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <Eyebrow>Eventos e experiências</Eyebrow>
+        <Eyebrow className="reveal">
+          Experiências
+        </Eyebrow>
 
-            <h2 className="headline mt-6 text-4xl md:text-6xl">
-              Existe mais para{" "}
-              <span className="font-serif font-normal normal-case italic text-royal">
-                viver.
-              </span>
-            </h2>
-          </div>
+        <h2 className="reveal headline mt-7 max-w-4xl text-5xl md:text-7xl">
+          O que pessoas estão
+          <br />
+          dizendo.
+        </h2>
 
-          <p className="max-w-sm text-muted-foreground">
-            Conferências, encontros, aulas especiais e experiências
-            presenciais.
-          </p>
-        </div>
-
-        <div className="mt-14 divide-y border-y">
-          {experiences.map((e) => (
-            <a
-              key={e.title}
-              href="#"
-              className="reveal group grid items-center gap-6 py-8 md:grid-cols-12"
+        <div className="mt-16 grid gap-8 md:grid-cols-2">
+          {testimonials.map((testimonial) => (
+            <figure
+              key={testimonial.name}
+              className="reveal border border-border p-8 md:p-10"
             >
-              <div className="overflow-hidden md:col-span-3">
-                <img
-                  src={e.image}
-                  alt=""
-                  loading="lazy"
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
-                />
-              </div>
+              <blockquote className="font-serif text-2xl italic leading-snug md:text-3xl">
+                “{testimonial.quote}”
+              </blockquote>
 
-              <p className="eyebrow text-royal md:col-span-2 md:col-start-5">
-                {e.type}
-              </p>
+              <figcaption className="mt-10 border-t border-border pt-5">
+                <p className="font-bold">
+                  {testimonial.name}
+                </p>
 
-              <h3 className="font-display text-2xl font-bold uppercase transition-colors group-hover:text-royal md:col-span-4 md:text-3xl">
-                {e.title}
-              </h3>
-
-              <p className="text-sm text-muted-foreground md:col-span-2 md:text-right">
-                {e.meta}
-              </p>
-            </a>
+                <p className="mt-1 text-xs font-bold uppercase tracking-[0.15em] text-royal">
+                  {testimonial.course}
+                </p>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>
@@ -518,72 +362,49 @@ export function Experiences() {
   );
 }
 
-export function Testimonials() {
-  const lead = testimonials[0]!;
-  const rest = testimonials.slice(1);
-
+export function Faq() {
   return (
-    <section className="bg-background py-24 md:py-36">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <Eyebrow className="reveal">Depoimentos</Eyebrow>
+    <section
+      id="faq"
+      className="bg-muted py-24 md:py-36"
+    >
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-12 md:px-8">
+        <div className="reveal md:col-span-4">
+          <Eyebrow>
+            Perguntas frequentes
+          </Eyebrow>
 
-        <h2 className="reveal headline mt-6 max-w-3xl text-4xl md:text-6xl">
-          Quem já viveu essa jornada.
-        </h2>
+          <h2 className="headline mt-7 text-5xl md:text-6xl">
+            Antes de
+            <br />
+            começar.
+          </h2>
 
-        <div className="mt-16 grid gap-10 md:grid-cols-12">
-          <figure className="reveal md:col-span-7">
-            <blockquote className="font-serif text-3xl leading-snug md:text-5xl">
-              “{lead.quote}”
-            </blockquote>
-
-            <figcaption className="mt-10 flex items-center gap-4">
-              <span className="grid h-14 w-14 place-items-center bg-mist font-display font-bold text-navy">
-                {lead.name
-                  .split(" ")
-                  .map((n) => n[0])
-                  .slice(0, 2)
-                  .join("")}
-              </span>
-
-              <span>
-                <span className="block font-bold">{lead.name}</span>
-
-                <span className="eyebrow text-royal">
-                  {lead.course}
-                </span>
-              </span>
-            </figcaption>
-          </figure>
-
-          <div className="space-y-px bg-border md:col-span-4 md:col-start-9">
-            {rest.map((t, i) => (
-              <figure
-                key={i}
-                className="reveal bg-background py-8"
-              >
-                <blockquote className="leading-relaxed text-muted-foreground">
-                  “{t.quote}”
-                </blockquote>
-
-                <figcaption className="mt-5 flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center bg-mist text-xs font-bold text-navy">
-                    {t.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .slice(0, 2)
-                      .join("")}
-                  </span>
-
-                  <span className="text-sm">
-                    <b>{t.name}</b> ·{" "}
-                    <span className="text-royal">{t.course}</span>
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          <p className="mt-6 text-muted-foreground">
+            Ainda ficou com alguma dúvida? Confira as perguntas mais comuns.
+          </p>
         </div>
+
+        <Accordion
+          type="single"
+          collapsible
+          className="reveal md:col-span-7 md:col-start-6"
+        >
+          {faqs.map((faq, index) => (
+            <AccordionItem
+              key={faq.q}
+              value={`faq-${index}`}
+            >
+              <AccordionTrigger className="py-7 text-left font-display text-lg font-bold uppercase hover:text-royal hover:no-underline md:text-xl">
+                {faq.q}
+              </AccordionTrigger>
+
+              <AccordionContent className="pb-7 text-base leading-relaxed text-muted-foreground">
+                {faq.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </section>
   );
@@ -602,60 +423,34 @@ export function FinalCta() {
         className="absolute inset-0 h-full w-full object-cover opacity-25"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-r from-abyss via-abyss/90 to-navy/60" />
+      <div className="absolute inset-0 bg-gradient-to-r from-abyss via-abyss/90 to-royal/30" />
 
       <div className="reveal relative mx-auto max-w-7xl px-5 py-28 md:px-8 md:py-44">
-        <p className="eyebrow text-azure">Próximo passo</p>
+        <Eyebrow className="text-azure">
+          Seu próximo passo
+        </Eyebrow>
 
-        <h2 className="headline mt-6 max-w-4xl text-5xl md:text-8xl">
-          Sua jornada de formação começa{" "}
+        <h2 className="headline mt-7 max-w-5xl text-5xl md:text-8xl">
+          O próximo passo
+          <br />
+          começa com uma
+          <br />
           <span className="font-serif font-normal normal-case italic text-azure">
-            aqui.
+            decisão.
           </span>
         </h2>
 
-        <p className="mt-8 max-w-lg text-lg text-on-dark-muted">
-          Escolha a formação certa para o seu momento e dê o primeiro passo
-          com clareza, direção e propósito.
+        <p className="mt-8 max-w-xl text-lg leading-relaxed text-on-dark-muted">
+          Conheça os cursos do Instituto Acesso Global e encontre o conteúdo
+          que pode fazer sentido para o seu momento.
         </p>
 
-        <Cta href="#cursos" className="mt-12">
+        <Cta
+          href="#cursos"
+          className="mt-10"
+        >
           Conhecer os cursos
         </Cta>
-      </div>
-    </section>
-  );
-}
-
-export function Faq() {
-  return (
-    <section className="bg-background py-24 md:py-32">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-12 md:px-8">
-        <div className="reveal md:col-span-4">
-          <Eyebrow>Dúvidas frequentes</Eyebrow>
-
-          <h2 className="headline mt-6 text-4xl md:text-5xl">
-            Perguntas e respostas.
-          </h2>
-        </div>
-
-        <Accordion
-          type="single"
-          collapsible
-          className="reveal md:col-span-7 md:col-start-6"
-        >
-          {faqs.map((f, i) => (
-            <AccordionItem key={f.q} value={`i${i}`}>
-              <AccordionTrigger className="py-6 text-left font-display text-lg font-semibold hover:text-royal hover:no-underline">
-                {f.q}
-              </AccordionTrigger>
-
-              <AccordionContent className="pb-6 text-base leading-relaxed text-muted-foreground">
-                {f.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
       </div>
     </section>
   );
@@ -665,52 +460,53 @@ export function Footer() {
   return (
     <footer className="bg-abyss text-on-dark">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:grid-cols-12 md:px-8">
-        <div className="md:col-span-4">
+        <div className="md:col-span-5">
           <Logo />
 
-          <p className="mt-6 max-w-xs text-sm leading-relaxed text-on-dark-muted">
-            Cursos, formações e conteúdos do Instituto Acesso Global.
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-on-dark-muted">
+            Instituto Acesso Global. Conhecimento, desenvolvimento e propósito
+            para uma jornada de crescimento contínuo.
           </p>
 
           <div className="mt-8 flex gap-3">
-            {([Share2, Play, Users] as LucideIcon[]).map(
-              (Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="Rede social"
-                  className="grid h-10 w-10 place-items-center border border-line-dark transition-colors hover:border-azure hover:bg-royal"
-                >
-                  <Icon size={16} />
-                </a>
-              ),
-            )}
+            {(
+              [Share2, Play, Users] as LucideIcon[]
+            ).map((Icon, index) => (
+              <a
+                key={index}
+                href="#"
+                aria-label="Rede social"
+                className="grid h-10 w-10 place-items-center border border-line-dark transition-colors hover:border-azure hover:bg-royal"
+              >
+                <Icon size={16} />
+              </a>
+            ))}
           </div>
         </div>
 
-        <nav className="grid grid-cols-2 gap-3 md:col-span-4 md:col-start-6">
-          {[...navLinks, { label: "Contato", href: "#" }].map(
-            (l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                className="link-underline self-start text-sm uppercase tracking-[0.15em] text-on-dark-muted hover:text-on-dark"
-              >
-                {l.label}
-              </a>
-            ),
-          )}
+        <nav className="grid grid-cols-2 gap-4 md:col-span-4 md:col-start-7">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="link-underline self-start text-sm uppercase tracking-[0.15em] text-on-dark-muted hover:text-on-dark"
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
 
         <div className="md:col-span-3 md:col-start-10">
-          <p className="eyebrow text-azure">Já é aluno?</p>
+          <p className="eyebrow text-azure">
+            Comece agora
+          </p>
 
           <Cta
-            href="#aluno"
+            href="#cursos"
             variant="ghost"
             className="mt-5 w-full"
           >
-            Área do aluno
+            Ver cursos
           </Cta>
         </div>
       </div>

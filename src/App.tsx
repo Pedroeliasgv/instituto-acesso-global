@@ -2,43 +2,38 @@ import {
   About,
   Courses,
   Evanio,
-  Experiences,
   Faq,
-  Featured,
   FinalCta,
   Footer,
   Header,
   Hero,
   Intro,
-  Journey,
   Methodology,
-  Testimonials,
-} from "@/components"
-import { useRevealAll } from "@/hooks/use-reveal"
+} from "@/components";
+
+import { useRevealAll } from "@/hooks/use-reveal";
 
 function App() {
-  useRevealAll()
+  useRevealAll();
 
   return (
     <>
       <Header />
+
       <main>
         <Hero />
         <Intro />
         <About />
         <Courses />
-        <Featured />
         <Evanio />
         <Methodology />
-        <Journey />
-        <Experiences />
-        <Testimonials />
-        <FinalCta />
         <Faq />
+        <FinalCta />
       </main>
+
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

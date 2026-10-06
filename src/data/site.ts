@@ -12,22 +12,16 @@ export const images = {
 
 export const navLinks = [
   { label: "Início", href: "#inicio" },
-  { label: "Sobre", href: "#sobre" },
+  { label: "O Instituto", href: "#sobre" },
   { label: "Cursos", href: "#cursos" },
-  { label: "Formações", href: "#formacoes" },
-  { label: "Eventos", href: "#eventos" },
   { label: "Evanio Vale", href: "#evanio" },
-  { label: "Área do aluno", href: "#aluno" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export const categories = [
   "Todos",
-  "Formação",
   "Profético",
-  "Liderança",
   "Ministério",
-  "Desenvolvimento",
-  "Especializações",
 ] as const;
 
 export type Category = Exclude<
@@ -41,11 +35,9 @@ export interface Course {
   category: Category;
   description: string;
   image: string;
-  modules?: number;
-  lessons?: number;
-  duration?: string;
   featured?: boolean;
-  href?: string;
+  href: string;
+  label?: string;
 }
 
 export const courses: Course[] = [
@@ -54,86 +46,21 @@ export const courses: Course[] = [
     title: "Curso de Dons Espirituais",
     category: "Profético",
     description:
-      "Uma formação para compreender, desenvolver e exercer os dons espirituais com discernimento, maturidade e responsabilidade.",
+      "Um curso para aprofundar o entendimento sobre os dons espirituais, desenvolvendo discernimento, maturidade e responsabilidade na sua prática.",
     image: classroom,
     featured: true,
     href: "https://hotmart.com/pt-br/marketplace/produtos/hagsxd-curso-de-dons-espirituais-btgoa/S85674996V?preview=true",
+    label: "Conhecer o curso",
   },
   {
     id: "c2",
     title: "Seminário de Libertação",
     category: "Ministério",
     description:
-      "Uma jornada de ensino e aprofundamento sobre libertação, discernimento espiritual e fundamentos para o ministério.",
+      "Um conteúdo de aprofundamento sobre libertação, discernimento espiritual e fundamentos importantes para quem deseja compreender melhor esse tema.",
     image: hero,
     href: "https://hotmart.com/pt-br/marketplace/produtos/hagsxd-seminario-de-libertacao-0v0aj/E93350393C?sck=HOTMART_PRODUCT_PAGE",
-  },
-  {
-    id: "c3",
-    title: "Liderança com Propósito",
-    category: "Liderança",
-    description:
-      "Aprenda a liderar com autoridade, clareza e responsabilidade em contextos reais de influência.",
-    image: event,
-    modules: 5,
-    lessons: 20,
-    duration: "8 semanas",
-  },
-  {
-    id: "c4",
-    title: "Ministério e Sustentação",
-    category: "Ministério",
-    description:
-      "Fortaleça sua formação ministerial com conteúdos que unem espiritualidade, discernimento e prática.",
-    image: portrait,
-    modules: 7,
-    lessons: 28,
-    duration: "11 semanas",
-  },
-  {
-    id: "c5",
-    title: "Desenvolvimento Humano",
-    category: "Desenvolvimento",
-    description:
-      "Aprofunde sua identidade, disciplina e força interior para viver com coerência e propósito.",
-    image: classroom,
-    modules: 4,
-    lessons: 16,
-    duration: "6 semanas",
-  },
-  {
-    id: "c6",
-    title: "Especialização em Ensino e Impacto",
-    category: "Especializações",
-    description:
-      "Uma formação avançada para líderes e comunicadores que desejam multiplicar conhecimento com profundidade.",
-    image: event,
-    modules: 10,
-    lessons: 40,
-    duration: "14 semanas",
-  },
-];
-
-export const journey = [
-  {
-    n: "01",
-    title: "Fundamentos",
-    text: "Estrutura sólida para que cada próximo passo seja guiado por clareza e discernimento.",
-  },
-  {
-    n: "02",
-    title: "Desenvolvimento",
-    text: "Aprofundamento constante em conteúdo, prática, visão e maturidade espiritual.",
-  },
-  {
-    n: "03",
-    title: "Maturidade",
-    text: "Uma formação que transforma a forma como você pensa, lidera e responde ao chamado.",
-  },
-  {
-    n: "04",
-    title: "Aplicação",
-    text: "O que foi aprendido passa a ser vivido, multiplicado e sustentado em realidade.",
+    label: "Conhecer o seminário",
   },
 ];
 
@@ -141,98 +68,58 @@ export const pillars = [
   {
     n: "01",
     title: "Ensino",
-    text: "Conteúdo com profundidade, clareza e rigor intelectual.",
+    text:
+      "Conteúdo apresentado de forma clara, profunda e acessível para gerar compreensão.",
   },
   {
     n: "02",
-    title: "Prática",
-    text: "Aplicação real do que é ensinado no cotidiano e no ministério.",
+    title: "Discernimento",
+    text:
+      "Conhecimento acompanhado de maturidade para interpretar, avaliar e aplicar o que é aprendido.",
   },
   {
     n: "03",
-    title: "Maturidade",
-    text: "Crescimento emocional, espiritual e conceitual de forma equilibrada.",
+    title: "Prática",
+    text:
+      "O aprendizado precisa sair da teoria e encontrar espaço na vida real.",
   },
   {
     n: "04",
     title: "Propósito",
-    text: "Formação que conduz a uma vida mais coerente e duradoura.",
-  },
-];
-
-export const experiences = [
-  {
-    type: "Conferência",
-    title: "Edição de Liderança e Impacto",
-    meta: "São Paulo · 2026",
-    image: event,
-  },
-  {
-    type: "Encontro presencial",
-    title: "Jornada de Formação",
-    meta: "Próxima edição em breve",
-    image: classroom,
-  },
-  {
-    type: "Aula especial",
-    title: "Momento de Formação Online",
-    meta: "Ao vivo · agenda aberta",
-    image: hero,
-  },
-];
-
-export const testimonials = [
-  {
-    name: "Renata M.",
-    course: "Fundamentos da Formação Cristã",
-    quote:
-      "A formação me ajudou a compreender melhor o meu chamado e a agir com mais paz, maturidade e direção.",
-  },
-  {
-    name: "João V.",
-    course: "Liderança com Propósito",
-    quote:
-      "O conteúdo foi profundo, objetivo e muito aplicável à vida real. Senti crescimento em todos os níveis.",
-  },
-  {
-    name: "Claudio S.",
-    course: "Trilha Profética",
-    quote:
-      "Mais do que aprender teoria, eu vivi uma transformação de olhar e de discernimento.",
+    text:
+      "Formação que aponta para uma vida com direção, responsabilidade e propósito.",
   },
 ];
 
 export const faqs = [
   {
     q: "Para quem são os cursos?",
-    a: "Para pessoas que desejam crescer em conhecimento, maturidade e propósito — desde quem está começando até líderes que desejam aprofundar sua formação.",
+    a:
+      "Os cursos são voltados para pessoas que desejam aprofundar seu conhecimento, desenvolver maturidade e compreender melhor temas relacionados à vida espiritual e ministerial.",
   },
   {
-    q: "Preciso ter experiência ministerial?",
-    a: "Não. As trilhas de fundamentos foram pensadas para quem está se estruturando. Algumas especializações recomendam um nível anterior de vivência.",
+    q: "Preciso ter experiência para começar?",
+    a:
+      "Não necessariamente. Cada curso possui sua própria proposta e você pode conhecer os detalhes antes de realizar sua inscrição.",
   },
   {
-    q: "Os cursos são online?",
-    a: "Sim. A maioria das formações é online, com acesso pela área do aluno, e os eventos e encontros presenciais são anunciados separadamente.",
+    q: "Onde os cursos são realizados?",
+    a:
+      "Os cursos disponíveis online são disponibilizados pela plataforma Hotmart. O acesso e as condições podem variar conforme cada produto.",
   },
   {
-    q: "Como funciona o acesso?",
-    a: "Após a matrícula, você recebe suas credenciais e pode acessar as aulas, materiais e acompanhamento da trilha escolhida.",
+    q: "Como faço minha inscrição?",
+    a:
+      "Escolha o curso que deseja conhecer e clique no botão correspondente. Você será direcionado para a página oficial do produto, onde poderá consultar as informações e realizar sua inscrição.",
   },
   {
-    q: "Existe certificado?",
-    a: "Sim. Cada formação oferece certificação conforme o programa e as regras específicas da instituição.",
-  },
-  {
-    q: "Quanto tempo tenho para concluir?",
-    a: "O prazo varia conforme a formação, mas o objetivo é permitir um aprendizado profundo e consistente sem pressa.",
+    q: "Os cursos possuem certificado?",
+    a:
+      "As condições de certificação podem variar conforme cada curso. Consulte as informações apresentadas na página oficial do produto antes da inscrição.",
   },
   {
     q: "Posso fazer mais de um curso?",
-    a: "Sim. Você pode seguir uma trilha completa ou cursar mais de uma formação conforme seu momento e objetivo.",
-  },
-  {
-    q: "Como funciona a matrícula?",
-    a: "Escolha a formação que melhor atende ao seu momento, clique em conhecer a formação e siga as instruções de inscrição.",
+    a:
+      "Sim. Os cursos são independentes, então você pode escolher aqueles que mais fazem sentido para o seu momento.",
   },
 ];

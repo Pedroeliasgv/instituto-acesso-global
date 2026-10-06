@@ -1,16 +1,21 @@
-export { Header } from "./site/Header"
-export { Courses } from "./site/Courses"
+export { Header, Logo } from "./site/Header";
+
 export {
-  About,
-  Evanio,
-  Experiences,
-  Faq,
-  Featured,
-  FinalCta,
-  Footer,
   Hero,
   Intro,
-  Journey,
+  About,
+  Evanio,
   Methodology,
-  Testimonials,
-} from "./site/Sections"
+  Faq,
+  FinalCta,
+  Footer,
+} from "./site/Sections";
+
+export { Courses } from "./site/Courses";
+
+export {
+  Cta,
+  Eyebrow,
+  Counter,
+  ParallaxImage,
+} from "./site/ui";
