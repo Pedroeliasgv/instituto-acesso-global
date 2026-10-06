@@ -16,12 +16,11 @@ type CtaProps = {
   children: ReactNode;
   variant?: "solid" | "ghost" | "outline" | "light";
   className?: string;
-  cursorLabel?: string;
   target?: string;
   rel?: string;
 };
 
-export function Cta({ href, children, variant = "solid", className, cursorLabel, target, rel }: CtaProps) {
+export function Cta({ href, children, variant = "solid", className, target, rel }: CtaProps) {
   const styles = {
     solid: "bg-[#5b5fe0] text-white hover:bg-[#4a50d8]",
     light: "bg-white text-[#080808] hover:bg-[#eef0ff]",
@@ -34,7 +33,6 @@ export function Cta({ href, children, variant = "solid", className, cursorLabel,
       href={href}
       target={target}
       rel={rel}
-      data-cursor={cursorLabel ?? "EXPLORAR"}
       className={cn(
         "group inline-flex items-center justify-center gap-3 px-7 py-4 text-[0.72rem] font-bold uppercase tracking-[0.2em] transition-all duration-300",
         styles,

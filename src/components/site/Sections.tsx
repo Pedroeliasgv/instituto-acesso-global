@@ -38,10 +38,10 @@ export function Hero() {
           </p>
 
           <div className="reveal mt-10 flex flex-col gap-3 sm:flex-row">
-            <Cta href="#cursos" cursorLabel="EXPLORAR" className="bg-[#6f73ff] text-white hover:bg-[#5d67f0]">
+            <Cta href="#cursos" className="bg-[#6f73ff] text-white hover:bg-[#5d67f0]">
               Conhecer os cursos
             </Cta>
-            <Cta href="#instituto" variant="outline" cursorLabel="VER" className="border border-white/30 text-white hover:border-white/60 hover:bg-white/5">
+            <Cta href="#instituto" variant="outline" className="border border-white/30 text-white hover:border-white/60 hover:bg-white/5">
               Conhecer o instituto
             </Cta>
           </div>
@@ -245,7 +245,7 @@ export function Featured() {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Cta href="https://hotmart.com/pt-br/marketplace/produtos/hagsxd-curso-de-dons-espirituais-btgoa/S85674996V?preview=true" target="_blank" rel="noreferrer" cursorLabel="ABRIR" className="bg-[#6f73ff] text-white hover:bg-[#5d67f0]">
+                <Cta href="https://hotmart.com/pt-br/marketplace/produtos/hagsxd-curso-de-dons-espirituais-btgoa/S85674996V?preview=true" target="_blank" rel="noreferrer" className="bg-[#6f73ff] text-white hover:bg-[#5d67f0]">
                   Conhecer curso
                 </Cta>
               </div>
@@ -317,7 +317,6 @@ export function Experiences() {
             <a
               key={item.title}
               href="#cursos"
-              data-cursor="VER"
               className="reveal group block border border-white/10 bg-white/[0.02] p-4 transition-all duration-500 hover:border-[#a7b3ff] hover:bg-[#111827] md:p-6"
               style={{ transitionDelay: `${index * 70}ms` }}
             >
@@ -464,7 +463,7 @@ export function FinalCta() {
           Conheça os conteúdos disponíveis no Instituto Acesso Global e dê o próximo passo com clareza, direção e propósito.
         </p>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <Cta href="#cursos" cursorLabel="EXPLORAR" className="bg-[#6f73ff] text-white hover:bg-[#5d67f0]">
+          <Cta href="#cursos" className="bg-[#6f73ff] text-white hover:bg-[#5d67f0]">
             Conhecer os cursos
           </Cta>
         </div>

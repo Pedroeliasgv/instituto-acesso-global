@@ -42,62 +42,12 @@ function ScrollProgress() {
   );
 }
 
-function CustomCursor() {
-  const [visible, setVisible] = useState(false);
-  const [label, setLabel] = useState("VIEW");
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-
-    const handleMove = (event: MouseEvent) => {
-      setPosition({ x: event.clientX, y: event.clientY });
-      setVisible(true);
-    };
-
-    const handleLeave = () => setVisible(false);
-
-    const handleTarget = (event: MouseEvent) => {
-      const target = event.target as HTMLElement | null;
-      const element = target?.closest("[data-cursor]") as HTMLElement | null;
-      setLabel(element?.dataset.cursor ?? "VIEW");
-    };
-
-    window.addEventListener("pointermove", handleMove);
-    window.addEventListener("pointerover", handleTarget);
-    window.addEventListener("pointerleave", handleLeave);
-
-    return () => {
-      window.removeEventListener("pointermove", handleMove);
-      window.removeEventListener("pointerover", handleTarget);
-      window.removeEventListener("pointerleave", handleLeave);
-    };
-  }, []);
-
-  if (typeof window !== "undefined" && !window.matchMedia("(pointer: fine)").matches) {
-    return null;
-  }
-
-  return (
-    <div
-      className={[
-        "pointer-events-none fixed left-0 top-0 z-[120] hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/30 text-[0.55rem] font-bold uppercase tracking-[0.24em] text-white backdrop-blur-md transition-opacity duration-300 md:flex",
-        visible ? "opacity-100" : "opacity-0",
-      ].join(" ")}
-      style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
-    >
-      {label}
-    </div>
-  );
-}
-
 function App() {
   useRevealAll();
 
   return (
     <>
       <ScrollProgress />
-      <CustomCursor />
       <Header />
 
       <main>

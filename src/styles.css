@@ -40,6 +40,8 @@
 
 :root {
   --radius: 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: #6f6b65 #080808;
   --abyss: oklch(0.08 0.02 256);
   --navy: oklch(0.16 0.04 260);
   --royal: oklch(0.52 0.2 255);
@@ -74,6 +76,25 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #6f6b65;
+  transition: background-color 180ms ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f4f1eb;
+}
+
 @layer base {
   * { border-color: var(--border); }
   html { scroll-behavior: smooth; }
@@ -87,11 +108,6 @@
   img { display: block; max-width: 100%; }
   ::selection { background: var(--royal); color: white; }
   #root { min-height: 100vh; width: 100%; }
-}
-
-@media (pointer: fine) {
-  body { cursor: none; }
-  a, button, [data-cursor] { cursor: none; }
 }
 
 .headline {
