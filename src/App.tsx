@@ -1,19 +1,23 @@
 import {
   About,
   Courses,
+  Dores,
   Evanio,
   Faq,
   FinalCta,
   Footer,
   Header,
   Hero,
+  HowItWorks,
   Intro,
   Marquee,
-  Manifesto,
-  Methodology,
-  CinematicImage,
+  Modules,
+  Objections,
+  Pricing,
+  Presentation,
 } from "@/components";
 import { useRevealAll } from "@/hooks/use-reveal";
+
 import { useEffect, useRef, useState } from "react";
 
 function ScrollProgress() {
@@ -21,17 +25,27 @@ function ScrollProgress() {
 
   useEffect(() => {
     let frame = 0;
+
     const onScroll = () => {
       cancelAnimationFrame(frame);
+
       frame = requestAnimationFrame(() => {
-        const total = document.documentElement.scrollHeight - window.innerHeight;
+        const total =
+          document.documentElement.scrollHeight - window.innerHeight;
+
         const next = total > 0 ? window.scrollY / total : 0;
-        progressRef.current?.style.setProperty("transform", `scaleX(${next})`);
+
+        progressRef.current?.style.setProperty(
+          "transform",
+          `scaleX(${next})`,
+        );
       });
     };
 
     onScroll();
+
     window.addEventListener("scroll", onScroll, { passive: true });
+
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
@@ -56,8 +70,15 @@ function BrandIntro() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 700;
-    const timeout = window.setTimeout(() => setVisible(false), delay);
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches
+      ? 0
+      : 700;
+
+    const timeout = window.setTimeout(() => {
+      setVisible(false);
+    }, delay);
+
     return () => window.clearTimeout(timeout);
   }, []);
 
@@ -66,7 +87,10 @@ function BrandIntro() {
   return (
     <div aria-hidden="true" className="brand-intro">
       <span className="brand-intro-mark">AG</span>
-      <span className="brand-intro-name">Instituto Acesso Global</span>
+
+      <span className="brand-intro-name">
+        Instituto Acesso Global
+      </span>
     </div>
   );
 }
@@ -81,17 +105,46 @@ function App() {
       <Header />
 
       <main>
+        {/* 01 — Hero / atenção */}
         <Hero />
-        <Intro />
+
+        {/* 02 — Apresentação / posicionamento */}
+        <Presentation />
+
+        {/* 03 — Dor / identificação */}
+        <Dores />
+
+        {/* 04 — Transição */}
         <Marquee tone="light" />
+
+        {/* 05 — Contexto / apresentação */}
+        <Intro />
+
+        {/* 06 — Produto principal */}
         <About />
-        <Manifesto />
-        <Marquee tone="dark" reverse />
-        <Methodology />
-        <CinematicImage />
+
+        {/* 07 — O que você vai aprender */}
+        <Modules />
+
+        {/* 08 — Oferta / planos */}
+        <Pricing />
+
+        {/* 09 — Autoridade */}
         <Evanio />
+
+        {/* 10 — Outros produtos */}
         <Courses />
+
+        {/* 11 — Como funciona */}
+        <HowItWorks />
+
+        {/* 12 — Objeções */}
+        <Objections />
+
+        {/* 13 — CTA final */}
         <FinalCta />
+
+        {/* 14 — FAQ */}
         <Faq />
       </main>
 

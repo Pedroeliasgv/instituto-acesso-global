@@ -146,7 +146,7 @@ export function Header() {
             href="#cursos"
             className="hidden items-center gap-2 bg-[#f4f1eb] px-4 py-3 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-[#080808] transition-colors hover:bg-white sm:flex"
           >
-            Começar agora
+            Inscreva-se
             <ArrowUpRight size={14} aria-hidden="true" />
           </a>
 
@@ -206,7 +206,7 @@ export function Header() {
             onClick={closeMenu}
             className="inline-flex items-center justify-between border-t border-white/20 py-5 text-xs font-bold uppercase tracking-[0.18em]"
           >
-            Começar agora
+            Inscreva-se
             <ArrowUpRight size={16} aria-hidden="true" />
           </a>
         </div>

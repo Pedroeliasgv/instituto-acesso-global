@@ -1,105 +1,112 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { courses } from "@/data/site";
 import { Eyebrow } from "./ui";
 
 export function Courses() {
   return (
-    <section id="cursos" className="overflow-hidden bg-[#f4f1eb] py-24 md:py-36">
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-14">
-        <div className="reveal mb-16 md:mb-24">
-          <Eyebrow className="text-[#6f6b65]">03 / Cursos</Eyebrow>
+    <section
+      id="outros-cursos"
+      className="bg-[#f4f1eb] px-5 py-20 sm:px-8 md:py-28 lg:px-14"
+    >
+      <div className="mx-auto max-w-[1200px]">
+        {/* HEADER */}
+        <div className="reveal mx-auto max-w-4xl text-center">
+          <Eyebrow className="text-[#6f6b65]">
+            Continue sua jornada
+          </Eyebrow>
 
-          <h2 className="headline mt-8 text-[clamp(3.5rem,10vw,10rem)] leading-[0.82] text-[#080808]">
-            Aprenda.
-            <br />
-            Aprofunde.
-            <br />
-            Viva.
+          <h2 className="mt-6 font-display text-[clamp(3rem,7vw,7rem)] font-bold uppercase leading-[0.82] tracking-[-0.065em] text-[#080808]">
+            Outros
+            <span className="block text-[#77736c]">
+              cursos.
+            </span>
           </h2>
+
+          <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-[#494641] md:text-lg">
+            Além dos conteúdos do Instituto Acesso Global, conheça outros
+            cursos e seminários disponíveis para aprofundar temas específicos.
+          </p>
         </div>
 
-        <div className="course-list space-y-20 md:space-y-32">
-          {courses.map((course, index) => {
-            const reversed = index === 1;
+        {/* PRODUTOS */}
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {courses.map((course, index) => (
+            <article
+              key={course.id}
+              className="reveal group overflow-hidden rounded-3xl border border-[#080808]/10 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl"
+              style={{
+                transitionDelay: index * 100 + "ms",
+              }}
+            >
+              {/* IMAGEM */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={course.image}
+                  alt={course.title}
+                  loading="lazy"
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                />
 
-            return (
-              <article
-                key={course.id}
-                className="course-feature group grid items-center gap-8 transition-opacity duration-500 md:grid-cols-12 md:gap-10"
-              >
-                {/* IMAGEM */}
-                <div
-                  className={`course-image relative overflow-hidden md:col-span-7 ${
-                    reversed
-                      ? "md:col-start-6 md:row-start-1"
-                      : "md:col-start-1"
-                  }`}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+
+                <span className="absolute left-5 top-5 rounded-full bg-white px-3 py-1.5 font-display text-[0.58rem] font-bold uppercase tracking-[0.16em] text-[#080808]">
+                  {course.type}
+                </span>
+              </div>
+
+              {/* CONTEÚDO */}
+              <div className="p-6 md:p-8">
+                <span className="font-display text-[0.6rem] font-bold uppercase tracking-[0.18em] text-[#77736c]">
+                  Conteúdo complementar
+                </span>
+
+                <h3 className="mt-4 font-display text-[clamp(2.2rem,4vw,3.8rem)] font-bold uppercase leading-[0.84] tracking-[-0.055em] text-[#080808]">
+                  {course.title}
+                </h3>
+
+                <p className="mt-5 text-sm leading-relaxed text-[#494641] md:text-base">
+                  {course.description}
+                </p>
+
+                {course.highlights && (
+                  <ul className="mt-6 space-y-3 border-t border-[#080808]/10 pt-6">
+                    {course.highlights.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-3 text-sm leading-relaxed text-[#494641]"
+                      >
+                        <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#080808]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <a
+                  href={course.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-8 flex w-full items-center justify-between rounded-full bg-[#080808] px-6 py-4 font-display text-[0.65rem] font-bold uppercase tracking-[0.15em] text-white transition-all duration-300 hover:bg-[#292724]"
                 >
-                  <img
-                    src={course.image}
-                    alt={`Imagem do ${course.title}`}
-                    loading="lazy"
-                    className={`course-photo h-full w-full bg-[#111] object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.04] ${
-                      index === 0
-                        ? "aspect-square md:aspect-[1.12/1]"
-                        : "aspect-square md:aspect-[1.5/1]"
-                    }`}
-                  />
-
-                  <div className="course-image-overlay absolute inset-0 bg-black/0 transition-colors duration-700 group-hover:bg-black/15" />
-
-                  <span className="absolute left-4 top-4 font-display text-sm font-bold tracking-[0.18em] text-white md:left-7 md:top-7 md:text-base">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <span className="absolute bottom-4 right-4 font-display text-[clamp(4rem,10vw,9rem)] font-bold leading-none text-white/35 md:bottom-7 md:right-7">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-
-                {/* CONTEÚDO */}
-                <div
-                  className={`reveal md:col-span-5 md:row-start-1 ${
-                    reversed ? "md:col-start-1" : "md:col-start-8"
-                  }`}
-                >
-                  <Eyebrow className="text-[#6f6b65]">
-                    {course.label
-                      ? `Curso ${String(index + 1).padStart(2, "0")}`
-                      : `Curso ${String(index + 1).padStart(2, "0")}`}
-                  </Eyebrow>
-
-                  <h3 className="course-title headline mt-6 text-[clamp(2.7rem,5.8vw,6rem)] leading-[0.84] text-[#080808] transition-transform duration-500 group-hover:-translate-y-1">
-                    {course.title.split(" ")[0]}
-
-                    {course.title.split(" ").length > 1 && (
-                      <span className="block">
-                        {course.title.split(" ").slice(1).join(" ")}
-                      </span>
-                    )}
-                  </h3>
-
-                  <p className="mt-6 max-w-md text-base leading-relaxed text-[#494641] md:text-lg">
-                    {course.description}
-                  </p>
-
-                  <a
-                    href={course.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-8 inline-flex items-center gap-4 border-b border-[#080808]/35 pb-3 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[#080808] transition-colors hover:border-[#6f6b65] hover:text-[#6f6b65] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#6f6b65]"
-                  >
+                  <span>
                     {course.label || "Conhecer o curso"}
+                  </span>
 
-                    <ArrowUpRight
-                      size={16}
-                      className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                    />
-                  </a>
-                </div>
-              </article>
-            );
-          })}
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition-transform duration-300 group-hover:translate-x-1">
+                    <ArrowRight size={15} />
+                  </span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* FECHAMENTO */}
+        <div className="reveal mt-12 text-center">
+          <p className="text-sm leading-relaxed text-[#6f6b65]">
+            O Instituto Acesso Global é a jornada principal. Estes conteúdos
+            podem complementar seus estudos de acordo com seus interesses.
+          </p>
         </div>
       </div>
     </section>

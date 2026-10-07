@@ -2,16 +2,26 @@ export { Header, Logo } from "./site/Header";
 
 export {
   Hero,
+  Presentation,
   Intro,
   About,
-  Evanio,
-  Methodology,
-  Manifesto,
+  Dores,
   Marquee,
+  Modules,
+  Pricing,
+  Evanio,
   CinematicImage,
+  HowItWorks,
+  Objections,
   Faq,
   FinalCta,
   Footer,
+  AuthorityProof,
+  ValueSection,
+  SecuritySection,
+  Manifesto,
+  Methodology,
+  Deliverables,
 } from "./site/Sections";
 
 export { Courses } from "./site/Courses";

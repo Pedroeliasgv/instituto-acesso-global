@@ -1,507 +1,249 @@
-﻿import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { useEffect, useRef } from "react";
-import { faqs, images, navLinks, pillars } from "@/data/site";
-import { Logo } from "./Header";
-import { Cta, Eyebrow, ParallaxImage } from "./ui";
+﻿import { ArrowRight, Check, ChevronDown } from "lucide-react";
+import {
+  authorityPoints,
+  faqs,
+  howItWorks,
+  images,
+  institutePoints,
+  modules,
+  navLinks,
+  painPoints,
+} from "@/data/site";
+import { Eyebrow } from "./ui";
 
-const marqueeWords = [
-  "Ensino",
-  "Formação",
-  "Desenvolvimento",
-  "Propósito",
-  "Maturidade",
-  "Conhecimento",
-];
+const dark = "#080808";
+const light = "#f4f1eb";
+const muted = "#494641";
+const soft = "#77736c";
+const detail = "#6f6b65";
 
 export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[100svh] items-end overflow-hidden bg-[#080808] text-white"
+      className="relative flex min-h-screen items-end overflow-hidden bg-[#080808] text-white"
     >
-      <ParallaxImage
-        src={images.hero}
-        alt=""
-        eager
-        strength={22}
-        className="hero-image absolute inset-0 h-full"
-      />
-
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.88)_0%,rgba(8,8,8,0.45)_60%,rgba(8,8,8,0.2)_100%)]" />
-
-      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(8,8,8,0.85)_0%,transparent_70%)]" />
-
-      <div className="relative mx-auto w-full max-w-[1600px] px-5 pb-8 pt-32 sm:px-8 md:pb-10 lg:px-14">
-        <p className="reveal eyebrow mb-8 text-[#d1ccc4]">
-          Instituto Acesso Global
-        </p>
-
-        <h1 className="hero-title headline" aria-label="Você pode crescer">
-          {["VOCÊ", "PODE", "CRESCER."].map((word, index) => (
-            <span
-              key={word}
-              className="reveal hero-word block"
-              style={{ transitionDelay: `${index * 140}ms` }}
-            >
-              {word}
-            </span>
-          ))}
-        </h1>
-
-        <div className="mt-8 flex flex-col gap-8 border-t border-white/25 pt-6 sm:flex-row sm:items-end sm:justify-between">
-          <div className="flex flex-wrap gap-3">
-            <Cta
-              href="#cursos"
-              className="bg-[#f4f1eb] text-[#080808] hover:bg-white"
-            >
-              Conhecer os cursos
-            </Cta>
-
-            <Cta
-              href="#instituto"
-              variant="ghost"
-              className="border-white/50 text-white hover:bg-white/10"
-            >
-              Conhecer o instituto
-            </Cta>
-          </div>
-
-          <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-white/75 sm:grid-cols-4">
-            {["Ensino", "Discernimento", "Prática", "Propósito"].map(
-              (item) => (
-                <span key={item}>{item}</span>
-              ),
-            )}
-          </div>
-
-          <a
-            href="#instituto"
-            className="group hidden items-center gap-3 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-white/65 transition-colors hover:text-white lg:flex"
-          >
-            Conheça o instituto
-
-            <ArrowDown
-              size={14}
-              className="transition-transform group-hover:translate-y-1"
-            />
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function Intro() {
-  return (
-    <section className="overflow-hidden bg-[#f4f1eb] py-28 md:py-48">
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-14">
-        <Eyebrow className="reveal text-[#6f6b65]">
-          Uma jornada de aprendizado
-        </Eyebrow>
-
-        <h2 className="headline mt-10 text-[clamp(3.4rem,10.7vw,10rem)] leading-[0.82] text-[#080808]">
-          <span className="reveal block">Sempre existe</span>
-
-          <span
-            className="reveal block text-right"
-            style={{ transitionDelay: "100ms" }}
-          >
-            algo novo
-          </span>
-
-          <span
-            className="reveal outline-text-dark block"
-            style={{ transitionDelay: "200ms" }}
-          >
-            para aprender.
-          </span>
-        </h2>
-
-        <p className="reveal mt-14 max-w-2xl text-lg leading-relaxed text-[#494641] md:ml-auto md:text-2xl">
-          Conhecimento amplia a nossa visão.
-          <br />
-          Maturidade muda a forma como enxergamos a vida.
-          <br />
-          E o aprendizado ganha sentido quando chega à prática.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-export function Marquee({
-  tone,
-  reverse = false,
-}: {
-  tone: "light" | "dark";
-  reverse?: boolean;
-}) {
-  const group = (
-    <span className="marquee-group" aria-hidden="true">
-      {marqueeWords.map((word) => (
-        <span key={word} className="marquee-word">
-          {word}
-          <span className="marquee-separator">×</span>
-        </span>
-      ))}
-    </span>
-  );
-
-  return (
-    <div
-      className={`marquee-band marquee-band-${tone}`}
-      role="img"
-      aria-label={marqueeWords.join(", ")}
-    >
-      <div
-        className={`marquee-track${reverse ? " marquee-track-reverse" : ""}`}
-      >
-        {group}
-        {group}
-      </div>
-    </div>
-  );
-}
-
-export function About() {
-  return (
-    <section id="instituto" className="bg-[#f4f1eb] py-24 md:py-36">
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-14">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
-          <div className="reveal min-w-0 lg:col-span-6">
-            <Eyebrow className="text-[#6f6b65]">
-              01 / O Instituto
-            </Eyebrow>
-
-            <h2 className="headline mt-8 text-[clamp(2.8rem,7.7vw,7.5rem)] leading-[0.86] text-[#080808]">
-              Aprender é
-              <span className="outline-text-dark block">crescer.</span>
-              <span className="block">E crescer exige</span>
-              <span className="block">caminho.</span>
-            </h2>
-          </div>
-
-          <p className="reveal min-w-0 max-w-xl text-lg leading-relaxed text-[#494641] lg:col-span-5 lg:col-start-8 lg:pb-2 lg:text-xl">
-            O Instituto Acesso Global nasceu para reunir ensino, experiência e
-            desenvolvimento em um só lugar. Aqui, você encontra conteúdos,
-            cursos e oportunidades para aprofundar o conhecimento e transformar
-            aquilo que aprende em prática.
-          </p>
-        </div>
-
-        <div className="mt-14 overflow-hidden md:mt-20">
-          <ParallaxImage
-            src={images.event}
-            alt="Pessoas reunidas em um auditório"
-            strength={24}
-            className="reveal aspect-[4/3] md:aspect-[2.2/1]"
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function Manifesto() {
-  return (
-    <section className="overflow-hidden bg-[#080808] py-28 text-[#f4f1eb] md:py-48">
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-14">
-        <Eyebrow className="reveal text-white/50">
-          Conhecimento que continua depois da aula
-        </Eyebrow>
-
-        <h2 className="headline mt-10 text-[clamp(4.5rem,16vw,15rem)] leading-[0.78]">
-          <span className="reveal block">Aprenda.</span>
-
-          <span
-            className="reveal outline-text block text-right"
-            style={{ transitionDelay: "140ms" }}
-          >
-            Cresça.
-          </span>
-        </h2>
-      </div>
-    </section>
-  );
-}
-
-export function Methodology() {
-  return (
-    <section className="bg-[#080808] px-5 pb-28 text-[#f4f1eb] sm:px-8 md:pb-40 lg:px-14">
-      <div className="mx-auto max-w-[1600px]">
-        <div className="reveal mb-12 flex flex-col justify-between gap-6 border-b border-white/20 pb-8 md:mb-16 md:flex-row md:items-end">
-          <div>
-            <Eyebrow className="text-white/50">
-              Como enxergamos a formação
-            </Eyebrow>
-
-            <h2 className="headline mt-6 max-w-4xl text-4xl leading-[0.9] sm:text-6xl md:text-7xl">
-              Quatro pilares.
-              <br />
-              Um jeito de caminhar.
-            </h2>
-          </div>
-
-          <p className="max-w-sm text-sm leading-relaxed text-white/60">
-            O conhecimento precisa fazer sentido. Por isso, buscamos unir
-            aprendizado, reflexão e prática em cada experiência.
-          </p>
-        </div>
-
-        <ol className="divide-y divide-white/20">
-          {pillars.map((pillar, index) => (
-            <li
-              key={pillar.n}
-              className="reveal pillar-row group relative grid min-h-40 grid-cols-[4rem_minmax(0,1fr)] items-center gap-4 py-8 md:min-h-48 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-8 md:py-10 xl:grid-cols-[8rem_minmax(0,1fr)_20rem]"
-              style={{ transitionDelay: `${index * 90}ms` }}
-            >
-              <span className="pillar-number font-display text-5xl font-bold leading-none text-white/20 md:text-8xl">
-                {pillar.n}
-              </span>
-
-              <h3 className="min-w-0 font-display text-[clamp(1.45rem,7.5vw,2rem)] font-bold uppercase tracking-[-0.06em] sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
-                {pillar.title}
-              </h3>
-
-              <p className="col-start-2 mt-1 min-w-0 max-w-sm text-sm leading-relaxed text-white/55 md:mt-0 md:text-base xl:col-start-3">
-                {pillar.text}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  );
-}
-
-export function CinematicImage() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    );
-
-    let frame = 0;
-
-    const updateProgress = () => {
-      cancelAnimationFrame(frame);
-
-      frame = requestAnimationFrame(() => {
-        if (reducedMotion.matches) {
-          section.style.setProperty("--cinema-scale-x", "1");
-          section.style.setProperty("--cinema-scale", "1");
-          section.style.setProperty("--cinema-radius", "0px");
-          section.style.setProperty("--cinema-overlay-opacity", "0.18");
-          section.style.setProperty("--cinema-caption-opacity", "1");
-          return;
-        }
-
-        const rect = section.getBoundingClientRect();
-
-        const progress = Math.min(
-          1,
-          Math.max(
-            0,
-            (window.innerHeight - rect.top) /
-              (window.innerHeight + rect.height),
-          ),
-        );
-
-        section.style.setProperty(
-          "--cinema-scale-x",
-          String(0.55 + progress * 0.45),
-        );
-
-        section.style.setProperty(
-          "--cinema-scale",
-          String(1 + progress * 0.025),
-        );
-
-        section.style.setProperty(
-          "--cinema-radius",
-          `${24 * (1 - progress)}px`,
-        );
-
-        section.style.setProperty(
-          "--cinema-overlay-opacity",
-          String(progress * 0.32),
-        );
-
-        section.style.setProperty(
-          "--cinema-caption-opacity",
-          String(1 - progress),
-        );
-      });
-    };
-
-    updateProgress();
-
-    window.addEventListener("scroll", updateProgress, { passive: true });
-    window.addEventListener("resize", updateProgress);
-    reducedMotion.addEventListener("change", updateProgress);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", updateProgress);
-      window.removeEventListener("resize", updateProgress);
-      reducedMotion.removeEventListener("change", updateProgress);
-    };
-  }, []);
-
-  return (
-    <section
-      ref={sectionRef}
-      className="cinematic-section relative h-[150svh] bg-[#080808]"
-    >
-      <div className="cinematic-frame">
+      {/* FOTO — ocupa a tela inteira */}
+      <div className="absolute inset-0">
         <img
-          src={images.event}
-          alt="Pessoas acompanhando uma apresentação em um auditório"
-          loading="lazy"
+          src={images.hero}
+          alt="Instituto Acesso Global"
+          className="h-full w-full object-cover object-center scale-[1.04] opacity-60"
         />
 
-        <div className="cinematic-overlay" />
+        {/* Camufla a transição com o navbar */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/75 via-black/30 to-transparent" />
 
-        <p className="cinematic-caption headline" aria-hidden="true">
-          Aprender.
-          <br />
-          Aprofundar.
-          <br />
-          Aplicar.
-        </p>
+        {/* Escurecimento geral */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
       </div>
-    </section>
-  );
-}
 
-export function Evanio() {
-  return (
-    <section id="evanio" className="bg-[#f4f1eb] py-24 md:py-36">
-      <div className="mx-auto grid max-w-[1600px] items-center gap-10 px-5 sm:px-8 md:grid-cols-12 lg:gap-16 lg:px-14">
-        <div className="reveal md:col-span-6">
-          <ParallaxImage
-            src={images.evanio}
-            alt="Evanio Vale"
-            strength={20}
-            className="aspect-[4/5] w-full md:aspect-[4/4.5]"
-          />
-        </div>
-
-        <div className="reveal md:col-span-5 md:col-start-8">
-          <Eyebrow className="text-[#6f6b65]">
-            02 / Evanio Vale
+      <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 pb-16 pt-40 sm:px-8 md:pb-24 lg:px-14">
+        <div className="max-w-5xl">
+          <Eyebrow className="text-white/60">
+            Instituto Acesso Global
           </Eyebrow>
 
-          <h2 className="headline mt-8 text-[clamp(4rem,9vw,9rem)] leading-[0.8] text-[#080808]">
-            Evanio
-            <span className="block">Vale.</span>
-          </h2>
+          <h1 className="mt-6 max-w-6xl font-display text-[clamp(4rem,10vw,10rem)] font-bold uppercase leading-[0.86] tracking-[-0.065em]">
+            Conhecimento.
+            <span className="block text-white/55">
+              Discernimento.
+            </span>
+            <span className="block">
+              Propósito.
+            </span>
+          </h1>
 
-          <p className="mt-8 max-w-md text-lg leading-relaxed text-[#494641]">
-            Evanio Vale está à frente de conteúdos e ensinamentos que fazem
-            parte da proposta do Instituto Acesso Global. Sua atuação reúne
-            estudo, experiência e dedicação ao desenvolvimento de pessoas.
-          </p>
+          <div className="mt-8 flex max-w-2xl flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <p className="max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
+              Uma jornada de ensino e aprofundamento para quem deseja crescer
+              em conhecimento, vida espiritual e desenvolvimento ministerial.
+            </p>
+
+            <a
+              href="#planos"
+              className="inline-flex w-fit shrink-0 items-center gap-4 rounded-full bg-white px-6 py-4 font-display text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[#080808] transition-transform duration-300 hover:scale-[1.03]"
+            >
+              Conhecer o Instituto
+
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#080808] text-white">
+                <ArrowRight size={15} />
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-export function FinalCta() {
+export function Presentation() {
   return (
-    <section className="relative flex min-h-[85svh] items-end overflow-hidden bg-[#080808] text-white">
-      <ParallaxImage
-        src={images.portrait}
-        alt=""
-        strength={16}
-        className="final-cta-image absolute inset-0 h-full"
-      />
-
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,#8D8D8D_0px,#8D8D8D_500px,rgba(141,141,141,0.65)_570px,rgba(141,141,141,0.2)_680px,transparent_760px)]" />
-
-      <div className="relative mx-auto w-full max-w-[1600px] px-5 py-20 sm:px-8 md:py-28 lg:px-14">
-        <Eyebrow className="reveal text-white/60">
-          Instituto Acesso Global
-        </Eyebrow>
-
-        <h2 className="headline reveal mt-8 text-[clamp(4.3rem,13vw,12rem)] leading-[0.78]">
-          <span className="block text-[0.55em] tracking-[-0.04em] text-white/75">
-            Dê o
-          </span>
-
-          <span className="block">
-            próximo
-          </span>
-
-          <span className="outline-text block text-white">
-            passo.
-          </span>
-        </h2>
-
-        <div className="reveal mt-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <p className="max-w-md text-base leading-relaxed text-white/70">
-            Conheça os cursos do Instituto e encontre o conteúdo que faz
-            sentido para o seu momento.
-          </p>
-
-          <Cta
-            href="#cursos"
-            className="bg-[#f4f1eb] text-[#080808] hover:bg-white"
-          >
-            Conhecer os cursos
-          </Cta>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function Faq() {
-  return (
-    <section id="faq" className="bg-[#f4f1eb] py-24 md:py-36">
-      <div className="mx-auto grid max-w-[1600px] gap-10 px-5 sm:px-8 md:grid-cols-12 lg:px-14">
-        <div className="reveal md:col-span-4">
+    <section
+      id="apresentacao"
+      className="relative overflow-hidden bg-white px-5 py-28 sm:px-8 md:py-36 lg:px-14"
+    >
+      <div className="mx-auto max-w-[1180px]">
+        {/* Cabeçalho */}
+        <div className="reveal">
           <Eyebrow className="text-[#6f6b65]">
-            Perguntas frequentes
+            Instituto Acesso Global
           </Eyebrow>
 
-          <h2 className="headline mt-7 text-5xl leading-[0.9] text-[#080808] md:text-6xl">
-            Antes de começar,
-            <br />
-            algumas respostas.
+          <h2 className="mt-6 max-w-6xl font-display text-[clamp(3.8rem,9vw,9rem)] font-bold uppercase leading-[0.82] tracking-[-0.075em] text-[#080808]">
+            Você não precisa
+            <span className="block text-[#77736c]">
+              continuar no
+            </span>
+            <span className="block">
+              superficial.
+            </span>
           </h2>
         </div>
 
-        <div className="reveal md:col-span-7 md:col-start-6">
-          <div className="divide-y divide-[#c9c4bb] border-y border-[#c9c4bb]">
-            {faqs.map((item, index) => (
-              <details key={item.q} className="faq-item">
-                <summary className="flex cursor-pointer list-none items-start gap-4 py-6 text-left marker:hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#6f6b65] md:items-center md:gap-6">
-                  <span className="pt-1 font-display text-sm text-[#77716a]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+        {/* Conteúdo */}
+        <div className="mt-16 grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-24">
+          <div className="reveal">
+            <p className="max-w-3xl text-xl font-medium leading-relaxed tracking-[-0.02em] text-[#080808] md:text-3xl">
+              Existe uma diferença entre simplesmente ouvir sobre esses
+              assuntos e realmente{" "}
+              <span className="text-[#77736c]">
+                estudá-los, compreendê-los e desenvolver discernimento.
+              </span>
+            </p>
 
-                  <span className="flex-1 font-display text-lg font-bold uppercase leading-tight tracking-[-0.03em] text-[#080808] md:text-2xl">
-                    {item.q}
-                  </span>
+            <p className="mt-7 max-w-2xl text-base leading-relaxed text-[#6f6b65] md:text-lg">
+              O Instituto Acesso Global foi criado para quem deseja sair da
+              superficialidade e construir uma base mais sólida de
+              conhecimento sobre vida espiritual, dons, profecia, propósito,
+              liderança, finanças e oração.
+            </p>
 
-                  <span
-                    className="faq-plus text-2xl leading-none text-[#6f6b65]"
-                    aria-hidden="true"
-                  >
-                    +
-                  </span>
-                </summary>
+            <a
+              href="#modulos"
+              className="group mt-9 inline-flex items-center gap-4 rounded-full bg-[#080808] px-6 py-4 font-display text-[0.65rem] font-bold uppercase tracking-[0.15em] text-white transition-all duration-300 hover:scale-[1.03]"
+            >
+              Quero conhecer o Instituto
 
-                <p className="faq-answer pb-6 pl-10 pr-8 text-sm leading-relaxed text-[#494641] md:pl-14 md:text-base">
-                  {item.a}
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition-transform duration-300 group-hover:translate-x-1">
+                <ArrowRight size={15} />
+              </span>
+            </a>
+          </div>
+
+          {/* Números / impacto */}
+          <div className="reveal">
+            <div className="overflow-hidden rounded-[2rem] bg-[#080808] text-white">
+              <div className="border-b border-white/10 p-7 md:p-9">
+                <span className="font-display text-[0.6rem] font-bold uppercase tracking-[0.18em] text-white/40">
+                  Uma jornada completa
+                </span>
+
+                <strong className="mt-5 block font-display text-[clamp(4rem,8vw,7rem)] font-bold leading-none tracking-[-0.07em]">
+                  08
+                </strong>
+
+                <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/50">
+                  módulos para aprofundar diferentes áreas do conhecimento
+                  espiritual e ministerial.
                 </p>
-              </details>
+              </div>
+
+              <div className="grid grid-cols-2">
+                <div className="border-r border-white/10 p-7 md:p-9">
+                  <strong className="font-display text-3xl font-bold tracking-[-0.05em] md:text-4xl">
+                    01
+                  </strong>
+
+                  <p className="mt-2 text-xs uppercase tracking-[0.12em] text-white/40">
+                    Instituto
+                  </p>
+                </div>
+
+                <div className="p-7 md:p-9">
+                  <strong className="font-display text-3xl font-bold tracking-[-0.05em] md:text-4xl">
+                    02
+                  </strong>
+
+                  <p className="mt-2 text-xs uppercase tracking-[0.12em] text-white/40">
+                    Formas de acesso
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Frase de impacto */}
+        <div className="reveal mt-20 border-y border-[#080808]/10 py-8 md:mt-28 md:py-10">
+          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+            <p className="max-w-3xl font-display text-2xl font-bold uppercase leading-tight tracking-[-0.04em] text-[#080808] md:text-4xl">
+              Conhecimento muda a forma como você enxerga.
+            </p>
+
+            <span className="shrink-0 font-display text-[0.6rem] font-bold uppercase tracking-[0.16em] text-[#77736c]">
+              Comece sua jornada
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
+export function Dores() {
+  return (
+    <section
+      id="dores"
+      className="relative overflow-hidden bg-[#080808] px-5 py-24 text-white sm:px-8 md:py-32 lg:px-14"
+    >
+      <div className="absolute inset-0">
+        <img
+          src={images.bible}
+          alt=""
+          className="h-full w-full object-cover opacity-45"
+        />
+
+        <div className="absolute inset-0 bg-[#080808]/55" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-[1180px]">
+        <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+          <div className="reveal">
+            <Eyebrow className="text-white/45">
+              Talvez você esteja buscando
+            </Eyebrow>
+
+            <h2 className="mt-6 max-w-xl font-display text-[clamp(3.2rem,7vw,7rem)] font-bold uppercase leading-[0.88] tracking-[-0.06em]">
+              Mais
+              <span className="block text-white/45">clareza.</span>
+            </h2>
+
+            <p className="mt-7 max-w-md text-base leading-relaxed text-white/55">
+              Existem perguntas que fazem parte da caminhada de quem deseja
+              crescer em conhecimento, discernimento e maturidade espiritual.
+            </p>
+          </div>
+
+          <div className="grid gap-0">
+            {painPoints.map((point, index) => (
+              <div
+                key={point}
+                className="reveal flex gap-5 border-t border-white/15 py-6"
+                style={{
+                  transitionDelay: `${index * 50}ms`,
+                }}
+              >
+                <span className="font-display text-xs font-bold text-white/35">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <p className="max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+                  {point}
+                </p>
+              </div>
             ))}
           </div>
         </div>
@@ -510,50 +252,711 @@ export function Faq() {
   );
 }
 
-export function Footer() {
+export function Intro() {
   return (
-    <footer className="bg-[#080808] text-[#f4f1eb]">
-      <div className="mx-auto max-w-[1600px] px-5 pb-12 pt-16 sm:px-8 md:pt-24 lg:px-14">
-        <div className="flex flex-col justify-between gap-14 md:flex-row md:items-end">
-          <div>
-            <Logo className="text-white" />
+    <section
+      id="instituto"
+      className="bg-white px-5 py-24 sm:px-8 md:py-32 lg:px-14"
+    >
+      <div className="mx-auto max-w-[1180px]">
+        <div className="reveal max-w-5xl">
+          <Eyebrow className="text-[#6f6b65]">O Instituto</Eyebrow>
 
-            <p className="headline mt-12 text-5xl leading-[0.86] sm:text-7xl md:text-8xl">
-              Instituto
-              <span className="block">Acesso Global</span>
-            </p>
-          </div>
-
-          <nav
-            aria-label="Navegação do rodapé"
-            className="grid grid-cols-2 gap-x-10 gap-y-5 text-sm uppercase tracking-[0.12em] text-white/65 md:grid-cols-1 md:gap-y-4"
-          >
-            {navLinks
-              .filter((link) => link.href !== "#inicio")
-              .map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="link-underline w-fit transition-colors hover:text-white"
-                >
-                  {link.label}
-                </a>
-              ))}
-          </nav>
+          <h2 className="mt-6 font-display text-[clamp(3.5rem,8vw,8rem)] font-bold uppercase leading-[0.86] tracking-[-0.065em] text-[#080808]">
+            Uma jornada
+            <span className="block text-[#77736c]">de aprendizado.</span>
+          </h2>
         </div>
 
-        <div className="mt-16 flex flex-col gap-3 border-t border-white/20 pt-5 text-[0.65rem] uppercase tracking-[0.16em] text-white/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>© Instituto Acesso Global</p>
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+          <p className="reveal max-w-3xl text-xl leading-relaxed text-[#494641] md:text-2xl">
+            O Instituto Acesso Global reúne conteúdos organizados para quem
+            deseja aprofundar temas relacionados à vida espiritual, dons,
+            discernimento, propósito, liderança, finanças e oração.
+          </p>
+
+          <div className="reveal border-l border-[#080808]/15 pl-6">
+            <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-[#6f6b65]">
+              Produto principal
+            </p>
+
+            <p className="mt-4 text-sm leading-relaxed text-[#494641]">
+              Uma experiência completa de estudo, com oito módulos organizados
+              em uma única jornada.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Marquee({
+  tone = "dark",
+}: {
+  tone?: "dark" | "light";
+}) {
+  const items = [
+    "ENSINO",
+    "DISCERNIMENTO",
+    "PROPÓSITO",
+    "VIDA ESPIRITUAL",
+    "CHAMADO",
+    "DESENVOLVIMENTO",
+  ];
+
+  const repeatedItems = [...items, ...items, ...items, ...items];
+
+  return (
+    <section
+      className={`overflow-hidden ${
+        tone === "light"
+          ? "bg-[#f4f1eb] text-[#080808]"
+          : "bg-[#080808] text-white"
+      }`}
+    >
+      <div className="relative flex overflow-hidden py-7 md:py-9">
+        <div className="flex w-max shrink-0 animate-marquee items-center">
+          {repeatedItems.map((item, index) => (
+            <div key={`${item}-${index}`} className="flex items-center">
+              <span className="px-6 font-display text-[clamp(1.5rem,3vw,3rem)] font-bold uppercase tracking-[-0.04em] md:px-10">
+                {item}
+              </span>
+
+              <span className="h-2 w-2 shrink-0 rounded-full bg-current opacity-40" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function About() {
+  return (
+    <section
+      id="conteudos"
+      className="bg-[#080808] px-5 py-24 text-white sm:px-8 md:py-32 lg:px-14"
+    >
+      <div className="mx-auto max-w-[1180px]">
+        <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
+          <div className="reveal">
+            <Eyebrow className="text-white/40">
+              O que você encontra
+            </Eyebrow>
+
+            <h2 className="mt-6 font-display text-[clamp(3rem,7vw,6.5rem)] font-bold uppercase leading-[0.86] tracking-[-0.06em]">
+              Conteúdo
+              <span className="block text-white/45">com propósito.</span>
+            </h2>
+          </div>
+
+          <div className="grid gap-0">
+            {institutePoints.map((item, index) => (
+              <div
+                key={item.number}
+                className="reveal grid gap-4 border-t border-white/10 py-7 md:grid-cols-[70px_1fr]"
+                style={{
+                  transitionDelay: `${index * 80}ms`,
+                }}
+              >
+                <span className="font-display text-xs font-bold text-white/35">
+                  {item.number}
+                </span>
+
+                <div>
+                  <h3 className="font-display text-2xl font-bold uppercase tracking-[-0.03em] md:text-3xl">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/55 md:text-base">
+                    {item.text}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Modules() {
+  return (
+    <section
+      id="modulos"
+      className="bg-[#f4f1eb] px-5 py-24 sm:px-8 md:py-32 lg:px-14"
+    >
+      <div className="mx-auto max-w-[1180px]">
+        <div className="reveal flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <Eyebrow className="text-[#6f6b65]">O que você vai aprender</Eyebrow>
+
+            <h2 className="mt-6 max-w-4xl font-display text-[clamp(3.2rem,7vw,7rem)] font-bold uppercase leading-[0.86] tracking-[-0.065em] text-[#080808]">
+              8 módulos.
+              <span className="block text-[#77736c]">Uma jornada.</span>
+            </h2>
+          </div>
+
+          <p className="max-w-sm text-sm leading-relaxed text-[#6f6b65] md:text-right">
+            Os módulos fazem parte do Instituto Acesso Global e foram
+            organizados para formar uma jornada progressiva de aprendizado.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-5 md:grid-cols-2">
+          {modules.map((module, index) => (
+            <article
+              key={module.number}
+              className="reveal group overflow-hidden rounded-[2rem] bg-white"
+              style={{
+                transitionDelay: `${index * 70}ms`,
+              }}
+            >
+              <div className="relative overflow-hidden">
+                <img
+                  src={module.image}
+                  alt={module.title}
+                  loading="lazy"
+                  className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+                <span className="absolute left-6 top-6 rounded-full bg-white px-4 py-2 font-display text-[0.6rem] font-bold uppercase tracking-[0.15em] text-[#080808]">
+                  Módulo {module.number}
+                </span>
+              </div>
+
+              <div className="p-7 md:p-8">
+                <h3 className="font-display text-[clamp(2rem,4vw,3.4rem)] font-bold uppercase leading-[0.88] tracking-[-0.055em] text-[#080808]">
+                  {module.title}
+                </h3>
+
+                <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#494641] md:text-base">
+                  {module.description}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Pricing() {
+  return (
+    <section
+      id="planos"
+      className="bg-[#080808] px-5 py-24 text-white sm:px-8 md:py-32 lg:px-14"
+    >
+      <div className="mx-auto max-w-[1180px]">
+        <div className="reveal mx-auto max-w-4xl text-center">
+          <Eyebrow className="text-white/45">Escolha seu acesso</Eyebrow>
+
+          <h2 className="mt-6 font-display text-[clamp(3.4rem,8vw,8rem)] font-bold uppercase leading-[0.84] tracking-[-0.065em]">
+            Comece sua
+            <span className="block text-white/45">jornada.</span>
+          </h2>
+
+          <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-white/55 md:text-lg">
+            Tenha acesso ao conteúdo do Instituto Acesso Global e escolha a
+            modalidade que melhor acompanha sua jornada de estudo.
+          </p>
+        </div>
+
+        <div className="mx-auto mt-14 grid max-w-5xl gap-6 lg:grid-cols-2">
+          {/* ANUAL */}
+          <article className="reveal relative rounded-[2rem] bg-white p-7 text-[#080808] md:p-9">
+            <span className="absolute right-6 top-6 rounded-full bg-[#080808] px-4 py-2 font-display text-[0.58rem] font-bold uppercase tracking-[0.14em] text-white">
+              Mais vantajoso
+            </span>
+
+            <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-[#6f6b65]">
+              Acesso anual
+            </p>
+
+            <div className="mt-8">
+              <span className="text-sm text-[#77736c] line-through">
+                R$ 1.497,00
+              </span>
+
+              <div className="mt-1 flex flex-wrap items-end gap-x-3 gap-y-1">
+                <span className="font-display text-6xl font-bold tracking-[-0.06em]">
+                  R$ 897
+                </span>
+
+                <span className="mb-2 text-sm text-[#6f6b65]">
+                  / ano
+                </span>
+              </div>
+
+              <p className="mt-2 text-sm text-[#6f6b65]">
+                ou 12x de R$ 94,97
+              </p>
+            </div>
+
+            <div className="mt-8 border-t border-[#080808]/10 pt-7">
+              <div className="space-y-4">
+                <Benefit text="Acesso integral por 1 ano" />
+                <Benefit text="8 módulos do Instituto Acesso Global" />
+                <Benefit text="Estudo no seu próprio ritmo" />
+              </div>
+            </div>
+
+            <a
+              href="#"
+              className="mt-9 flex w-full items-center justify-between rounded-full bg-[#080808] px-6 py-4 font-display text-[0.65rem] font-bold uppercase tracking-[0.15em] text-white transition-transform duration-300 hover:scale-[1.02]"
+            >
+              Quero acesso anual
+
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+                <ArrowRight size={15} />
+              </span>
+            </a>
+          </article>
+
+          {/* MENSAL */}
+          <article className="reveal rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 md:p-9">
+            <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-white/40">
+              Assinatura mensal
+            </p>
+
+            <div className="mt-8">
+              <span className="text-sm text-white/35 line-through">
+                R$ 147,00
+              </span>
+
+              <div className="mt-1 flex flex-wrap items-end gap-x-3 gap-y-1">
+                <span className="font-display text-6xl font-bold tracking-[-0.06em]">
+                  R$ 97
+                </span>
+
+                <span className="mb-2 text-sm text-white/40">
+                  / mês
+                </span>
+              </div>
+
+              <p className="mt-2 text-sm text-white/40">
+                assinatura recorrente
+              </p>
+            </div>
+
+            <div className="mt-8 border-t border-white/10 pt-7">
+              <div className="space-y-4">
+                <Benefit text="Acesso enquanto a assinatura estiver ativa" dark />
+                <Benefit text="8 módulos do Instituto Acesso Global" dark />
+                <Benefit text="Cobrança recorrente mensal" dark />
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <p className="text-xs leading-relaxed text-white/45">
+                A assinatura é encerrada ao final de 12 cobranças.
+              </p>
+            </div>
+
+            <a
+              href="#"
+              className="mt-7 flex w-full items-center justify-between rounded-full border border-white/15 px-6 py-4 font-display text-[0.65rem] font-bold uppercase tracking-[0.15em] text-white transition-all duration-300 hover:bg-white hover:text-[#080808]"
+            >
+              Quero assinar
+
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+                <ArrowRight size={15} />
+              </span>
+            </a>
+          </article>
+        </div>
+
+        <p className="reveal mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed text-white/30">
+          Os valores promocionais apresentados podem ser alterados conforme a
+          disponibilidade da oferta.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function Benefit({
+  text,
+  dark = false,
+}: {
+  text: string;
+  dark?: boolean;
+}) {
+  return (
+    <div className="flex items-start gap-3">
+      <span
+        className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
+          dark ? "bg-white/10 text-white" : "bg-[#080808] text-white"
+        }`}
+      >
+        <Check size={12} strokeWidth={2.5} />
+      </span>
+
+      <span
+        className={`text-sm leading-relaxed ${
+          dark ? "text-white/65" : "text-[#494641]"
+        }`}
+      >
+        {text}
+      </span>
+    </div>
+  );
+}
+
+export function Evanio() {
+  return (
+    <section
+      id="evanio"
+      className="bg-[#f4f1eb] px-5 py-24 sm:px-8 md:py-32 lg:px-14"
+    >
+      <div className="mx-auto max-w-[1180px]">
+        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-20">
+          <div className="reveal overflow-hidden rounded-[2rem] bg-[#080808]">
+            <img
+              src={images.evanio}
+              alt="Evanio Vale"
+              className="aspect-[4/5] w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <div>
+            <div className="reveal">
+              <Eyebrow className="text-[#6f6b65]">Quem é Evanio Vale?</Eyebrow>
+
+              <h2 className="mt-6 font-display text-[clamp(3.2rem,7vw,7rem)] font-bold uppercase leading-[0.86] tracking-[-0.065em] text-[#080808]">
+                Experiência.
+                <span className="block text-[#77736c]">Ensino.</span>
+                <span className="block">Propósito.</span>
+              </h2>
+            </div>
+
+            <div className="reveal mt-8 max-w-2xl space-y-5 text-base leading-relaxed text-[#494641] md:text-lg">
+              <p>
+                Evanio Vale é pai do Pedro Elias e do Lucas José, casado com
+                Paulyceya do Vale.
+              </p>
+
+              <p>
+                São milhões de pessoas alcançadas que têm suas vidas
+                transformadas ao ouvirem a voz de Deus.
+              </p>
+
+              <p>
+                Há anos, tenho dedicado minha vida a ensinar, desenvolver
+                pessoas e ajudá-las a crescer em conhecimento e discernimento.
+                Depois de tantos anos de experiências, estudos, encontros e
+                ensinamentos, reúno parte dessa jornada no Instituto Acesso
+                Global para que mais pessoas possam aprender, crescer e
+                desenvolver aquilo que Deus colocou em suas mãos.
+              </p>
+            </div>
+
+            <div className="reveal mt-10 grid grid-cols-2 gap-5 border-t border-[#080808]/10 pt-8">
+              <div>
+                <strong className="font-display text-4xl font-bold tracking-[-0.05em] text-[#080808] md:text-5xl">
+                  +50 mil
+                </strong>
+
+                <p className="mt-2 font-display text-[0.6rem] font-bold uppercase tracking-[0.15em] text-[#6f6b65]">
+                  Inscritos no YouTube
+                </p>
+              </div>
+
+              <div>
+                <strong className="font-display text-4xl font-bold tracking-[-0.05em] text-[#080808] md:text-5xl">
+                  +15 mil
+                </strong>
+
+                <p className="mt-2 font-display text-[0.6rem] font-bold uppercase tracking-[0.15em] text-[#6f6b65]">
+                  Seguidores no Instagram
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function HowItWorks() {
+  return (
+    <section
+      id="como-funciona"
+      className="bg-white px-5 py-24 sm:px-8 md:py-32 lg:px-14"
+    >
+      <div className="mx-auto max-w-[1180px]">
+        <div className="reveal">
+          <Eyebrow className="text-[#6f6b65]">Como funciona</Eyebrow>
+
+          <h2 className="mt-6 max-w-5xl font-display text-[clamp(3.2rem,7vw,7rem)] font-bold uppercase leading-[0.86] tracking-[-0.065em] text-[#080808]">
+            Simples para
+            <span className="block text-[#77736c]">começar.</span>
+          </h2>
+        </div>
+
+        <div className="mt-14 grid gap-0 md:grid-cols-2 lg:grid-cols-4">
+          {howItWorks.map((item, index) => (
+            <div
+              key={item.number}
+              className="reveal border-t border-[#080808]/10 py-7 md:px-6 md:first:pl-0 md:last:pr-0 lg:border-l lg:border-t-0"
+              style={{
+                transitionDelay: `${index * 80}ms`,
+              }}
+            >
+              <span className="font-display text-xs font-bold text-[#77736c]">
+                {item.number}
+              </span>
+
+              <h3 className="mt-8 font-display text-2xl font-bold uppercase tracking-[-0.04em] text-[#080808]">
+                {item.title}
+              </h3>
+
+              <p className="mt-3 text-sm leading-relaxed text-[#6f6b65]">
+                {item.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Objections() {
+  const items = [
+    {
+      q: "Preciso ter conhecimento prévio?",
+      a: "Não necessariamente. A proposta é apresentar os conteúdos de forma organizada para pessoas que desejam estudar e aprofundar esses temas.",
+    },
+    {
+      q: "Para quem é o Instituto?",
+      a: "Para pessoas que desejam crescer em conhecimento, compreender melhor temas relacionados à vida espiritual e desenvolver maturidade pessoal e ministerial.",
+    },
+    {
+      q: "Os oito módulos fazem parte do Instituto?",
+      a: "Sim. Os oito módulos são o conteúdo principal do Instituto Acesso Global e fazem parte da jornada de acesso.",
+    },
+    {
+      q: "Posso estudar no meu próprio ritmo?",
+      a: "Sim. O acesso permite que você organize seus estudos de acordo com sua rotina durante o período contratado.",
+    },
+  ];
+
+  return (
+    <section
+      id="objecoes"
+      className="bg-[#f4f1eb] px-5 py-24 sm:px-8 md:py-32 lg:px-14"
+    >
+      <div className="mx-auto max-w-[1180px]">
+        <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+          <div className="reveal">
+            <Eyebrow className="text-[#6f6b65]">Antes de começar</Eyebrow>
+
+            <h2 className="mt-6 font-display text-[clamp(3rem,7vw,6.5rem)] font-bold uppercase leading-[0.86] tracking-[-0.06em] text-[#080808]">
+              Ainda tem
+              <span className="block text-[#77736c]">dúvidas?</span>
+            </h2>
+          </div>
+
+          <div>
+            {items.map((item, index) => (
+              <div
+                key={item.q}
+                className="reveal border-t border-[#080808]/10 py-7"
+                style={{
+                  transitionDelay: `${index * 60}ms`,
+                }}
+              >
+                <h3 className="font-display text-xl font-bold uppercase tracking-[-0.025em] text-[#080808] md:text-2xl">
+                  {item.q}
+                </h3>
+
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#6f6b65] md:text-base">
+                  {item.a}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function FinalCta() {
+  return (
+    <section className="bg-[#080808] px-5 py-28 text-white sm:px-8 md:py-40 lg:px-14">
+      <div className="mx-auto max-w-[1100px] text-center">
+        <div className="reveal">
+          <Eyebrow className="text-white/40">Sua próxima etapa</Eyebrow>
+
+          <h2 className="mx-auto mt-6 max-w-5xl font-display text-[clamp(3.5rem,9vw,9rem)] font-bold uppercase leading-[0.84] tracking-[-0.07em]">
+            Comece a
+            <span className="block text-white/45">aprender.</span>
+          </h2>
+
+          <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/55 md:text-lg">
+            Tenha acesso ao Instituto Acesso Global e comece sua jornada pelos
+            oito módulos de conteúdo.
+          </p>
 
           <a
-            href="#inicio"
-            className="inline-flex items-center gap-2 transition-colors hover:text-white"
+            href="#planos"
+            className="mx-auto mt-9 inline-flex items-center gap-4 rounded-full bg-white px-7 py-4 font-display text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#080808] transition-transform duration-300 hover:scale-[1.03]"
           >
-            Voltar ao início
-            <ArrowUpRight size={13} />
+            Ver planos
+
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#080808] text-white">
+              <ArrowRight size={15} />
+            </span>
           </a>
         </div>
       </div>
+    </section>
+  );
+}
+
+export function Faq() {
+  return (
+    <section
+      id="faq"
+      className="bg-white px-5 py-24 sm:px-8 md:py-32 lg:px-14"
+    >
+      <div className="mx-auto max-w-[1000px]">
+        <div className="reveal text-center">
+          <Eyebrow className="text-[#6f6b65]">
+            Perguntas frequentes
+          </Eyebrow>
+
+          <h2 className="mt-6 font-display text-[clamp(3.2rem,7vw,7rem)] font-bold uppercase leading-[0.86] tracking-[-0.065em] text-[#080808]">
+            FAQ
+          </h2>
+        </div>
+
+        <div className="mt-12">
+          {faqs.map((faq, index) => (
+            <details
+              key={faq.q}
+              className="reveal group border-t border-[#080808]/10 py-6"
+              style={{
+                transitionDelay: `${index * 40}ms`,
+              }}
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6">
+                <span className="font-display text-lg font-bold uppercase tracking-[-0.02em] text-[#080808] md:text-xl">
+                  {faq.q}
+                </span>
+
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#080808]/10 transition-transform duration-300 group-open:rotate-180">
+                  <ChevronDown size={16} />
+                </span>
+              </summary>
+
+              <p className="max-w-3xl pr-10 pt-4 text-sm leading-relaxed text-[#6f6b65] md:text-base">
+                {faq.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Footer() {
+  return (
+    <footer className="border-t border-white/10 bg-[#080808] px-5 py-10 text-white sm:px-8 lg:px-14">
+      <div className="mx-auto flex max-w-[1180px] flex-col gap-8 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="font-display text-sm font-bold uppercase tracking-[0.12em]">
+            Instituto Acesso Global
+          </p>
+
+          <p className="mt-2 text-sm text-white/40">
+            Conhecimento, discernimento e desenvolvimento.
+          </p>
+        </div>
+
+        <nav className="flex flex-wrap gap-x-5 gap-y-3">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-xs font-bold uppercase tracking-[0.12em] text-white/45 transition-colors hover:text-white"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <div className="mx-auto mt-8 max-w-[1180px] border-t border-white/10 pt-6">
+        <p className="text-xs text-white/25">
+          © {new Date().getFullYear()} Instituto Acesso Global. Todos os
+          direitos reservados.
+        </p>
+      </div>
     </footer>
   );
+}
+
+/* Componentes visuais auxiliares/legados.
+   Mantidos para evitar erros caso ainda estejam sendo importados em algum arquivo. */
+
+export function CinematicImage() {
+  return null;
+}
+
+export function AuthorityProof() {
+  return (
+    <section className="bg-[#080808] px-5 py-24 text-white sm:px-8 lg:px-14">
+      <div className="mx-auto max-w-[1180px]">
+        <Eyebrow className="text-white/40">Nossa proposta</Eyebrow>
+
+        <div className="mt-10 grid gap-0 md:grid-cols-2">
+          {authorityPoints.map((point, index) => (
+            <div
+              key={point}
+              className="border-t border-white/10 px-0 py-6 md:px-6 md:first:pl-0"
+            >
+              <span className="font-display text-xs font-bold text-white/30">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <p className="mt-4 max-w-md text-base leading-relaxed text-white/65">
+                {point}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ValueSection() {
+  return null;
+}
+
+export function SecuritySection() {
+  return null;
+}
+
+export function Manifesto() {
+  return null;
+}
+
+export function Methodology() {
+  return null;
+}
+
+export function Deliverables() {
+  return null;
 }
