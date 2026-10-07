@@ -1,9 +1,17 @@
 import event from "@/assets/event.jpg";
+import lion from "@/assets/lion.jpg";
 import hero from "@/assets/hero.jpg";
 import evanio from "@/assets/evanio.jpg";
-import lion from "@/assets/lion.jpg";
 import mac from "@/assets/mac.jpg";
 import bible from "@/assets/bible.jpg";
+
+import intimidade from "@/assets/intimidade.jpg";
+import dons from "@/assets/dons.jpg";
+import sonhos from "@/assets/sonhos.jpg"; 
+import profetica from "@/assets/profetica.jpg";
+import proposito from "@/assets/proposito.jpg";
+import financeiro from "@/assets/financeiro.jpg";
+import lideranca from "@/assets/lideranca.jpg";
 
 export const images = {
   event,
@@ -19,7 +27,8 @@ export const navLinks = [
   { label: "Início", href: "#inicio" },
   { label: "O Instituto", href: "#instituto" },
   { label: "Conteúdos", href: "#conteudos" },
-  { label: "Cursos", href: "#cursos" },
+  { label: "Planos", href: "#planos" },
+  { label: "Cursos", href: "#outros-cursos" },
   { label: "Evanio Vale", href: "#evanio" },
   { label: "FAQ", href: "#faq" },
 ];
@@ -41,56 +50,49 @@ export const modules: TeachingModule[] = [
     title: "Intimidade com Deus",
     description:
       "Um aprofundamento sobre relacionamento com Deus, vida espiritual e fundamentos para uma caminhada mais consciente.",
-    image: event,
+    image: intimidade,
   },
   {
     number: "02",
     title: "Dons Espirituais e Discernimento",
     description:
       "Estudo dos dons espirituais e do discernimento necessário para compreender suas manifestações à luz das Escrituras.",
-    image: lion,
+    image: dons,
   },
   {
     number: "03",
     title: "Interpretação de Sonhos à Luz da Bíblia",
     description:
       "Uma abordagem sobre sonhos, interpretações e critérios para compreender esse tema a partir da perspectiva bíblica.",
-    image: bible,
+    image: sonhos,
   },
   {
     number: "04",
     title: "Vida Profética",
     description:
       "Estudos relacionados à profecia, ao desenvolvimento da vida profética e à compreensão do chamado profético.",
-    image: hero,
+    image: profetica,
   },
   {
     number: "05",
     title: "Propósito e Chamado",
     description:
       "Reflexões sobre propósito, chamado e a construção de uma vida alinhada àquilo que Deus confiou a cada pessoa.",
-    image: evanio,
+    image: proposito,
   },
   {
     number: "06",
     title: "Sabedoria Financeira e Prosperidade do Reino",
     description:
       "Princípios de sabedoria financeira, administração e compreensão da prosperidade dentro de uma perspectiva do Reino.",
-    image: mac,
+    image: financeiro,
   },
   {
     number: "07",
     title: "Liderança e Multiplicação",
     description:
       "Fundamentos de liderança, desenvolvimento de pessoas e multiplicação de conhecimento, influência e propósito.",
-    image: event,
-  },
-  {
-    number: "08",
-    title: "Tipos de Oração",
-    description:
-      "Um estudo sobre diferentes formas de oração e sua importância na vida espiritual.",
-    image: bible,
+    image: lideranca,
   },
 ];
 

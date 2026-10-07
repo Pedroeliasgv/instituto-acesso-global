@@ -24,6 +24,8 @@ export {
   Deliverables,
 } from "./site/Sections";
 
+export { PricingModal } from "./site/PricingModal";
+
 export { Courses } from "./site/Courses";
 
 export {

@@ -1,4 +1,5 @@
 ﻿import { ArrowRight, Check, ChevronDown } from "lucide-react";
+import { useState } from "react";
 import {
   authorityPoints,
   faqs,
@@ -11,7 +12,11 @@ import {
 } from "@/data/site";
 import { Eyebrow } from "./ui";
 
-export function Hero() {
+interface HeroProps {
+  onOpenPricing: () => void;
+}
+
+export function Hero({ onOpenPricing }: HeroProps) {
   return (
     <section
       id="inicio"
@@ -47,8 +52,9 @@ export function Hero() {
               em conhecimento, vida espiritual e desenvolvimento ministerial.
             </p>
 
-            <a
-              href="#planos"
+            <button
+              type="button"
+              onClick={onOpenPricing}
               className="inline-flex w-fit shrink-0 items-center gap-4 rounded-full bg-white px-6 py-4 font-display text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[#080808] transition-transform duration-300 hover:scale-[1.03]"
             >
               Conhecer o Instituto
@@ -56,7 +62,7 @@ export function Hero() {
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#080808] text-white">
                 <ArrowRight size={15} />
               </span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -357,14 +363,25 @@ export function About() {
   );
 }
 
+
 export function Modules() {
+  const [current, setCurrent] = useState(0);
+
+  const nextModule = () => {
+    setCurrent((prev) => Math.min(prev + 1, modules.length - 1));
+  };
+
+  const previousModule = () => {
+    setCurrent((prev) => Math.max(prev - 1, 0));
+  };
+
   return (
     <section
       id="modulos"
-      className="bg-[#f4f1eb] px-5 py-24 sm:px-8 md:py-32 lg:px-14"
+      className="overflow-hidden bg-[#f4f1eb] px-5 py-24 sm:px-8 md:py-32 lg:px-14"
     >
       <div className="mx-auto max-w-[1180px]">
-        <div className="reveal flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="reveal flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
             <Eyebrow className="text-[#6f6b65]">
               O que você vai aprender
@@ -377,45 +394,125 @@ export function Modules() {
           </div>
 
           <p className="max-w-sm text-sm leading-relaxed text-[#6f6b65] md:text-right">
-            Os módulos fazem parte do Instituto Acesso Global e foram
-            organizados para formar uma jornada progressiva de aprendizado.
+            Uma jornada progressiva de aprendizado, organizada em oito módulos.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
-          {modules.map((module, index) => (
-            <article
-              key={module.number}
-              className="reveal group overflow-hidden rounded-[2rem] bg-white"
+        <div className="relative mt-14">
+          <button
+            type="button"
+            onClick={previousModule}
+            disabled={current === 0}
+            aria-label="Módulo anterior"
+            className="absolute left-0 top-1/2 z-20 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#080808]/10 bg-white text-[#080808] shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#080808] hover:text-white disabled:pointer-events-none disabled:opacity-20 lg:flex"
+          >
+            <ArrowRight size={19} className="rotate-180" />
+          </button>
+
+          <div className="mx-auto w-full max-w-[820px] overflow-hidden px-0 lg:px-20">
+            <div
+              className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
               style={{
-                transitionDelay: `${index * 70}ms`,
+                transform: `translateX(-${current * 100}%)`,
               }}
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={module.image}
-                  alt={module.title}
-                  loading="lazy"
-                  className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
+              {modules.map((module, index) => (
+                <article
+                  key={module.number}
+                  className="w-full shrink-0 px-0"
+                >
+                  <div
+                    className="reveal group mx-auto max-w-[620px] overflow-hidden rounded-[2rem] bg-white shadow-sm transition-all duration-500"
+                    style={{
+                      transitionDelay: `${index * 70}ms`,
+                    }}
+                  >
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={module.image}
+                        alt={module.title}
+                        loading="lazy"
+                        className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-transparent" />
 
-                <span className="absolute left-6 top-6 rounded-full bg-white px-4 py-2 font-display text-[0.6rem] font-bold uppercase tracking-[0.15em] text-[#080808]">
-                  Módulo {module.number}
-                </span>
-              </div>
+                      <span className="absolute left-6 top-6 rounded-full bg-white px-4 py-2 font-display text-[0.6rem] font-bold uppercase tracking-[0.15em] text-[#080808]">
+                        Módulo {module.number}
+                      </span>
+                    </div>
 
-              <div className="p-7 md:p-8">
-                <h3 className="font-display text-[clamp(2rem,4vw,3.4rem)] font-bold uppercase leading-[0.88] tracking-[-0.055em] text-[#080808]">
-                  {module.title}
-                </h3>
+                    <div className="p-7 md:p-9">
+                      <div className="flex items-start justify-between gap-6">
+                        <h3 className="max-w-xl font-display text-[clamp(2.2rem,5vw,4rem)] font-bold uppercase leading-[0.88] tracking-[-0.055em] text-[#080808]">
+                          {module.title}
+                        </h3>
 
-                <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#494641] md:text-base">
-                  {module.description}
-                </p>
-              </div>
-            </article>
+                        <span className="hidden shrink-0 font-display text-xs font-bold text-[#77736c] md:block">
+                          {module.number} / 08
+                        </span>
+                      </div>
+
+                      <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#494641] md:text-base">
+                        {module.description}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={nextModule}
+            disabled={current === modules.length - 1}
+            aria-label="Próximo módulo"
+            className="absolute right-0 top-1/2 z-20 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#080808]/10 bg-white text-[#080808] shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#080808] hover:text-white disabled:pointer-events-none disabled:opacity-20 lg:flex"
+          >
+            <ArrowRight size={19} />
+          </button>
+
+          <div className="mt-7 flex items-center justify-center gap-3 lg:hidden">
+            <button
+              type="button"
+              onClick={previousModule}
+              disabled={current === 0}
+              aria-label="Módulo anterior"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#080808]/10 bg-white text-[#080808] transition-all duration-300 disabled:opacity-25"
+            >
+              <ArrowRight size={16} className="rotate-180" />
+            </button>
+
+            <span className="min-w-[70px] text-center font-display text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#77736c]">
+              {String(current + 1).padStart(2, "0")} / 08
+            </span>
+
+            <button
+              type="button"
+              onClick={nextModule}
+              disabled={current === modules.length - 1}
+              aria-label="Próximo módulo"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#080808]/10 bg-white text-[#080808] transition-all duration-300 disabled:opacity-25"
+            >
+              <ArrowRight size={16} />
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-8 flex items-center justify-center gap-2">
+          {modules.map((module, index) => (
+            <button
+              key={module.number}
+              type="button"
+              onClick={() => setCurrent(index)}
+              aria-label={`Ir para o módulo ${module.number}`}
+              className={`h-1 rounded-full transition-all duration-500 ${
+                index === current
+                  ? "w-8 bg-[#080808]"
+                  : "w-2 bg-[#080808]/20 hover:bg-[#080808]/40"
+              }`}
+            />
           ))}
         </div>
       </div>
@@ -423,19 +520,41 @@ export function Modules() {
   );
 }
 
+
+
 export function Pricing() {
   return (
     <section
       id="planos"
-      className="bg-[#080808] px-5 py-24 text-white sm:px-8 md:py-32 lg:px-14"
+      className="relative overflow-hidden bg-[#080808] px-5 py-24 text-white sm:px-8 md:py-32 lg:px-14"
     >
-      <div className="mx-auto max-w-[1180px]">
-        <div className="reveal mx-auto max-w-4xl text-center">
-          <Eyebrow className="text-white/45">Escolha seu acesso</Eyebrow>
+      {/* Brilhos decorativos */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-[#b18a4a]/10 blur-[120px]"
+      />
 
-          <h2 className="mt-6 font-display text-[clamp(3.4rem,8vw,8rem)] font-bold uppercase leading-[0.84] tracking-[-0.065em]">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-[#7957d5]/10 blur-[140px]"
+      />
+
+      <div className="relative z-10 mx-auto max-w-[1180px]">
+        {/* CABEÇALHO */}
+        <div className="reveal mx-auto max-w-4xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#b18a4a]" />
+
+            <Eyebrow className="text-white/50">
+              Escolha seu acesso
+            </Eyebrow>
+          </div>
+
+          <h2 className="mt-7 font-display text-[clamp(3.4rem,8vw,8rem)] font-bold uppercase leading-[0.84] tracking-[-0.065em]">
             Comece sua
-            <span className="block text-white/45">jornada.</span>
+            <span className="block bg-gradient-to-r from-[#b18a4a] via-[#d0ad70] to-[#8a6938] bg-clip-text text-transparent">
+              jornada.
+            </span>
           </h2>
 
           <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-white/55 md:text-lg">
@@ -444,115 +563,167 @@ export function Pricing() {
           </p>
         </div>
 
+        {/* PLANOS */}
         <div className="mx-auto mt-14 grid max-w-5xl gap-6 lg:grid-cols-2">
-          <article className="reveal relative rounded-[2rem] bg-white p-7 text-[#080808] md:p-9">
-            <span className="absolute right-6 top-6 rounded-full bg-[#080808] px-4 py-2 font-display text-[0.58rem] font-bold uppercase tracking-[0.14em] text-white">
-              Mais vantajoso
-            </span>
+          {/* PLANO ANUAL */}
+          <article
+            className="reveal relative overflow-hidden rounded-[2rem] border border-[#b18a4a]/30 bg-gradient-to-br from-white via-[#fffdf8] to-[#eadcc5] p-7 text-[#080808] shadow-[0_20px_70px_rgba(177,138,74,0.12)] transition-transform duration-500 hover:-translate-y-1 md:p-9"
+          >
+            {/* Glow */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#b18a4a]/15 blur-3xl"
+            />
 
-            <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-[#6f6b65]">
-              Acesso anual
-            </p>
-
-            <div className="mt-8">
-              <span className="text-sm text-[#77736c] line-through">
-                R$ 1.497,00
+            <div className="relative">
+              {/* Badge */}
+              <span className="absolute right-0 top-0 rounded-full bg-gradient-to-r from-[#8a6938] to-[#b18a4a] px-4 py-2 font-display text-[0.58rem] font-bold uppercase tracking-[0.14em] text-white shadow-md">
+                Mais vantajoso
               </span>
 
-              <div className="mt-1 flex flex-wrap items-end gap-x-3 gap-y-1">
-                <span className="font-display text-6xl font-bold tracking-[-0.06em]">
-                  R$ 897
+              <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-[#8a6938]">
+                Acesso anual
+              </p>
+
+              <div className="mt-8">
+                <span className="text-sm text-[#918b82] line-through">
+                  R$ 1.497,00
                 </span>
 
-                <span className="mb-2 text-sm text-[#6f6b65]">/ ano</span>
+                <div className="mt-1 flex flex-wrap items-end gap-x-3 gap-y-1">
+                  <span className="font-display text-6xl font-bold tracking-[-0.06em]">
+                    R$ 897
+                  </span>
+
+                  <span className="mb-2 text-sm text-[#625e58]">
+                    / ano
+                  </span>
+                </div>
+
+                <p className="mt-2 text-sm font-semibold text-[#8a6938]">
+                  ou 12x de R$ 94,97
+                </p>
               </div>
 
-              <p className="mt-2 text-sm text-[#6f6b65]">
-                ou 12x de R$ 94,97
-              </p>
-            </div>
+              <div className="mt-8 border-t border-[#8a6938]/15 pt-7">
+                <div className="space-y-4">
+                  <Benefit text="Acesso integral por 1 ano" />
 
-            <div className="mt-8 border-t border-[#080808]/10 pt-7">
-              <div className="space-y-4">
-                <Benefit text="Acesso integral por 1 ano" />
-                <Benefit text="8 módulos do Instituto Acesso Global" />
-                <Benefit text="Estudo no seu próprio ritmo" />
+                  <Benefit text="8 módulos do Instituto Acesso Global" />
+
+                  <Benefit text="Estudo no seu próprio ritmo" />
+                </div>
               </div>
+
+              <a
+                href="https://pay.hotmart.com/M107931141B?bid=1791397163725"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-9 flex w-full items-center justify-between rounded-full bg-[#080808] px-6 py-4 font-display text-[0.65rem] font-bold uppercase tracking-[0.15em] text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-[#211d18] hover:shadow-xl"
+              >
+                <span>Quero acesso anual</span>
+
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#b18a4a] text-white transition-transform duration-300 group-hover:translate-x-1">
+                  <ArrowRight size={15} />
+                </span>
+              </a>
             </div>
-
-            <a
-              href="#"
-              className="mt-9 flex w-full items-center justify-between rounded-full bg-[#080808] px-6 py-4 font-display text-[0.65rem] font-bold uppercase tracking-[0.15em] text-white transition-transform duration-300 hover:scale-[1.02]"
-            >
-              Quero acesso anual
-
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
-                <ArrowRight size={15} />
-              </span>
-            </a>
           </article>
 
-          <article className="reveal rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 md:p-9">
-            <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-white/40">
-              Assinatura mensal
-            </p>
+          {/* PLANO MENSAL */}
+          <article
+            className="reveal relative overflow-hidden rounded-[2rem] border border-[#7957d5]/30 bg-gradient-to-br from-[#15111f] via-[#0c0a10] to-[#080808] p-7 text-white shadow-[0_20px_70px_rgba(121,87,213,0.14)] transition-transform duration-500 hover:-translate-y-1 md:p-9"
+          >
+            {/* Glows */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#7957d5]/20 blur-3xl"
+            />
 
-            <div className="mt-8">
-              <span className="text-sm text-white/35 line-through">
-                R$ 147,00
-              </span>
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-32 -left-24 h-64 w-64 rounded-full bg-[#4c347c]/20 blur-3xl"
+            />
 
-              <div className="mt-1 flex flex-wrap items-end gap-x-3 gap-y-1">
-                <span className="font-display text-6xl font-bold tracking-[-0.06em]">
-                  R$ 97
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#9b7cf0]/25 bg-[#9b7cf0]/10 px-3 py-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#9b7cf0]" />
+
+                <p className="font-display text-[0.58rem] font-bold uppercase tracking-[0.16em] text-[#bba7ff]">
+                  Assinatura mensal
+                </p>
+              </div>
+
+              <div className="mt-8">
+                <span className="text-sm text-white/35 line-through">
+                  R$ 147,00
                 </span>
 
-                <span className="mb-2 text-sm text-white/40">/ mês</span>
+                <div className="mt-1 flex flex-wrap items-end gap-x-3 gap-y-1">
+                  <span className="font-display text-6xl font-bold tracking-[-0.06em]">
+                    R$ 97
+                  </span>
+
+                  <span className="mb-2 text-sm text-white/40">
+                    / mês
+                  </span>
+                </div>
+
+                <p className="mt-2 text-sm font-semibold text-[#bba7ff]">
+                  assinatura recorrente
+                </p>
               </div>
 
-              <p className="mt-2 text-sm text-white/40">
-                assinatura recorrente
-              </p>
-            </div>
+              <div className="mt-8 border-t border-white/10 pt-7">
+                <div className="space-y-4">
+                  <Benefit
+                    text="Acesso enquanto a assinatura estiver ativa"
+                    dark
+                  />
 
-            <div className="mt-8 border-t border-white/10 pt-7">
-              <div className="space-y-4">
-                <Benefit
-                  text="Acesso enquanto a assinatura estiver ativa"
-                  dark
-                />
-                <Benefit text="8 módulos do Instituto Acesso Global" dark />
-                <Benefit text="Cobrança recorrente mensal" dark />
+                  <Benefit
+                    text="8 módulos do Instituto Acesso Global"
+                    dark
+                  />
+
+                  <Benefit
+                    text="Cobrança recorrente mensal"
+                    dark
+                  />
+                </div>
               </div>
+
+              <a
+                href="https://pay.hotmart.com/M107931141B?off=iaddcka9&checkoutMode=6&bid=1791397625677"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-9 flex w-full items-center justify-between rounded-full bg-white px-6 py-4 font-display text-[0.65rem] font-bold uppercase tracking-[0.15em] text-[#080808] shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-[#eeeaff] hover:shadow-xl"
+              >
+                <span>Quero assinar</span>
+
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#7957d5] text-white transition-transform duration-300 group-hover:translate-x-1">
+                  <ArrowRight size={15} />
+                </span>
+              </a>
             </div>
-
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <p className="text-xs leading-relaxed text-white/45">
-                A assinatura é encerrada ao final de 12 cobranças.
-              </p>
-            </div>
-
-            <a
-              href="#"
-              className="mt-7 flex w-full items-center justify-between rounded-full border border-white/15 px-6 py-4 font-display text-[0.65rem] font-bold uppercase tracking-[0.15em] text-white transition-all duration-300 hover:bg-white hover:text-[#080808]"
-            >
-              Quero assinar
-
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
-                <ArrowRight size={15} />
-              </span>
-            </a>
           </article>
         </div>
 
-        <p className="reveal mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed text-white/30">
-          Os valores promocionais apresentados podem ser alterados conforme a
-          disponibilidade da oferta.
-        </p>
+        {/* RODAPÉ */}
+        <div className="reveal mt-8 flex items-center justify-center gap-3">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#b18a4a]" />
+
+          <p className="text-center text-xs leading-relaxed text-white/30">
+            Escolha a modalidade que melhor se encaixa na sua jornada.
+          </p>
+
+          <span className="h-1.5 w-1.5 rounded-full bg-[#7957d5]" />
+        </div>
       </div>
     </section>
   );
 }
+
 
 function Benefit({
   text,
@@ -606,9 +777,9 @@ export function Evanio() {
               </Eyebrow>
 
               <h2 className="mt-6 font-display text-[clamp(3.2rem,7vw,7rem)] font-bold uppercase leading-[0.86] tracking-[-0.065em] text-[#080808]">
-                Experiência.
-                <span className="block text-[#77736c]">Ensino.</span>
-                <span className="block">Propósito.</span>
+                Quem é
+                <span className="block text-[#77736c]">Evanio</span>
+                <span className="block">Vale?</span>
               </h2>
             </div>
 
