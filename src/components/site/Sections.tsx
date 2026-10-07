@@ -11,51 +11,38 @@ import {
 } from "@/data/site";
 import { Eyebrow } from "./ui";
 
-const dark = "#080808";
-const light = "#f4f1eb";
-const muted = "#494641";
-const soft = "#77736c";
-const detail = "#6f6b65";
-
 export function Hero() {
   return (
     <section
       id="inicio"
       className="relative flex min-h-screen items-end overflow-hidden bg-[#080808] text-white"
     >
-      {/* FOTO — ocupa a tela inteira */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <img
           src={images.hero}
           alt="Instituto Acesso Global"
-          className="h-full w-full object-cover object-center scale-[1.04] opacity-60"
+          className="h-full w-full object-cover object-[center_15%] opacity-60"
         />
 
-        {/* Camufla a transição com o navbar */}
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/75 via-black/30 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/70 via-black/25 to-transparent" />
 
-        {/* Escurecimento geral */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 pb-16 pt-40 sm:px-8 md:pb-24 lg:px-14">
-        <div className="max-w-5xl">
+      <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 pb-14 pt-40 sm:px-8 md:pb-20 lg:px-14">
+        <div className="max-w-4xl">
           <Eyebrow className="text-white/60">
             Instituto Acesso Global
           </Eyebrow>
 
-          <h1 className="mt-6 max-w-6xl font-display text-[clamp(4rem,10vw,10rem)] font-bold uppercase leading-[0.86] tracking-[-0.065em]">
+          <h1 className="mt-5 max-w-4xl font-display text-[clamp(3.2rem,7vw,7.5rem)] font-bold uppercase leading-[0.86] tracking-[-0.06em]">
             Conhecimento.
-            <span className="block text-white/55">
-              Discernimento.
-            </span>
-            <span className="block">
-              Propósito.
-            </span>
+            <span className="block text-white/55">Discernimento.</span>
+            <span className="block">Propósito.</span>
           </h1>
 
-          <div className="mt-8 flex max-w-2xl flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <p className="max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
+          <div className="mt-7 flex max-w-2xl flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <p className="max-w-lg text-sm leading-relaxed text-white/70 md:text-base">
               Uma jornada de ensino e aprofundamento para quem deseja crescer
               em conhecimento, vida espiritual e desenvolvimento ministerial.
             </p>
@@ -84,7 +71,6 @@ export function Presentation() {
       className="relative overflow-hidden bg-white px-5 py-28 sm:px-8 md:py-36 lg:px-14"
     >
       <div className="mx-auto max-w-[1180px]">
-        {/* Cabeçalho */}
         <div className="reveal">
           <Eyebrow className="text-[#6f6b65]">
             Instituto Acesso Global
@@ -92,16 +78,11 @@ export function Presentation() {
 
           <h2 className="mt-6 max-w-6xl font-display text-[clamp(3.8rem,9vw,9rem)] font-bold uppercase leading-[0.82] tracking-[-0.075em] text-[#080808]">
             Você não precisa
-            <span className="block text-[#77736c]">
-              continuar no
-            </span>
-            <span className="block">
-              superficial.
-            </span>
+            <span className="block text-[#77736c]">continuar no</span>
+            <span className="block">superficial.</span>
           </h2>
         </div>
 
-        {/* Conteúdo */}
         <div className="mt-16 grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-24">
           <div className="reveal">
             <p className="max-w-3xl text-xl font-medium leading-relaxed tracking-[-0.02em] text-[#080808] md:text-3xl">
@@ -131,7 +112,6 @@ export function Presentation() {
             </a>
           </div>
 
-          {/* Números / impacto */}
           <div className="reveal">
             <div className="overflow-hidden rounded-[2rem] bg-[#080808] text-white">
               <div className="border-b border-white/10 p-7 md:p-9">
@@ -174,7 +154,6 @@ export function Presentation() {
           </div>
         </div>
 
-        {/* Frase de impacto */}
         <div className="reveal mt-20 border-y border-[#080808]/10 py-8 md:mt-28 md:py-10">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <p className="max-w-3xl font-display text-2xl font-bold uppercase leading-tight tracking-[-0.04em] text-[#080808] md:text-4xl">
@@ -190,8 +169,6 @@ export function Presentation() {
     </section>
   );
 }
-
-
 
 export function Dores() {
   return (
@@ -341,9 +318,7 @@ export function About() {
       <div className="mx-auto max-w-[1180px]">
         <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
           <div className="reveal">
-            <Eyebrow className="text-white/40">
-              O que você encontra
-            </Eyebrow>
+            <Eyebrow className="text-white/40">O que você encontra</Eyebrow>
 
             <h2 className="mt-6 font-display text-[clamp(3rem,7vw,6.5rem)] font-bold uppercase leading-[0.86] tracking-[-0.06em]">
               Conteúdo
@@ -391,7 +366,9 @@ export function Modules() {
       <div className="mx-auto max-w-[1180px]">
         <div className="reveal flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <Eyebrow className="text-[#6f6b65]">O que você vai aprender</Eyebrow>
+            <Eyebrow className="text-[#6f6b65]">
+              O que você vai aprender
+            </Eyebrow>
 
             <h2 className="mt-6 max-w-4xl font-display text-[clamp(3.2rem,7vw,7rem)] font-bold uppercase leading-[0.86] tracking-[-0.065em] text-[#080808]">
               8 módulos.
@@ -468,7 +445,6 @@ export function Pricing() {
         </div>
 
         <div className="mx-auto mt-14 grid max-w-5xl gap-6 lg:grid-cols-2">
-          {/* ANUAL */}
           <article className="reveal relative rounded-[2rem] bg-white p-7 text-[#080808] md:p-9">
             <span className="absolute right-6 top-6 rounded-full bg-[#080808] px-4 py-2 font-display text-[0.58rem] font-bold uppercase tracking-[0.14em] text-white">
               Mais vantajoso
@@ -488,9 +464,7 @@ export function Pricing() {
                   R$ 897
                 </span>
 
-                <span className="mb-2 text-sm text-[#6f6b65]">
-                  / ano
-                </span>
+                <span className="mb-2 text-sm text-[#6f6b65]">/ ano</span>
               </div>
 
               <p className="mt-2 text-sm text-[#6f6b65]">
@@ -518,7 +492,6 @@ export function Pricing() {
             </a>
           </article>
 
-          {/* MENSAL */}
           <article className="reveal rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 md:p-9">
             <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-white/40">
               Assinatura mensal
@@ -534,9 +507,7 @@ export function Pricing() {
                   R$ 97
                 </span>
 
-                <span className="mb-2 text-sm text-white/40">
-                  / mês
-                </span>
+                <span className="mb-2 text-sm text-white/40">/ mês</span>
               </div>
 
               <p className="mt-2 text-sm text-white/40">
@@ -546,7 +517,10 @@ export function Pricing() {
 
             <div className="mt-8 border-t border-white/10 pt-7">
               <div className="space-y-4">
-                <Benefit text="Acesso enquanto a assinatura estiver ativa" dark />
+                <Benefit
+                  text="Acesso enquanto a assinatura estiver ativa"
+                  dark
+                />
                 <Benefit text="8 módulos do Instituto Acesso Global" dark />
                 <Benefit text="Cobrança recorrente mensal" dark />
               </div>
@@ -627,7 +601,9 @@ export function Evanio() {
 
           <div>
             <div className="reveal">
-              <Eyebrow className="text-[#6f6b65]">Quem é Evanio Vale?</Eyebrow>
+              <Eyebrow className="text-[#6f6b65]">
+                Quem é Evanio Vale?
+              </Eyebrow>
 
               <h2 className="mt-6 font-display text-[clamp(3.2rem,7vw,7rem)] font-bold uppercase leading-[0.86] tracking-[-0.065em] text-[#080808]">
                 Experiência.
