@@ -422,17 +422,25 @@ export function FinalCta() {
         className="final-cta-image absolute inset-0 h-full"
       />
 
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.86)_0%,rgba(8,8,8,0.5)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,#8D8D8D_0px,#8D8D8D_500px,rgba(141,141,141,0.65)_570px,rgba(141,141,141,0.2)_680px,transparent_760px)]" />
 
       <div className="relative mx-auto w-full max-w-[1600px] px-5 py-20 sm:px-8 md:py-28 lg:px-14">
         <Eyebrow className="reveal text-white/60">
           Instituto Acesso Global
         </Eyebrow>
 
-        <h2 className="headline reveal mt-8 text-[clamp(4.3rem,13vw,12rem)] leading-[0.8]">
-          Dê o
-          <span className="block">próximo</span>
-          <span className="block">passo.</span>
+        <h2 className="headline reveal mt-8 text-[clamp(4.3rem,13vw,12rem)] leading-[0.78]">
+          <span className="block text-[0.55em] tracking-[-0.04em] text-white/75">
+            Dê o
+          </span>
+
+          <span className="block">
+            próximo
+          </span>
+
+          <span className="outline-text block text-white">
+            passo.
+          </span>
         </h2>
 
         <div className="reveal mt-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">

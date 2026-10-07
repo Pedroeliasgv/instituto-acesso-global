@@ -447,3 +447,16 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+.final-cta-image img {
+  object-position: center 20%;
+}
+
+.final-cta-image {
+  transform: translateX(500px);
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
+}
