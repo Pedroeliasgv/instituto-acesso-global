@@ -1,11 +1,41 @@
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaTiktok,
+  FaYoutube,
+} from "react-icons/fa";
+
 import { navLinks } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
   onOpenPricing: () => void;
 }
+
+const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/evanio_vale/",
+    icon: FaInstagram,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@profetaevaniovale",
+    icon: FaYoutube,
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profeta.evanio.vale",
+    icon: FaFacebook,
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@profetaevaniovale?_r=1&_t=ZS-9AO7Scxn3TE",
+    icon: FaTiktok,
+  },
+];
 
 export function Logo({ className }: { className?: string }) {
   return (
@@ -187,6 +217,26 @@ export function Header({ onOpenPricing }: HeaderProps) {
         </nav>
 
         <div className="flex items-center gap-3">
+          {/* REDES SOCIAIS */}
+          <div className="hidden items-center gap-2 lg:flex">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.label}
+                  className="grid h-8 w-8 place-items-center text-white/50 transition-colors duration-300 hover:text-white"
+                >
+                  <Icon size={14} aria-hidden="true" />
+                </a>
+              );
+            })}
+          </div>
+
           <button
             type="button"
             onClick={onOpenPricing}
@@ -251,6 +301,28 @@ export function Header({ onOpenPricing }: HeaderProps) {
               </a>
             ))}
           </nav>
+
+          {/* REDES SOCIAIS — MOBILE */}
+          <div className="border-t border-white/20 py-5">
+            <div className="flex items-center gap-5">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={social.label}
+                    className="text-white/50 transition-colors duration-300 hover:text-white"
+                  >
+                    <Icon size={18} aria-hidden="true" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
 
           <button
             type="button"

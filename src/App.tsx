@@ -126,11 +126,9 @@ function App() {
 
         <Marquee tone="light" />
 
-        <Intro onOpenPricing={openPricing} />
+        <Modules onOpenPricing={openPricing} />
 
         <About onOpenPricing={openPricing} />
-
-        <Modules onOpenPricing={openPricing} />
 
         <Pricing />
 
@@ -141,8 +139,6 @@ function App() {
         <HowItWorks onOpenPricing={openPricing} />
 
         <Objections onOpenPricing={openPricing} />
-
-        <FinalCta onOpenPricing={openPricing} />
 
         <Faq onOpenPricing={openPricing} />
       </main>
