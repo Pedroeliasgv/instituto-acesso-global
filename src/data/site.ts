@@ -1,5 +1,5 @@
 import event from "@/assets/event.jpg";
-import lion from "@/assets/lion.jpg";
+import cdons from "@/assets/curso_dons.jpg";
 import hero from "@/assets/hero.jpg";
 import evanio from "@/assets/evanio.jpg";
 import mac from "@/assets/mac.jpg";
@@ -7,21 +7,29 @@ import bible from "@/assets/bible.jpg";
 
 import intimidade from "@/assets/intimidade.jpg";
 import dons from "@/assets/dons.jpg";
-import sonhos from "@/assets/sonhos.jpg"; 
+import sonhos from "@/assets/sonhos.jpg";
 import profetica from "@/assets/profetica.jpg";
 import proposito from "@/assets/proposito.jpg";
 import financeiro from "@/assets/financeiro.jpg";
 import lideranca from "@/assets/lideranca.jpg";
+
+/* =========================================================
+   IMAGENS
+   ========================================================= */
 
 export const images = {
   event,
   hero,
   portrait: "/portrait.jpg",
   evanio,
-  lion,
+  cdons,
   mac,
   bible,
 };
+
+/* =========================================================
+   NAVEGAÇÃO
+   ========================================================= */
 
 export const navLinks = [
   { label: "Início", href: "#inicio" },
@@ -115,7 +123,13 @@ export const painPoints = [
    INSTITUTO
    ========================================================= */
 
-export const institutePoints = [
+export interface InstitutePoint {
+  number: string;
+  title: string;
+  text: string;
+}
+
+export const institutePoints: InstitutePoint[] = [
   {
     number: "01",
     title: "Estudo",
@@ -142,7 +156,13 @@ export const institutePoints = [
    PILARES
    ========================================================= */
 
-export const pillars = [
+export interface Pillar {
+  n: string;
+  title: string;
+  text: string;
+}
+
+export const pillars: Pillar[] = [
   {
     n: "01",
     title: "Ensino",
@@ -169,7 +189,13 @@ export const pillars = [
    O QUE VOCÊ ENCONTRA
    ========================================================= */
 
-export const deliverables = [
+export interface Deliverable {
+  number: string;
+  title: string;
+  text: string;
+}
+
+export const deliverables: Deliverable[] = [
   {
     number: "01",
     title: "Cursos",
@@ -206,11 +232,33 @@ export const deliverables = [
    AUTORIDADE
    ========================================================= */
 
-export const authorityPoints = [
-  "Ensino focado em estudo e aprofundamento",
-  "Conteúdo desenvolvido para temas específicos",
-  "Perspectiva fundamentada nas Escrituras",
-  "Busca por clareza, discernimento e maturidade",
+export interface AuthorityPoint {
+  number: string;
+  title: string;
+  text: string;
+}
+
+export const authorityPoints: AuthorityPoint[] = [
+  {
+    number: "01",
+    title: "Ensino",
+    text: "Ensino focado em estudo e aprofundamento.",
+  },
+  {
+    number: "02",
+    title: "Conteúdo",
+    text: "Conteúdo desenvolvido para temas específicos.",
+  },
+  {
+    number: "03",
+    title: "Escrituras",
+    text: "Perspectiva fundamentada nas Escrituras.",
+  },
+  {
+    number: "04",
+    title: "Maturidade",
+    text: "Busca por clareza, discernimento e maturidade.",
+  },
 ];
 
 /* =========================================================
@@ -235,7 +283,7 @@ export const courses: Course[] = [
     type: "Curso",
     description:
       "Um estudo sobre os dons espirituais e sua compreensão à luz das Escrituras.",
-    image: lion,
+    image: cdons,
     href: "https://hotmart.com/pt-br/marketplace/produtos/hagsxd-curso-de-dons-espirituais-btgoa/S85674996V?preview=true",
     label: "Conhecer o curso",
     highlights: [
@@ -265,22 +313,27 @@ export const courses: Course[] = [
    OBJEÇÕES
    ========================================================= */
 
-export const objections = [
+export interface Objection {
+  q: string;
+  a: string;
+}
+
+export const objections: Objection[] = [
   {
     q: "Preciso ter conhecimento prévio?",
-    a: "Nem sempre. Cada conteúdo possui uma proposta própria. Consulte os detalhes do produto escolhido para entender melhor o nível e a abordagem.",
+    a: "Não. O Instituto foi pensado para pessoas que desejam aprofundar seus conhecimentos e desenvolver uma compreensão mais madura dos temas apresentados.",
   },
   {
-    q: "Para quem são os conteúdos?",
-    a: "Para pessoas que desejam estudar, compreender melhor temas relacionados à vida espiritual e aprofundar seu conhecimento.",
+    q: "O que está incluído no acesso?",
+    a: "O acesso ao Instituto inclui os 7 módulos que compõem sua jornada de aprendizado.",
   },
   {
-    q: "Posso estudar mais de um conteúdo?",
-    a: "Sim. Os produtos são independentes e você pode escolher aqueles que mais fazem sentido para seus objetivos.",
+    q: "Posso escolher entre plano anual e mensal?",
+    a: "Sim. Você pode escolher entre o acesso anual ou a assinatura mensal, de acordo com a opção que fizer mais sentido para você.",
   },
   {
     q: "Como funciona o acesso?",
-    a: "A inscrição acontece pela página oficial do produto. Depois da compra, o acesso é disponibilizado pela plataforma indicada.",
+    a: "A inscrição é realizada pela Hotmart. Após a confirmação, o acesso ao conteúdo é disponibilizado pela própria plataforma.",
   },
 ];
 
@@ -288,26 +341,32 @@ export const objections = [
    COMO FUNCIONA
    ========================================================= */
 
-export const howItWorks = [
+export interface HowItWorksItem {
+  number: string;
+  title: string;
+  text: string;
+}
+
+export const howItWorks: HowItWorksItem[] = [
   {
     number: "01",
-    title: "Escolha",
-    text: "Encontre o curso ou seminário que mais faz sentido para você.",
+    title: "Escolha seu acesso",
+    text: "Escolha entre o plano anual ou a assinatura mensal do Instituto Acesso Global.",
   },
   {
     number: "02",
-    title: "Inscreva-se",
-    text: "Acesse a página oficial do produto e faça sua inscrição.",
+    title: "Faça sua inscrição",
+    text: "Clique no plano escolhido e conclua sua inscrição pela plataforma Hotmart.",
   },
   {
     number: "03",
-    title: "Acesse",
-    text: "Depois da inscrição, você recebe acesso ao conteúdo.",
+    title: "Acesse o Instituto",
+    text: "Após a confirmação da inscrição, você recebe acesso ao conteúdo adquirido.",
   },
   {
     number: "04",
-    title: "Aprofunde",
-    text: "Comece sua jornada de estudo no seu próprio ritmo.",
+    title: "Comece sua jornada",
+    text: "Explore os 7 módulos e avance no seu ritmo através dos conteúdos do Instituto.",
   },
 ];
 
@@ -315,33 +374,60 @@ export const howItWorks = [
    FAQ
    ========================================================= */
 
-export const faqs = [
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export const faqs: FaqItem[] = [
   {
-    q: "Para quem são os cursos?",
-    a: "Os cursos são para pessoas que desejam estudar, aprofundar seus conhecimentos e compreender melhor temas relacionados à vida espiritual e ministerial. Cada curso possui uma proposta própria.",
+    question: "O que é o Instituto Acesso Global?",
+    answer:
+      "O Instituto Acesso Global é uma jornada de aprendizado voltada ao aprofundamento da vida espiritual, desenvolvimento de discernimento, compreensão do propósito e crescimento ministerial.",
   },
   {
-    q: "Preciso ter experiência ou conhecimento prévio?",
-    a: "Não necessariamente. A necessidade de conhecimento prévio pode variar de acordo com o curso. Antes de se inscrever, você pode consultar os detalhes apresentados na página oficial do produto.",
+    question: "O que está incluído no Instituto?",
+    answer:
+      "O Instituto reúne 7 módulos de conteúdo: Intimidade com Deus; Dons Espirituais e Discernimento; Interpretação de Sonhos à Luz da Bíblia; Vida Profética; Propósito e Chamado; Sabedoria Financeira e Prosperidade do Reino; e Liderança e Multiplicação.",
   },
   {
-    q: "Onde os cursos são realizados?",
-    a: "Os cursos disponíveis online são realizados por meio da Hotmart. Depois da inscrição, o acesso ao conteúdo é feito pela própria plataforma.",
+    question: "Preciso ter conhecimento prévio para entrar?",
+    answer:
+      "Não. O Instituto foi pensado para pessoas que desejam aprofundar seus conhecimentos e desenvolver uma compreensão mais madura dos temas apresentados.",
   },
   {
-    q: "Como faço minha inscrição?",
-    a: "Escolha o curso que deseja conhecer e clique em “Conhecer o curso”. Você será levado à página oficial do produto na Hotmart, onde encontrará as informações sobre conteúdo, acesso e inscrição.",
+    question: "Como funciona o acesso ao Instituto?",
+    answer:
+      "O acesso é realizado online pela plataforma Hotmart. Após a inscrição, você recebe acesso ao conteúdo adquirido pela própria plataforma.",
   },
   {
-    q: "Como recebo acesso?",
-    a: "Após a inscrição, o acesso ao conteúdo é disponibilizado pela plataforma indicada na página do produto.",
+    question: "Qual a diferença entre o plano anual e o mensal?",
+    answer:
+      "No plano anual, você tem acesso integral ao Instituto durante 1 ano. No plano mensal, o acesso funciona por meio de uma assinatura recorrente de R$ 97 por mês.",
   },
   {
-    q: "Os cursos possuem certificado?",
-    a: "A disponibilidade de certificado pode variar de acordo com cada curso. Consulte as informações apresentadas na página oficial do produto.",
+    question: "Posso cancelar a assinatura mensal?",
+    answer:
+      "O plano mensal funciona como uma assinatura recorrente. As condições de cancelamento e gerenciamento da assinatura são apresentadas pela Hotmart durante o processo de contratação.",
   },
   {
-    q: "Posso fazer mais de um curso?",
-    a: "Sim. Os cursos são independentes e você pode escolher mais de um de acordo com seus interesses e objetivos.",
+    question: "O Instituto possui quantos módulos?",
+    answer:
+      "Atualmente, o Instituto Acesso Global possui 7 módulos, abordando diferentes temas relacionados à vida espiritual, propósito, desenvolvimento e liderança.",
+  },
+  {
+    question: "Os módulos são separados ou fazem parte do Instituto?",
+    answer:
+      "Os 7 módulos fazem parte do Instituto Acesso Global. Eles compõem a jornada de conteúdo oferecida dentro do acesso ao Instituto.",
+  },
+  {
+    question: "Também existem outros cursos além do Instituto?",
+    answer:
+      "Sim. Além do Instituto Acesso Global, existem outros produtos disponíveis, como Dons Espirituais e Seminário de Libertação, cada um com sua própria proposta e página de acesso.",
+  },
+  {
+    question: "Como faço para entrar no Instituto?",
+    answer:
+      "Clique em uma das opções de acesso apresentadas no site, escolha o plano que melhor atende você e siga para a página de contratação na Hotmart.",
   },
 ];
