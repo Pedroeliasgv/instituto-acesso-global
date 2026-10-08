@@ -14,7 +14,6 @@ import {
 import {
   FaFacebook,
   FaInstagram,
-  FaLinkedin,
   FaYoutube,
 } from "react-icons/fa";
 
@@ -1344,7 +1343,7 @@ export function Footer() {
 
             <div className="mt-7 flex items-center gap-3">
               <a
-                href="#"
+                href="https://www.instagram.com/evanio_vale/"
                 aria-label="Instagram"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/45 transition-all duration-300 hover:border-[#b18a4a] hover:bg-[#b18a4a] hover:text-white"
               >
@@ -1352,7 +1351,7 @@ export function Footer() {
               </a>
 
               <a
-                href="#"
+                href="https://www.youtube.com/@profetaevaniovale"
                 aria-label="YouTube"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/45 transition-all duration-300 hover:border-[#b18a4a] hover:bg-[#b18a4a] hover:text-white"
               >
@@ -1360,20 +1359,14 @@ export function Footer() {
               </a>
 
               <a
-                href="#"
+                href="https://www.facebook.com/profeta.evanio.vale"
                 aria-label="Facebook"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/45 transition-all duration-300 hover:border-[#b18a4a] hover:bg-[#b18a4a] hover:text-white"
               >
                 <FaFacebook className="h-4 w-4" />
               </a>
 
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/45 transition-all duration-300 hover:border-[#b18a4a] hover:bg-[#b18a4a] hover:text-white"
-              >
-                <FaLinkedin className="h-4 w-4" />
-              </a>
+              
             </div>
           </div>
 
