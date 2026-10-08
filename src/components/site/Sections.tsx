@@ -146,9 +146,10 @@ export function Hero({ onOpenPricing }: HeroProps) {
                   inline-flex
                   items-center
                   gap-4
+                  rounded-full
                   border
-                  border-white/30
-                  bg-white
+                  border-[#E5A75E]
+                  bg-[#E5A75E]
                   px-5
                   py-3
                   text-[11px]
@@ -158,11 +159,11 @@ export function Hero({ onOpenPricing }: HeroProps) {
                   text-[#080808]
                   transition-all
                   duration-300
-                  hover:border-white
-                  hover:bg-[#f4f1eb]
+                  hover:border-[#E5A75E]
+                  hover:bg-[#d9944d]
                 "
               >
-                <span>Conhecer o Instituto</span>
+                <span>Acesse seu próximo nível</span>
 
                 <span
                   className="
@@ -813,7 +814,6 @@ export function Modules({ onOpenPricing }: ModulesProps) {
 /* -------------------------------------------------------------------------- */
 /* PRICING                                                                    */
 /* -------------------------------------------------------------------------- */
-
 function Benefit({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-3">
@@ -833,36 +833,42 @@ export function Pricing() {
       className="bg-white px-6 py-24 text-[#080808] sm:px-10 md:py-32 lg:px-16 xl:px-20"
     >
       <div className="mx-auto max-w-[1280px]">
-        <div className="reveal max-w-[760px]">
+        <div className="reveal max-w-[800px]">
           <Eyebrow>Escolha sua forma de acesso</Eyebrow>
 
           <h2 className="mt-7 text-[clamp(3rem,6vw,6rem)] font-medium leading-[0.9] tracking-[-0.06em]">
             Entre para o Instituto.
           </h2>
 
-          <p className="mt-7 max-w-[580px] text-base leading-7 text-[#5b5751] sm:text-lg">
-            Escolha entre o acesso anual ou a assinatura mensal.
+          <p className="mt-7 max-w-[680px] text-base leading-7 text-[#5b5751] sm:text-lg">
+            O Instituto Acesso Global foi pensado como uma jornada de
+            aprendizado. Escolha entre acompanhar o ciclo completo ou começar
+            através da assinatura mensal.
           </p>
         </div>
 
         <div className="mt-16 grid gap-6 lg:grid-cols-2">
-          <div className="reveal rounded-[2rem] border border-black/10 bg-[#f4f1eb] p-7 sm:p-10 lg:p-12">
-            <div className="flex items-center justify-between">
+          {/* PLANO ANUAL */}
+          <div className="reveal relative overflow-hidden rounded-[2rem] border border-[#b18a4a]/40 bg-[#f4f1eb] p-7 sm:p-10 lg:p-12">
+            <div className="absolute right-0 top-0 h-32 w-32 translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b18a4a]/10" />
+
+            <div className="relative flex items-center justify-between">
               <span className="rounded-full bg-[#b18a4a] px-4 py-2 text-[10px] font-medium uppercase tracking-[0.2em] text-white">
-                Mais completo
+                Recomendado
               </span>
 
               <span className="text-[10px] uppercase tracking-[0.2em] text-[#6f6b65]">
-                Anual
+                Plano anual
               </span>
             </div>
 
             <h3 className="mt-12 text-3xl font-medium tracking-tight">
-              Acesso por 1 ano
+              Jornada completa
             </h3>
 
-            <p className="mt-3 text-sm leading-6 text-[#635d54]">
-              Acesso integral ao Instituto durante um ano.
+            <p className="mt-3 max-w-[500px] text-sm leading-6 text-[#635d54]">
+              Acompanhe o ciclo completo do Instituto durante 1 ano, com acesso
+              aos conteúdos conforme forem disponibilizados.
             </p>
 
             <div className="mt-10">
@@ -878,13 +884,78 @@ export function Pricing() {
               <p className="mt-3 text-sm text-[#635d54]">
                 ou 12x de R$ 94,97
               </p>
+
+              <p className="mt-2 text-xs font-medium text-[#b18a4a]">
+                Economize R$ 267 em relação a 12 meses no plano mensal.
+              </p>
             </div>
 
-            <ul className="mt-10 space-y-4 text-sm text-[#393631]">
-              <Benefit>Acesso aos 7 módulos</Benefit>
-              <Benefit>Acesso integral por 1 ano</Benefit>
-              <Benefit>Conteúdo completo do Instituto</Benefit>
-            </ul>
+            <div className="mt-10 border-t border-black/10 pt-8">
+              <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#6f6b65]">
+                O que está incluído
+              </p>
+
+              <ul className="space-y-4 text-sm text-[#393631]">
+                <Benefit>
+                  Acesso aos 7 módulos do Instituto
+                </Benefit>
+
+                <Benefit>
+                  Acompanhamento do ciclo completo durante 1 ano
+                </Benefit>
+
+                <Benefit>
+                  Encontros exclusivos ao vivo e online com o Profeta Evanio
+                  Vale durante o ciclo
+                </Benefit>
+
+                <Benefit>
+                  Acesso aos painéis e salas exclusivas realizados durante o
+                  ciclo
+                </Benefit>
+
+                <Benefit>
+                  Comunidade exclusiva do Instituto durante o período anual
+                </Benefit>
+
+                <Benefit>
+                  Suporte pelo WhatsApp
+                </Benefit>
+
+                <Benefit>
+                  Podcasts e conteúdos complementares disponibilizados durante
+                  o ciclo
+                </Benefit>
+
+                <Benefit>
+                  Atualizações e conteúdos renovados durante o ciclo
+                </Benefit>
+
+                <Benefit>
+                  Certificado ao concluir os módulos previstos
+                </Benefit>
+              </ul>
+            </div>
+
+            <div className="mt-10 rounded-2xl border border-[#b18a4a]/30 bg-white/60 p-6">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#b18a4a]">
+                Bônus exclusivos do anual
+              </p>
+
+              <ul className="mt-5 space-y-4 text-sm text-[#393631]">
+                <Benefit>
+                  Curso Dons Espirituais — acesso anual
+                </Benefit>
+
+                <Benefit>
+                  Seminário de Libertação — acesso anual
+                </Benefit>
+
+                <Benefit>
+                  E-book Devocional Fé
+                </Benefit>
+              </ul>
+            </div>
 
             <a
               href="https://pay.hotmart.com/M107931141B?bid=1791397163725"
@@ -892,14 +963,20 @@ export function Pricing() {
               rel="noreferrer"
               className="mt-10 flex items-center justify-between rounded-full bg-[#080808] px-6 py-4 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1a1a1a]"
             >
-              Quero o acesso anual
+              Quero a jornada completa
 
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#b18a4a] text-white">
                 <ArrowRight className="h-4 w-4" />
               </span>
             </a>
+
+            <p className="mt-4 text-center text-[11px] leading-5 text-[#6f6b65]">
+              Pagamento processado pela Hotmart. Acesso anual ao Instituto
+              conforme as condições apresentadas no checkout.
+            </p>
           </div>
 
+          {/* PLANO MENSAL */}
           <div className="reveal reveal-delay-1 rounded-[2rem] border border-white/10 bg-[#11100f] p-7 text-white sm:p-10 lg:p-12">
             <div className="flex items-center justify-between">
               <span className="rounded-full border border-white/10 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.2em] text-white/60">
@@ -907,16 +984,17 @@ export function Pricing() {
               </span>
 
               <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">
-                Mensal
+                Plano mensal
               </span>
             </div>
 
             <h3 className="mt-12 text-3xl font-medium tracking-tight">
-              Assinatura mensal
+              Comece pelo mensal
             </h3>
 
-            <p className="mt-3 text-sm leading-6 text-white/50">
-              Acesso ao Instituto através de uma assinatura recorrente.
+            <p className="mt-3 max-w-[500px] text-sm leading-6 text-white/50">
+              Uma forma flexível de acompanhar o Instituto através de uma
+              assinatura recorrente enquanto ela estiver ativa.
             </p>
 
             <div className="mt-10">
@@ -929,14 +1007,57 @@ export function Pricing() {
                 <span className="text-2xl tracking-normal">,00</span>
               </div>
 
-              <p className="mt-3 text-sm text-white/45">por mês</p>
+              <p className="mt-3 text-sm text-white/45">
+                por mês · assinatura recorrente
+              </p>
             </div>
 
-            <ul className="mt-10 space-y-4 text-sm text-white/65">
-              <Benefit>Acesso aos 7 módulos</Benefit>
-              <Benefit>Assinatura recorrente</Benefit>
-              <Benefit>Acesso ao conteúdo do Instituto</Benefit>
-            </ul>
+            <div className="mt-10 border-t border-white/10 pt-8">
+              <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">
+                O que está incluído
+              </p>
+
+              <ul className="space-y-4 text-sm text-white/65">
+                <Benefit>
+                  Acesso aos conteúdos dos 7 módulos conforme forem
+                  disponibilizados
+                </Benefit>
+
+                <Benefit>
+                  Encontros exclusivos disponíveis durante o período da
+                  assinatura
+                </Benefit>
+
+                <Benefit>
+                  Acesso aos painéis e salas exclusivas disponíveis durante o
+                  período da assinatura
+                </Benefit>
+
+                <Benefit>
+                  Comunidade exclusiva enquanto a assinatura estiver ativa
+                </Benefit>
+
+                <Benefit>
+                  Suporte pelo WhatsApp
+                </Benefit>
+
+                <Benefit>
+                  Certificado ao concluir os módulos previstos
+                </Benefit>
+              </ul>
+            </div>
+
+            <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">
+                Importante
+              </p>
+
+              <p className="mt-4 text-sm leading-6 text-white/55">
+                O plano mensal não inclui os bônus exclusivos do plano anual.
+                O acesso permanece disponível enquanto a assinatura estiver
+                ativa.
+              </p>
+            </div>
 
             <a
               href="https://pay.hotmart.com/M107931141B?off=iaddcka9&checkoutMode=6&bid=1791397625677"
@@ -950,7 +1071,26 @@ export function Pricing() {
                 <ArrowRight className="h-4 w-4" />
               </span>
             </a>
+
+            <p className="mt-4 text-center text-[11px] leading-5 text-white/35">
+              Assinatura recorrente. As condições de cobrança e cancelamento
+              são apresentadas pela Hotmart durante a contratação.
+            </p>
           </div>
+        </div>
+
+        <div className="reveal mx-auto mt-12 max-w-[850px] text-center">
+          <p className="text-sm leading-6 text-[#635d54]">
+            <strong className="font-semibold text-[#080808]">
+              Importante:
+            </strong>{" "}
+            os 7 módulos fazem parte do Instituto Acesso Global e compõem uma
+            única jornada de conteúdo. No plano anual, você acompanha o ciclo
+            completo durante 1 ano. No plano mensal, o acesso permanece
+            disponível enquanto a assinatura estiver ativa. Os bônus Dons
+            Espirituais, Seminário de Libertação e E-book Devocional Fé são
+            exclusivos do plano anual.
+          </p>
         </div>
       </div>
     </section>
