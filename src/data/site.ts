@@ -4,6 +4,7 @@ import hero from "@/assets/hero.jpg";
 import evanio from "@/assets/evanio.jpg";
 import mac from "@/assets/mac.jpg";
 import bible from "@/assets/bible.jpg";
+import libertacao from "@/assets/libertacao.jpg";
 
 import intimidade from "@/assets/intimidade.jpg";
 import dons from "@/assets/dons.jpg";
@@ -25,6 +26,7 @@ export const images = {
   cdons,
   mac,
   bible,
+  libertacao,
 };
 
 /* =========================================================
@@ -34,7 +36,7 @@ export const images = {
 export const navLinks = [
   { label: "Início", href: "#inicio" },
   { label: "O Instituto", href: "#instituto" },
-  { label: "Conteúdos", href: "#conteudos" },
+  { label: "Conteúdos", href: "#modulos" },
   { label: "Planos", href: "#planos" },
   { label: "Cursos", href: "#outros-cursos" },
   { label: "Evanio Vale", href: "#evanio" },
@@ -298,7 +300,7 @@ export const courses: Course[] = [
     type: "Seminário",
     description:
       "Um conteúdo dedicado ao estudo da libertação e de seus principais fundamentos.",
-    image: bible,
+    image: libertacao,
     href: "https://hotmart.com/pt-br/marketplace/produtos/hagsxd-seminario-de-libertacao-0v0aj/E93350393C?sck=HOTMART_PRODUCT_PAGE",
     label: "Conhecer o seminário",
     highlights: [
