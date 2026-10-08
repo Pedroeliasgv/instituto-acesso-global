@@ -40,8 +40,10 @@
 
 :root {
   --radius: 0.25rem;
+
   scrollbar-width: thin;
   scrollbar-color: #6f6b65 #080808;
+
   --abyss: #080808;
   --navy: #24211e;
   --royal: #6f6b65;
@@ -72,6 +74,7 @@
   --border: #d4d0c8;
   --input: #d4d0c8;
   --ring: var(--royal);
+
   --shadow-card: 0 24px 64px -32px rgb(8 8 8 / 24%);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -96,19 +99,46 @@
 }
 
 @layer base {
-  * { border-color: var(--border); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background: var(--paper);
     color: var(--ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  button, a { -webkit-tap-highlight-color: transparent; }
-  img { display: block; max-width: 100%; }
-  ::selection { background: var(--royal); color: white; }
-  #root { min-height: 100vh; width: 100%; }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  ::selection {
+    background: var(--royal);
+    color: white;
+  }
+
+  #root {
+    min-height: 100vh;
+    width: 100%;
+  }
 }
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
 
 .headline {
   font-family: var(--font-display);
@@ -118,8 +148,13 @@
   text-transform: uppercase;
 }
 
-.font-display { font-family: var(--font-display); }
-.font-serif { font-family: var(--font-serif); }
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
 
 .eyebrow {
   font-size: 0.62rem;
@@ -128,6 +163,10 @@
   letter-spacing: 0.24em;
   text-transform: uppercase;
 }
+
+/* =========================================================
+   LINKS
+========================================================= */
 
 .link-underline {
   position: relative;
@@ -151,9 +190,13 @@
   transform-origin: left;
 }
 
+/* =========================================================
+   OUTLINE TEXT
+========================================================= */
+
 .outline-text {
   color: transparent;
-  -webkit-text-stroke: 1px #f4f1eb;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
   text-shadow: none;
 }
 
@@ -163,11 +206,19 @@
   text-shadow: none;
 }
 
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero-title {
   font-size: clamp(3.5rem, min(13svh, 15vw), 13rem);
   line-height: 0.76;
 }
 
+/*
+  Mantido como fallback para outros componentes.
+  O Hero principal usa object-position diretamente no JSX.
+*/
 .hero-image > img {
   object-position: 50% 32%;
 }
@@ -185,28 +236,37 @@
   filter: blur(0);
 }
 
+/* =========================================================
+   REVEAL ANIMATION
+
+   IMPORTANTE:
+   O transform fica somente no elemento .reveal.
+   O posicionamento externo do Hero usa top/left,
+   evitando conflito entre animação e posicionamento.
+========================================================= */
+
 .reveal {
   opacity: 0;
   transform: translate3d(0, 1.25rem, 0);
-  clip-path: inset(0 0 9% 0);
+  clip-path: none;
   filter: blur(4px);
+
   transition:
     opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
-    clip-path 900ms cubic-bezier(0.22, 1, 0.36, 1),
     filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  clip-path: inset(0);
+  clip-path: none;
   filter: blur(0);
 }
 
-#instituto .reveal:first-child {
-  transition-delay: 80ms;
-}
+/* =========================================================
+   MARQUEE
+========================================================= */
 
 .marquee-band {
   overflow: hidden;
@@ -262,6 +322,26 @@
   opacity: 0.5;
 }
 
+@keyframes marquee-left {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* =========================================================
+   PILARS
+========================================================= */
+
 .pillar-row {
   isolation: isolate;
 }
@@ -276,11 +356,19 @@
   color: rgb(244 241 235 / 50%);
 }
 
+/* =========================================================
+   COURSES
+========================================================= */
+
 @media (hover: hover) and (pointer: fine) {
   .course-list:hover .course-feature:not(:hover) {
     opacity: 0.58;
   }
 }
+
+/* =========================================================
+   CINEMATIC SECTIONS
+========================================================= */
 
 .cinematic-section {
   --cinema-scale-x: 0.55;
@@ -326,6 +414,10 @@
   transition: opacity 150ms linear;
 }
 
+/* =========================================================
+   FAQ
+========================================================= */
+
 .faq-item summary::-webkit-details-marker {
   display: none;
 }
@@ -341,6 +433,22 @@
 .faq-answer {
   animation: faq-reveal 300ms ease both;
 }
+
+@keyframes faq-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   BRAND INTRO
+========================================================= */
 
 .brand-intro {
   position: fixed;
@@ -374,6 +482,24 @@
   text-transform: uppercase;
 }
 
+@keyframes brand-intro-exit {
+  0%,
+  65% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
 .mobile-menu-link {
   animation: mobile-menu-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -382,7 +508,10 @@
   opacity: 0;
   transform: translateY(-0.5rem);
   pointer-events: none;
-  transition: opacity 300ms ease, transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition:
+    opacity 300ms ease,
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .mobile-navigation.is-open {
@@ -391,32 +520,39 @@
   pointer-events: auto;
 }
 
-@keyframes marquee-left {
-  to { transform: translateX(-50%); }
-}
-
-@keyframes marquee-right {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes faq-reveal {
-  from { opacity: 0; transform: translateY(-0.25rem); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes brand-intro-exit {
-  0%, 65% { opacity: 1; visibility: visible; }
-  100% { opacity: 0; visibility: hidden; pointer-events: none; }
-}
-
 @keyframes mobile-menu-enter {
-  from { opacity: 0; transform: translateY(1rem); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.final-cta-image img {
+  object-position: center 20%;
+}
+
+.final-cta-image {
+  transform: translateX(500px);
+}
+
+/* =========================================================
+   ACCESSIBILITY / REDUCED MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
+
   .reveal,
   .reveal.is-visible,
   .hero-word,
@@ -427,39 +563,46 @@
     filter: none;
     transition: none;
   }
+
   .marquee-track,
   .mobile-menu-link,
   .brand-intro,
-  .faq-answer {
+  .faq-answer,
+  .animate-marquee,
+  .animate-marquee-reverse {
     animation: none;
   }
+
   .cinematic-frame {
     border-radius: 0;
     transform: none;
     will-change: auto;
   }
-  .cinematic-overlay { opacity: 0.18; }
-  .cinematic-caption { opacity: 1; }
-  .parallax-image > img { transform: none !important; }
-  *, *::before, *::after {
+
+  .cinematic-overlay {
+    opacity: 0.18;
+  }
+
+  .cinematic-caption {
+    opacity: 1;
+  }
+
+  .parallax-image > img {
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
 
-.final-cta-image img {
-  object-position: center 20%;
-}
-
-.final-cta-image {
-  transform: translateX(500px);
-}
-
-.outline-text {
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
-}
+/* =========================================================
+   MARQUEE — COMPATIBILITY
+========================================================= */
 
 @keyframes marquee {
   from {
@@ -467,7 +610,7 @@
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(-25%);
   }
 }
 
@@ -482,33 +625,11 @@
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 32s linear infinite;
   will-change: transform;
 }
 
 .animate-marquee-reverse {
   animation: marquee-reverse 30s linear infinite;
-  will-change: transform;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee,
-  .animate-marquee-reverse {
-    animation: none;
-  }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-25%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 32s linear infinite;
   will-change: transform;
 }

@@ -70,8 +70,9 @@ function BrandIntro() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const delay = window.matchMedia("(prefers-reduced-motion: reduce)")
-      .matches
+    const delay = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches
       ? 0
       : 700;
 
@@ -87,6 +88,7 @@ function BrandIntro() {
   return (
     <div aria-hidden="true" className="brand-intro">
       <span className="brand-intro-mark">AG</span>
+
       <span className="brand-intro-name">
         Instituto Acesso Global
       </span>
@@ -118,17 +120,17 @@ function App() {
       <main>
         <Hero onOpenPricing={openPricing} />
 
-        <Presentation />
+        <Presentation onOpenPricing={openPricing} />
 
-        <Dores />
+        <Dores onOpenPricing={openPricing} />
 
         <Marquee tone="light" />
 
-        <Intro />
+        <Intro onOpenPricing={openPricing} />
 
-        <About />
+        <About onOpenPricing={openPricing} />
 
-        <Modules />
+        <Modules onOpenPricing={openPricing} />
 
         <Pricing />
 
@@ -136,13 +138,13 @@ function App() {
 
         <Courses />
 
-        <HowItWorks />
+        <HowItWorks onOpenPricing={openPricing} />
 
-        <Objections />
+        <Objections onOpenPricing={openPricing} />
 
-        <FinalCta />
+        <FinalCta onOpenPricing={openPricing} />
 
-        <Faq />
+        <Faq onOpenPricing={openPricing} />
       </main>
 
       <Footer />
