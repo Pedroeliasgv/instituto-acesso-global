@@ -25,6 +25,7 @@ import { Eyebrow } from "./ui";
 /* HERO                                                                       */
 /* -------------------------------------------------------------------------- */
 
+
 interface HeroProps {
   onOpenPricing: () => void;
 }
@@ -44,10 +45,10 @@ export function Hero({ onOpenPricing }: HeroProps) {
             inset-0
             h-full
             w-full
-            object-cover
-            object-[50%_18%]
             scale-[1.08]
             translate-x-[8%]
+            object-cover
+            object-[50%_18%]
           "
         />
 
@@ -140,10 +141,11 @@ export function Hero({ onOpenPricing }: HeroProps) {
             <div className="reveal reveal-delay-2 mt-7">
               <button
                 type="button"
-                onClick={onOpenPricing}
+                onClick={onOpenPricing}               
                 className="
                   group
                   inline-flex
+                  animate-[hero-breathe_2s_ease-in-out_infinite]
                   items-center
                   gap-4
                   rounded-full
@@ -157,10 +159,7 @@ export function Hero({ onOpenPricing }: HeroProps) {
                   uppercase
                   tracking-[0.08em]
                   text-[#080808]
-                  transition-all
-                  duration-300
-                  hover:border-[#E5A75E]
-                  hover:bg-[#d9944d]
+                  motion-reduce:animate-none
                 "
               >
                 <span>Acesse seu próximo nível</span>
@@ -175,9 +174,6 @@ export function Hero({ onOpenPricing }: HeroProps) {
                     rounded-full
                     bg-[#b18a4a]
                     text-white
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
                   "
                 >
                   <ArrowRight className="h-3.5 w-3.5" />
@@ -206,9 +202,7 @@ export function Hero({ onOpenPricing }: HeroProps) {
 
             <span className="h-px w-8 bg-white/25" />
 
-            <span className="font-display text-xs text-white/50">
-              01
-            </span>
+            <span className="font-display text-xs text-white/50">01</span>
           </div>
         </div>
 
@@ -219,8 +213,8 @@ export function Hero({ onOpenPricing }: HeroProps) {
             top-1/2
             hidden
             -translate-y-1/2
-            lg:block
             lg:right-14
+            lg:block
             xl:right-20
           "
         >
@@ -276,6 +270,17 @@ export function Hero({ onOpenPricing }: HeroProps) {
           "
         />
       </div>
+
+      <style>{`
+        @keyframes hero-gold-pulse {
+          0%, 100% {
+            box-shadow: 0 0 0 rgba(229, 167, 94, 0);
+          }
+          50% {
+            box-shadow: 0 0 24px rgba(229, 167, 94, 0.48);
+          }
+        }
+      `}</style>
     </section>
   );
 }
