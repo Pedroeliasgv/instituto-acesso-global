@@ -1,7 +1,9 @@
+
 import {
   About,
   Courses,
   Dores,
+  Ebook,
   Evanio,
   Faq,
   Footer,
@@ -133,6 +135,8 @@ function App() {
         <Evanio />
 
         <Courses />
+
+        <Ebook />
 
         <HowItWorks onOpenPricing={openPricing} />
 

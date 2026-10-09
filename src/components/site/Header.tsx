@@ -101,8 +101,12 @@ export function Header({ onOpenPricing }: HeaderProps) {
 
   useEffect(() => {
     const sections = navLinks
-      .map((link) => document.querySelector<HTMLElement>(link.href))
-      .filter((section): section is HTMLElement => section !== null);
+      .map((link) =>
+        document.querySelector<HTMLElement>(link.href),
+      )
+      .filter(
+        (section): section is HTMLElement => section !== null,
+      );
 
     if (!sections.length) return;
 
@@ -193,6 +197,7 @@ export function Header({ onOpenPricing }: HeaderProps) {
       <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-14">
         <Logo />
 
+        {/* NAVEGAÇÃO DESKTOP */}
         <nav
           aria-label="Navegação principal"
           className="hidden items-center gap-7 lg:flex"
@@ -217,7 +222,7 @@ export function Header({ onOpenPricing }: HeaderProps) {
         </nav>
 
         <div className="flex items-center gap-3">
-          {/* REDES SOCIAIS */}
+          {/* REDES SOCIAIS DESKTOP */}
           <div className="hidden items-center gap-2 lg:flex">
             {socialLinks.map((social) => {
               const Icon = social.icon;
@@ -245,6 +250,7 @@ export function Header({ onOpenPricing }: HeaderProps) {
             Inscreva-se
           </button>
 
+          {/* BOTÃO DO MENU MOBILE */}
           <button
             ref={menuTriggerRef}
             type="button"
@@ -259,6 +265,7 @@ export function Header({ onOpenPricing }: HeaderProps) {
         </div>
       </div>
 
+      {/* MENU MOBILE */}
       {menuMounted && (
         <div
           id="mobile-navigation"
@@ -302,7 +309,7 @@ export function Header({ onOpenPricing }: HeaderProps) {
             ))}
           </nav>
 
-          {/* REDES SOCIAIS — MOBILE */}
+          {/* REDES SOCIAIS MOBILE */}
           <div className="border-t border-white/20 py-5">
             <div className="flex items-center gap-5">
               {socialLinks.map((social) => {
@@ -340,3 +347,4 @@ export function Header({ onOpenPricing }: HeaderProps) {
     </header>
   );
 }
+

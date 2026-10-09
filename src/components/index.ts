@@ -1,3 +1,4 @@
+
 export { Header, Logo } from "./site/Header";
 
 export {
@@ -21,6 +22,8 @@ export {
 export { PricingModal } from "./site/PricingModal";
 
 export { Courses } from "./site/Courses";
+
+export { Ebook } from "./site/Ebook";
 
 export {
   Cta,

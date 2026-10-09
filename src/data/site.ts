@@ -39,6 +39,7 @@ export const navLinks = [
   { label: "Conteúdos", href: "#modulos" },
   { label: "Planos", href: "#planos" },
   { label: "Cursos", href: "#outros-cursos" },
+  { label: "Livro", href: "#ebook-devocional-fe" },
   { label: "Evanio Vale", href: "#evanio" },
   { label: "FAQ", href: "#faq" },
 ];
