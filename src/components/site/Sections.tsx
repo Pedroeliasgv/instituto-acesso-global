@@ -1100,7 +1100,6 @@ export function Pricing() {
 /* -------------------------------------------------------------------------- */
 /* EVANIO                                                                     */
 /* -------------------------------------------------------------------------- */
-
 export function Evanio() {
   return (
     <section
@@ -1117,34 +1116,36 @@ export function Evanio() {
         </div>
 
         <div className="reveal reveal-delay-1">
-          <Eyebrow>Quem conduz essa jornada</Eyebrow>
+          <Eyebrow>Quem é</Eyebrow>
 
           <h2 className="mt-7 text-[clamp(3rem,6vw,6rem)] font-medium leading-[0.9] tracking-[-0.06em]">
             Evanio Vale.
           </h2>
 
-          <p className="mt-8 max-w-[650px] text-base leading-7 text-[#494641] sm:text-lg">
-            Professor e comunicador dedicado ao ensino de temas relacionados
-            à vida espiritual, conhecimento bíblico, dons, propósito e
-            desenvolvimento.
-          </p>
+          <div className="mt-8 max-w-[650px] space-y-6 text-base leading-7 text-[#494641] sm:text-lg">
+            <p>
+              Evanio Vale é pai de Pedro Elias e Lucas José, casado com
+              Paulyceya do Vale.
+            </p>
 
-          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-black/10">
-            <div className="bg-white p-7">
-              <span className="text-3xl font-medium">+50 mil</span>
+            <p>
+              Há mais de 15 anos, dedica sua vida à obra de Deus, ao ensino da
+              Palavra e à formação de pessoas.
+            </p>
 
-              <p className="mt-2 text-xs text-[#6f6b65]">
-                pessoas no YouTube
-              </p>
-            </div>
+            <p>
+              Ao longo dessa caminhada, são milhares de pessoas alcançadas e
+              vidas transformadas por meio da mensagem de Deus, levando
+              conhecimento, discernimento e direção para aqueles que desejam
+              viver seu propósito.
+            </p>
+          </div>
 
-            <div className="bg-white p-7">
-              <span className="text-3xl font-medium">+15 mil</span>
-
-              <p className="mt-2 text-xs text-[#6f6b65]">
-                pessoas no Instagram
-              </p>
-            </div>
+          <div className="mt-12 border-l-2 border-[#b18a4a] pl-6">
+            <p className="max-w-[560px] text-xl font-medium leading-8 tracking-tight text-[#080808] sm:text-2xl">
+              Uma caminhada de mais de 15 anos dedicada à obra de Deus e ao
+              propósito de ensinar, despertar e transformar vidas.
+            </p>
           </div>
 
           <div className="mt-10 h-px w-20 bg-[#b18a4a]" />
