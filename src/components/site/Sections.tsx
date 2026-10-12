@@ -853,136 +853,8 @@ export function Pricing() {
         </div>
 
         <div className="mt-16 grid gap-6 lg:grid-cols-2">
-          {/* PLANO ANUAL */}
-          <div className="reveal relative overflow-hidden rounded-[2rem] border border-[#b18a4a]/40 bg-[#f4f1eb] p-7 sm:p-10 lg:p-12">
-            <div className="absolute right-0 top-0 h-32 w-32 translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b18a4a]/10" />
-
-            <div className="relative flex items-center justify-between">
-              <span className="rounded-full bg-[#b18a4a] px-4 py-2 text-[10px] font-medium uppercase tracking-[0.2em] text-white">
-                Recomendado
-              </span>
-
-              <span className="text-[10px] uppercase tracking-[0.2em] text-[#6f6b65]">
-                Plano anual
-              </span>
-            </div>
-
-            <h3 className="mt-12 text-3xl font-medium tracking-tight">
-              Jornada completa
-            </h3>
-
-            <p className="mt-3 max-w-[500px] text-sm leading-6 text-[#635d54]">
-              Acompanhe o ciclo completo do Instituto durante 1 ano, com acesso
-              aos conteúdos conforme forem disponibilizados.
-            </p>
-
-            <div className="mt-10">
-              <span className="text-sm text-[#6f6b65] line-through">
-                De R$ 1.497,00
-              </span>
-
-              <div className="mt-1 text-[clamp(3.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.07em]">
-                R$ 897
-                <span className="text-2xl tracking-normal">,00</span>
-              </div>
-
-              <p className="mt-3 text-sm text-[#635d54]">
-                ou 12x de R$ 94,97
-              </p>
-
-              <p className="mt-2 text-xs font-medium text-[#b18a4a]">
-                Economize R$ 267 em relação a 12 meses no plano mensal.
-              </p>
-            </div>
-
-            <div className="mt-10 border-t border-black/10 pt-8">
-              <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#6f6b65]">
-                O que está incluído
-              </p>
-
-              <ul className="space-y-4 text-sm text-[#393631]">
-                <Benefit>
-                  Acesso aos 7 módulos do Instituto
-                </Benefit>
-
-                <Benefit>
-                  Acompanhamento do ciclo completo durante 1 ano
-                </Benefit>
-
-                <Benefit>
-                  Encontros exclusivos ao vivo e online com o Profeta Evanio
-                  Vale durante o ciclo
-                </Benefit>
-
-                <Benefit>
-                  Acesso aos painéis e salas exclusivas realizados durante o
-                  ciclo
-                </Benefit>
-
-                <Benefit>
-                  Comunidade exclusiva do Instituto durante o período anual
-                </Benefit>
-
-                <Benefit>
-                  Suporte pelo WhatsApp
-                </Benefit>
-
-                <Benefit>
-                  Podcasts e conteúdos complementares disponibilizados durante
-                  o ciclo
-                </Benefit>
-
-                <Benefit>
-                  Atualizações e conteúdos renovados durante o ciclo
-                </Benefit>
-
-                <Benefit>
-                  Certificado ao concluir os módulos previstos
-                </Benefit>
-              </ul>
-            </div>
-
-            <div className="mt-10 rounded-2xl border border-[#b18a4a]/30 bg-white/60 p-6">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#b18a4a]">
-                Bônus exclusivos do anual
-              </p>
-
-              <ul className="mt-5 space-y-4 text-sm text-[#393631]">
-                <Benefit>
-                  Curso Dons Espirituais — acesso anual
-                </Benefit>
-
-                <Benefit>
-                  Seminário de Libertação — acesso anual
-                </Benefit>
-
-                <Benefit>
-                  E-book Devocional Fé
-                </Benefit>
-              </ul>
-            </div>
-
-            <a
-              href="https://pay.hotmart.com/M107931141B?bid=1791397163725"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-10 flex items-center justify-between rounded-full bg-[#080808] px-6 py-4 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1a1a1a]"
-            >
-              Quero a jornada completa
-
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#b18a4a] text-white">
-                <ArrowRight className="h-4 w-4" />
-              </span>
-            </a>
-
-            <p className="mt-4 text-center text-[11px] leading-5 text-[#6f6b65]">
-              Pagamento processado pela Hotmart. Acesso anual ao Instituto
-              conforme as condições apresentadas no checkout.
-            </p>
-          </div>
-
           {/* PLANO MENSAL */}
-          <div className="reveal reveal-delay-1 rounded-[2rem] border border-white/10 bg-[#11100f] p-7 text-white sm:p-10 lg:p-12">
+          <div className="reveal reveal-delay-1 rounded-[2rem] border border-black/10 bg-[#11100f] p-7 text-white sm:p-10 lg:p-12">
             <div className="flex items-center justify-between">
               <span className="rounded-full border border-white/10 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.2em] text-white/60">
                 Flexível
@@ -1042,9 +914,7 @@ export function Pricing() {
                   Comunidade exclusiva enquanto a assinatura estiver ativa
                 </Benefit>
 
-                <Benefit>
-                  Suporte pelo WhatsApp
-                </Benefit>
+                <Benefit>Suporte pelo WhatsApp</Benefit>
 
                 <Benefit>
                   Certificado ao concluir os módulos previstos
@@ -1082,6 +952,122 @@ export function Pricing() {
               são apresentadas pela Hotmart durante a contratação.
             </p>
           </div>
+
+          {/* PLANO ANUAL */}
+          <div className="reveal relative overflow-hidden rounded-[2rem] border border-[#b18a4a]/40 bg-[#f4f1eb] p-7 sm:p-10 lg:p-12">
+            <div className="absolute right-0 top-0 h-32 w-32 translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b18a4a]/10" />
+
+            <div className="relative flex items-center justify-between">
+              <span className="rounded-full bg-[#b18a4a] px-4 py-2 text-[10px] font-medium uppercase tracking-[0.2em] text-white">
+                Recomendado
+              </span>
+
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#6f6b65]">
+                Plano anual
+              </span>
+            </div>
+
+            <h3 className="mt-12 text-3xl font-medium tracking-tight">
+              Jornada completa
+            </h3>
+
+            <p className="mt-3 max-w-[500px] text-sm leading-6 text-[#635d54]">
+              Acompanhe o ciclo completo do Instituto durante 1 ano, com acesso
+              aos conteúdos conforme forem disponibilizados.
+            </p>
+
+            <div className="mt-10">
+              <span className="text-sm text-[#6f6b65] line-through">
+                De R$ 1.497,00
+              </span>
+
+              <div className="mt-1 text-[clamp(3.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.07em]">
+                R$ 897
+                <span className="text-2xl tracking-normal">,00</span>
+              </div>
+
+              <p className="mt-3 text-sm text-[#635d54]">
+                ou 12x de R$ 94,97
+              </p>
+
+              <p className="mt-2 text-xs font-medium text-[#b18a4a]">
+                Economize R$ 267 em relação a 12 meses no plano mensal.
+              </p>
+            </div>
+
+            <div className="mt-10 border-t border-black/10 pt-8">
+              <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#6f6b65]">
+                O que está incluído
+              </p>
+
+              <ul className="space-y-4 text-sm text-[#393631]">
+                <Benefit>Acesso aos 7 módulos do Instituto</Benefit>
+
+                <Benefit>
+                  Acompanhamento do ciclo completo durante 1 ano
+                </Benefit>
+
+                <Benefit>
+                  Encontros exclusivos ao vivo e online com o Profeta Evanio
+                  Vale durante o ciclo
+                </Benefit>
+
+                <Benefit>
+                  Acesso aos painéis e salas exclusivas realizados durante o
+                  ciclo
+                </Benefit>
+
+                <Benefit>
+                  Comunidade exclusiva do Instituto durante o período anual
+                </Benefit>
+
+                <Benefit>Suporte pelo WhatsApp</Benefit>
+
+                <Benefit>
+                  Podcasts e conteúdos complementares disponibilizados durante
+                  o ciclo
+                </Benefit>
+
+                <Benefit>Atualizações e conteúdos renovados durante o ciclo</Benefit>
+
+                <Benefit>
+                  Certificado ao concluir os módulos previstos
+                </Benefit>
+              </ul>
+            </div>
+
+            <div className="mt-10 rounded-2xl border border-[#b18a4a]/30 bg-white/60 p-6">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#b18a4a]">
+                Bônus exclusivos do anual
+              </p>
+
+              <ul className="mt-5 space-y-4 text-sm text-[#393631]">
+                <Benefit>Curso Dons Espirituais — acesso anual</Benefit>
+
+                <Benefit>Seminário de Libertação — acesso anual</Benefit>
+
+                <Benefit>E-book Devocional Fé</Benefit>
+              </ul>
+            </div>
+
+            <a
+              href="https://pay.hotmart.com/M107931141B?bid=1791397163725"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-10 flex items-center justify-between rounded-full bg-[#080808] px-6 py-4 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1a1a1a]"
+            >
+              Quero a jornada completa
+
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#b18a4a] text-white">
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </a>
+
+            <p className="mt-4 text-center text-[11px] leading-5 text-[#6f6b65]">
+              Pagamento processado pela Hotmart. Acesso anual ao Instituto
+              conforme as condições apresentadas no checkout.
+            </p>
+          </div>
         </div>
 
         <div className="reveal mx-auto mt-12 max-w-[850px] text-center">
@@ -1101,6 +1087,7 @@ export function Pricing() {
     </section>
   );
 }
+
 
 /* -------------------------------------------------------------------------- */
 /* EVANIO                                                                     */
